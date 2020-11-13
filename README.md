@@ -1,6 +1,6 @@
 # ithub
 
-i### <span style="color: #e83929;">も</span><span style="color: #e8c829;">ち</span><span style="color: #79e829;">も</span><span style="color: #29e869;">ち</span><span style="color: #29d8e8;">く</span><span style="color: #2949e8;">ん</span><span style="color: #9829e8;">監</span><span style="color: #e829a8;">修</span>
+### <span style="color: #e83929;">も</span><span style="color: #e8c829;">ち</span><span style="color: #79e829;">も</span><span style="color: #29e869;">ち</span><span style="color: #29d8e8;">く</span><span style="color: #2949e8;">ん</span><span style="color: #9829e8;">監</span><span style="color: #e829a8;">修</span>
 
 # 基本的な Push までの流れ
 
