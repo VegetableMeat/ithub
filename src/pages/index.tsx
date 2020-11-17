@@ -9,7 +9,7 @@ const Home: FC = () => {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head   >
       <Header />
     </div>
   );
