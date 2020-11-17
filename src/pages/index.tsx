@@ -1,7 +1,7 @@
-import React, { FC } from 'react'
-import Head from 'next/head'
-import Header from '../components/organisms/header'
-import styles from '../styles/Home.modules.css'
+import React, { FC } from "react";
+import Head from "next/head";
+import Header from "../components/organisms/header";
+import styles from "../styles/Home.module.css";
 
 const Home: FC = () => {
   return (
@@ -12,7 +12,7 @@ const Home: FC = () => {
       </Head>
       <Header />
     </div>
-  )
-}
+  );
+};
 
 export default Home;
