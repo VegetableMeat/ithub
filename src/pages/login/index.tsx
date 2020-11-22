@@ -1,12 +1,12 @@
 import React from "react";
 import Layout from "@/components/organisms/layout";
 
-const Top: React.FC = () => {
+const Login: React.FC = () => {
   return (
     <Layout>
-      ここはTOP
+      ここはLogin
     </Layout>
   );
 };
 
-export default Top;
+export default Login;

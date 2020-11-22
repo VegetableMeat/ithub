@@ -1,0 +1,82 @@
+/* Header */
+.header {
+  /* position: absolute; */
+  display: inline-flex;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  min-height: 60px;
+  height: auto;
+  background: #C1D6DB;
+  padding: 0 10px;
+}
+.header .searchFieldWrapper,
+.header .searchButtonWrapper,
+.header .signUpButtonWrapper {
+  margin-left: 10px;
+}
+.title {
+  cursor: pointer;
+}
+.contents {
+  display: inline-flex;
+  margin: auto 0;
+}
+
+/* Material-uiのボタン */
+.signUpButton {
+  font-size: 10px;
+  min-width: 4rem;
+  height: 35px;
+  background-color: #3e2924 !important;
+  color: #fff !important;
+  border: 1px !important;
+  border-radius: 5px !important;
+  box-shadow: (0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.signUpButton:hover {
+  background-color: #3e2924;
+  color: #fff;
+}
+
+/* 検索ボタンラッパー */
+.searchButtonWrapper {
+  height: 22px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/**
+  Material-uiのTextFieldは様々なタグを内包しているので
+  CSSを適応させるときには以下のような記述の仕方になる
+**/
+.searchField input {
+  min-height: 16px;
+  width: 48px !important;
+  padding: 7.5px 14px;
+  font-size: 10px;
+}
+/* divタグにボーダーが設定されているため、ここにバックグラウンドカラーを設定 */
+.searchField div {
+  min-height: 30px;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  background-color: #fff;
+}
+.searchField div > div {
+  height: 10px;
+  margin: 0;
+}
+.searchField div > span {
+  font-size: 10px;
+  padding-left: 6.5px;
+  padding-right: 8px;
+}
+.searchField div > svg {
+  height: 18px;
+  width: 18px;
+}
+.searchField label {
+  font-size: 10px;
+  transform: translate(1.4em, 1.25em) scale(1);
+}
