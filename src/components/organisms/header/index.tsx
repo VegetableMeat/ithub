@@ -19,13 +19,15 @@ const Header: React.FC = () => {
 
   return (
     <div className={style.header}>
-      <Image
-        className={style.title}
-        src="/icon/title.svg"
-        alt="備忘録"
-        width="120"
-        height="60"
-        onClick={() => router.push("/")} />
+      <div className={style.titleWrapper}>
+        <Image
+          className={style.title}
+          src="/icon/title.svg"
+          alt="備忘録"
+          width="120"
+          height="60"
+          onClick={() => router.push("/")} />
+      </div>
       <div className={style.contents}>
         <div className={style.searchFieldWrapper}>
           <Select
@@ -38,6 +40,7 @@ const Header: React.FC = () => {
         </div>
         <div className={style.searchButtonWrapper}>
           <Image
+            className={style.searchButton}
             src="/icon/search.svg"
             alt="検索"
             width="22"

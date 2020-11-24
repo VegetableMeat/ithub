@@ -1,11 +1,16 @@
 import React from "react";
-import Layout from "@/components/organisms/layout";
+
+export const getServerSideProps = async (context) => ({
+  props: {
+    layout: true
+  }
+});
 
 const Top: React.FC = () => {
   return (
-    <Layout>
+    <div>
       ここはTOP
-    </Layout>
+    </div>
   );
 };
 
