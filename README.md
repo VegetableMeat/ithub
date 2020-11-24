@@ -1,30 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ithub
 
-## Getting Started
+### <span style="color: #e83929;">も</span><span style="color: #e8c829;">ち</span><span style="color: #79e829;">も</span><span style="color: #29e869;">ち</span><span style="color: #29d8e8;">く</span><span style="color: #2949e8;">ん</span><span style="color: #9829e8;">監</span><span style="color: #e829a8;">修</span>
 
-First, run the development server:
+# 基本的な Push までの流れ
 
-```bash
-npm run dev
-# or
-yarn dev
+### **変更した内容を add**
+
+| コマンド                       | 備考                                         |
+| ------------------------------ | -------------------------------------------- |
+| `git add .`                    | 変更したファイルをすべてステージングに上げる |
+| `git add pushしたいファイル名` | 一つずつ指定したい場合はこっち               |
+
+### **コミットメッセージを記述**
+
+| コマンド                                 | 備考                                           |
+| ---------------------------------------- | ---------------------------------------------- |
+| `git commit -m "ここにメッセージを残す"` | コミットメッセージには「何を」と「なぜ」を書く |
+
+[わかりやすいコミットメッセージを考える](https://www.tam-tam.co.jp/tipsnote/program/post16686.html)
+
+### **ブランチに Push**
+
+| コマンド                               | 備考                         |
+| -------------------------------------- | ---------------------------- |
+| `git push origin pushしたいブランチ名` | 指定したブランチに Push する |
+| `git push origin HEAD`                 | 大抵はこっちでいい           |
+
+# 他色々
+
+### **ブランチを作成**
+
+| コマンド                     | 備考                               |
+| ---------------------------- | ---------------------------------- |
+| `git checkout -b ブランチ名` | 作成したと同時にブランチ切替       |
+| `git branch ブランチ名`      | 作成のみ、ブランチ切替は行われない |
+
+### **ブランチの切り替え**
+
+| コマンド                  | 備考                       |
+| ------------------------- | -------------------------- |
+| `git checkout ブランチ名` | 指定したブランチへ切り替え |
+
+### **ローカルブランチを削除**
+
+| コマンド                                 | 備考                                                               |
+| ---------------------------------------- | ------------------------------------------------------------------ |
+| `git branch --delete ローカルブランチ名` | 指定したローカルブランチを削除、マージされていない場合は警告が出る |
+| `git branch -D ローカルブランチ名`       | すべて無視、問答無用で消すやつ                                     |
+
+### **リモートブランチを削除**
+
+| コマンド                              | 備考                           |
+| ------------------------------------- | ------------------------------ |
+| `git push origin :リモートブランチ名` | 指定したリモートブランチを削除 |
+
+### **いじったファイルの表示**
+
+| コマンド     | 備考     |
+| ------------ | -------- |
+| `git status` | 特になし |
+
+### **まーじ**
+
+| コマンド                         | 備考                                                             |
+| -------------------------------- | ---------------------------------------------------------------- |
+| `git merge 取り入れるブランチ名` | 今いるブランチに指定されたブランチの変更点をがっちゃんこ、メモ用 |
+
+[Qiita Git コマンド一覧](https://qiita.com/fukumone/items/73e1a9a62c5e4454263b)
+
+# なんか Push できない＞＜
+
+Windows でよくある `Permissionほにゃほにゃ` について  
+※この手順は踏んでいるものとする → [Qiita GitHub に ssh 接続できるようにする](https://qiita.com/0ta2/items/25c27d447378b13a1ac3)
+
+### **ローカルが悪い場合、Git bash にて以下を入力**
+
+```
+$ eval `ssh-agent`
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+$ ssh-add ~/.ssh/登録したKey名 （.pub付いてない方）
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+以下が表示されたら OK
 
-## Learn More
+```
+$ Identity added: /Users/ユーザ名/.ssh/登録したKey名 (/Users/ユーザ名/.ssh/登録したKey名)
+```
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[ssh-add できなかったときへの対処](https://qiita.com/sshojiro/items/60982f06c1a0ba88c160)
