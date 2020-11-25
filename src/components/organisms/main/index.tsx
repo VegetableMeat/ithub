@@ -5,11 +5,11 @@ type Props = {
   children: React.ReactNode;
 }
 
-const SideMenu: React.FC<Props> = (props) => {
+const Main: React.FC<Props> = (props) => {
   const { children } = props;
   return (
-    <div className={style.sideMenu}>{children}</div>
+    <div className={style.main}>{children}</div>
   );
 }
 
-export default SideMenu;
+export default Main;

@@ -1,4 +1,7 @@
 import React from "react";
+import style from "./style.module.css"
+import Main from "@/components/organisms/main"
+import SideMenu from "@/components/organisms/sideMenu"
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -8,9 +11,11 @@ export const getServerSideProps = async (context) => ({
 
 const Top: React.FC = () => {
   return (
-    <div>
-      ここはTOP
-    </div>
+    <main>
+      <Main>
+        ここはTOP
+      </Main>
+    </main>
   );
 };
 
