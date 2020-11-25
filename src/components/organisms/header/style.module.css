@@ -1,7 +1,5 @@
 /* Header */
 .header {
-  position: relative;
-  display: inline-flex;
   top: 0px;
   left: 0px;
   width: 100%;
@@ -15,6 +13,13 @@
 .header .signUpButtonWrapper {
   margin-left: 10px;
 }
+.headerContents {
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  max-height: 60px;
+}
 .title,
 .searchButton {
   cursor: pointer;
@@ -24,10 +29,8 @@
   min-height: 60px;
 }
 .contents {
-  position: absolute;
   display: inline-flex;
-  margin: 12.5px 10px;
-  right: 0;
+  margin: 12.5px 120px 10px;
 }
 
 /* Material-uiのボタン */
