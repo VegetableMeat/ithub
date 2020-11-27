@@ -1,10 +1,14 @@
 /* Main */
 .main {
   max-width: 768px;
-  margin: 30px 15px;
+  margin: 30px auto;
   padding: 20px;
   border-radius: 5px;
-  background-color: #FFF;
+  background-color: #fff;
+}
+.mainWrapper {
+  width: calc(100vw - 30px);
+  margin: 0 15px;
 }
 @media screen and (max-width: 798px) {
   .main {

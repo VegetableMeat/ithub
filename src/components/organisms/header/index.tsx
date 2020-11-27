@@ -27,7 +27,8 @@ const Header: React.FC = () => {
             alt="備忘録"
             width="120"
             height="60"
-            onClick={() => router.push("/")} />
+            onClick={() => router.push("/")}
+          />
         </div>
         <div className={style.contents}>
           <div className={style.searchFieldWrapper}>
@@ -46,7 +47,8 @@ const Header: React.FC = () => {
               alt="検索"
               width="22"
               height="22"
-              onClick={() => { }} />
+              onClick={() => {}}
+            />
           </div>
           <div className={style.signUpButtonWrapper}>
             <Button
@@ -54,11 +56,11 @@ const Header: React.FC = () => {
               func={() => router.push("/login")}
             >
               ログイン
-        </Button>
+            </Button>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
