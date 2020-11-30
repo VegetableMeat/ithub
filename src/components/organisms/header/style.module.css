@@ -1,5 +1,5 @@
 /* Header */
-.header {
+.headerContainer {
   top: 0px;
   left: 0px;
   width: 100%;
@@ -8,9 +8,9 @@
   background: #c1d6db;
   padding: 0 10px;
 }
-.header .searchFieldWrapper,
-.header .searchButtonWrapper,
-.header .signUpButtonWrapper {
+.headerContainer .searchFieldWrapper,
+.headerContainer .searchButtonWrapper,
+.headerContainer .signUpButtonWrapper {
   margin-left: 10px;
 }
 .headerContents {

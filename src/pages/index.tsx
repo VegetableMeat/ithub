@@ -4,12 +4,6 @@ import Main from "@/components/organisms/main";
 import SideMenu from "@/components/organisms/sideMenu";
 import Memo from "@/components/molecules/memo";
 
-export const getServerSideProps = async (context) => ({
-  props: {
-    layout: true,
-  },
-});
-
 const Top: React.FC = () => {
   // テストデータ
   const test = [

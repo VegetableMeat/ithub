@@ -28,7 +28,7 @@ type Props = {
 const Memo: React.FC<Props> = (props) => {
   const { image, memo } = props;
   return (
-    <div className={style.memo}>
+    <div className={style.memoCard}>
       <div className={style.contents}>
         <div className={style.langImageWrapper}>
           <Image
