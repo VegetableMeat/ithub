@@ -40,16 +40,15 @@ const Login: React.FC = () => {
           </div>
         </div>
       </header>
-      <main>
-        <div className={style.main}>
-          <span className={style.title}>ログイン</span>
-          <span className={style.text}>
-            下記のボタンで新規登録、ログインの両方を行うことができます。
-          </span>
-          <Button className={style.google} func={() => router.push("/signUp")}>
-            Google
-          </Button>
-        </div>
+      <main className={style.main}>
+        <span className={style.title}>ログイン</span>
+        <span className={style.text}>
+          下記のボタンで新規登録、ログインの両方を行うことができます。
+        </span>
+        {/* TODO: ログイン処理の実装 */}
+        <Button className={style.google} func={() => router.push("/signUp")}>
+          Google
+        </Button>
       </main>
     </div>
   );
