@@ -1,0 +1,30 @@
+.userContainer {
+	display: flex;
+	justify-content: center;
+
+	height: 100%;
+	padding: 20px 20px 20px 20px;
+}
+
+@media (max-width: 600px) {
+	.userContainer {
+		padding: 10px 10px 10px 10px;
+		flex-direction: column-reverse;
+	}
+}
+
+.folderListContainer {
+	max-width: 670px;
+	width: 100%;
+	padding: 20px;
+	margin-right: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+	.folderListContainer {
+		padding: 5px;
+		margin-top: 5px;
+	}
+}

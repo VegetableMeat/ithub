@@ -1,10 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import Header from "@/components/organisms/header";
-import Footer from "@/components/organisms/footer";
 
 type Props = {
-	title?: string;
+	title?: string | string[];
 	children: React.ReactNode;
 };
 
@@ -21,8 +20,7 @@ const Layout: React.FC<Props> = (props) => {
 				></meta>
 			</Head>
 			<Header />
-			<main>{children}</main>
-			<Footer />
+			{children}
 		</>
 	);
 };

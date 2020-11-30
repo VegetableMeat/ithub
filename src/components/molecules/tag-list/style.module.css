@@ -1,0 +1,22 @@
+.tagContainer {
+	width: 300px;
+	padding: 20px;
+	margin-top: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+	.tagContainer {
+		margin-top: 5px;
+		width: 100%;
+	}
+}
+
+.tagText {
+	font-weight: 600;
+}
+
+.tagWrapper {
+	margin-top: 15px;
+}

@@ -1,7 +1,5 @@
 import React from "react";
-import style from "./style.module.css";
 import Main from "@/components/organisms/main";
-import SideMenu from "@/components/organisms/sideMenu";
 import Memo from "@/components/molecules/memo";
 import Layout from "@/components/organisms/layout";
 
