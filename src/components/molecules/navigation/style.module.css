@@ -1,0 +1,13 @@
+/* Navigation */
+.navigation {
+  margin: 15px 0;
+}
+.navigation span {
+  font-size: 20px !important;
+  font-weight: bold;
+  color: #3e2924 !important;
+}
+.navigation svg {
+  width: 22px;
+  height: 22px;
+}

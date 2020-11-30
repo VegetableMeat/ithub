@@ -1,13 +1,16 @@
 import React from "react";
 import style from "./style.module.css";
+import Navigation from "@/components/molecules/navigation";
 import Main from "@/components/organisms/main";
 import SideMenu from "@/components/organisms/sideMenu";
 import Memo from "@/components/molecules/memo";
 
 const Top: React.FC = () => {
   // テストデータ
-  const test = [
-    {
+  let test = [];
+
+  for (let i = 0; i < 10; i++) {
+    test.push({
       image: {
         src: "/icon/search.svg",
         alt: "画像",
@@ -15,21 +18,24 @@ const Top: React.FC = () => {
         height: 50,
       },
       memo: {
-        title: "テスト",
-        icon: "テスト",
-        user_name: "テスト",
-        user_id: 0,
-        update_time: "2020-11-27",
+        title: "React + TypeScriptのチュートリアル",
+        icon: "R",
+        user_name: "React",
+        user_id: "react_type",
+        update_time: "1日前",
         favorite: 10,
       },
-    },
-  ];
+    });
+  }
 
   let memo = test.map((data) => <Memo image={data.image} memo={data.memo} />);
 
   return (
     <main>
-      <Main>{memo}</Main>
+      <Main>
+        <Navigation />
+        {memo}
+      </Main>
     </main>
   );
 };
