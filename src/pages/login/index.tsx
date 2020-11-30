@@ -2,7 +2,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import Image from "next/image";
 import Head from "next/head";
+import Button from "@/components/atoms/button";
 import headerStyle from "@/components/organisms/header/style.module.css";
+import style from "./style.module.css";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -38,7 +40,16 @@ const Login: React.FC = () => {
           </div>
         </div>
       </header>
-      <main>ここはログイン</main>
+      <main className={style.main}>
+        <span className={style.title}>ログイン</span>
+        <span className={style.text}>
+          下記のボタンで新規登録、ログインの両方を行うことができます。
+        </span>
+        {/* TODO: ログイン処理の実装 */}
+        <Button className={style.google} func={() => router.push("/signUp")}>
+          Google
+        </Button>
+      </main>
     </div>
   );
 };

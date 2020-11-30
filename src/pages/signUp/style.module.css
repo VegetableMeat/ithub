@@ -1,0 +1,14 @@
+/* Signup */
+.main {
+  margin: auto;
+  display: block;
+}
+.form {
+  display: inline-grid;
+}
+.main span {
+  color: #3e2924;
+}
+.inputWrapper {
+  display: inline-flex;
+}

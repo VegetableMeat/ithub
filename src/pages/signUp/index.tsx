@@ -2,7 +2,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
+import Input from "@/components/atoms/input";
+import Button from "@/components/atoms/button";
 import headerStyle from "@/components/organisms/header/style.module.css";
+import style from "./style.module.css";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -38,7 +41,50 @@ const signUp: React.FC = () => {
           </div>
         </div>
       </header>
-      <main>ここは新規登録</main>
+      <main className={style.main}>
+        <div className={style.title}>ユーザー設定</div>
+        <div className={style.form}>
+          <div className={style.inputWrapper}>
+            <span>ユーザー名*</span>
+            <Input
+              className={style.input}
+              id={"name"}
+              label={"5文字以上で～"}
+              type={"text"}
+            />
+          </div>
+          <div className={style.inputWrapper}>
+            <span>ユーザーID*</span>
+            <Input
+              className={style.input}
+              id={"id"}
+              label={"5文字以上で～"}
+              type={"text"}
+            />
+          </div>
+          <div className={style.inputWrapper}>
+            <span>Github</span>
+            <Input
+              className={style.input}
+              id={"github"}
+              label={"GithubのID"}
+              type={"text"}
+            />
+          </div>
+          <div className={style.inputWrapper}>
+            <span>Twitter</span>
+            <Input
+              className={style.input}
+              id={"twitter"}
+              label={"TwitterのID"}
+              type={"text"}
+            />
+          </div>
+          <Button className={style.submit} func={() => router.push("/")}>
+            登録
+          </Button>
+        </div>
+      </main>
     </div>
   );
 };
