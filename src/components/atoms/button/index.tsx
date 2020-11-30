@@ -8,7 +8,7 @@ import { Button as MaterialBtn } from "@material-ui/core";
  * { title: string; }[]: 連想配列
  * React.ReactNode: Reactノード（子ノード）
  * () => void: 関数
- * 
+ *
  * パラメータ名の横に ? をつけると渡しても渡さなくてもどちらでも良いパラメータを作成できる。
  * （例）isTrue?: true; → isTrueを渡さなかった場合、isTrueには false が代入される。
  */

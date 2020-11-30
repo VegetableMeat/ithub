@@ -1,0 +1,31 @@
+.memoCard {
+  display: inline-flex;
+}
+.langImage {
+  /* cursor: pointer; */
+}
+.langImageWrapper {
+  min-width: 100px;
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  margin-bottom: auto;
+  border-radius: 5px;
+  background-color: #f00; /* #909090 */
+}
+.text {
+  width: 100%;
+  min-height: 100px;
+  padding: 15px;
+  background-color: #0f0;
+}
+.contents {
+  display: inline-flex;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 798px) {
+  .text {
+    /* max-width: calc(100vw - 30px); */
+  }
+}
