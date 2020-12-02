@@ -1,7 +1,7 @@
 import React from "react";
 
 type Props = {
-	className: string;
+	className?: string;
 	href: string;
 	children: React.ReactNode;
 };

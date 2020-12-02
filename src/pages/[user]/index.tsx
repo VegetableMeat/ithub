@@ -7,7 +7,7 @@ import styles from "./style.module.css";
 
 import folderData from "@/fixtures/folder.json";
 import userData from "@/fixtures/user.json";
-import tagData from "@/fixtures/tag.json";
+import tagDatas from "@/fixtures/tag.json";
 
 const User: React.FC = () => {
 	const router = useRouter();
@@ -18,7 +18,7 @@ const User: React.FC = () => {
 				<main className={styles.folderListContainer}>
 					<FolderList folderData={folderData} />
 				</main>
-				<Sidebar userData={userData} tagData={tagData} />
+				<Sidebar userData={userData} tagDatas={[]} />
 			</div>
 		</Layout>
 	);

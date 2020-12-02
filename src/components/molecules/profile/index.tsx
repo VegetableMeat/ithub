@@ -23,13 +23,14 @@ const SelfProfile: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.profile}>
 			<div className={styles.avatarContainer}>
-				<Avatar
-					className={styles.avatar}
-					alt={userData.name}
-					src='https://avatars2.githubusercontent.com/u/52918714?v=4'
-					round={true}
-					size='100px'
-				/>
+				<Link className={styles.avatar} href={`/${user}`}>
+					<Avatar
+						alt={userData.name}
+						src='https://avatars2.githubusercontent.com/u/52918714?v=4'
+						round={true}
+						size='100px'
+					/>
+				</Link>
 				<Link className={styles.settingIcon} href={ROUTES.SETTING}>
 					<SettingsIcon style={{ color: "#3E2924" }} />
 				</Link>

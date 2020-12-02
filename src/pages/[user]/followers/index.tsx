@@ -6,8 +6,8 @@ import Sidebar from "@/components/organisms/sidebar";
 import styles from "./style.module.css";
 
 import userData from "@/fixtures/user.json";
-import followData from "@/fixtures/follow.json";
-import tagData from "@/fixtures/tag.json";
+import followDatas from "@/fixtures/follow.json";
+import tagDatas from "@/fixtures/tag.json";
 
 const Followers: React.FC = () => {
 	const router = useRouter();
@@ -19,10 +19,10 @@ const Followers: React.FC = () => {
 					<FollowList
 						displayText={"フォロワー"}
 						userData={userData}
-						followData={[]}
+						followDatas={[]}
 					/>
 				</main>
-				<Sidebar userData={userData} tagData={tagData} />
+				<Sidebar userData={userData} tagDatas={tagDatas} />
 			</div>
 		</Layout>
 	);

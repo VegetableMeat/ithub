@@ -7,15 +7,15 @@ import styles from "./style.module.css";
 
 type Props = {
 	userData: userData;
-	tagData: tagData[];
+	tagDatas: tagData[];
 };
 
 const Sidebar: React.FC<Props> = (props) => {
-	const { userData, tagData } = props;
+	const { userData, tagDatas } = props;
 	return (
 		<aside className={styles.aside}>
 			<SelfProfile userData={userData} />
-			<TagList tagData={tagData} />
+			<TagList tagDatas={tagDatas} />
 		</aside>
 	);
 };
