@@ -22,11 +22,7 @@ const Folder: React.FC<Props> = (props: Props) => {
 					}}
 				/>
 			</Link>
-			<Img
-				className={styles.folderIcon}
-				imgUrl={iconUrl}
-				alt={folderName}
-			></Img>
+			<Img className={styles.folderIcon} imgUrl={iconUrl} alt={folderName} />
 			<span className={styles.folderName}>{folderName}</span>
 		</div>
 	);

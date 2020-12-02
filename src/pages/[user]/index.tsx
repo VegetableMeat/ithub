@@ -14,12 +14,12 @@ const User: React.FC = () => {
 	const { user } = router.query;
 	return (
 		<Layout title={user}>
-			<main className={styles.userContainer}>
-				<article className={styles.folderListContainer}>
+			<div className={styles.userContainer}>
+				<main className={styles.folderListContainer}>
 					<FolderList folderData={folderData} />
-				</article>
+				</main>
 				<Sidebar userData={userData} tagData={tagData} />
-			</main>
+			</div>
 		</Layout>
 	);
 };

@@ -14,6 +14,7 @@
 }
 
 .folderListContainer {
+	flex-direction: column;
 	max-width: 670px;
 	width: 100%;
 	padding: 20px;

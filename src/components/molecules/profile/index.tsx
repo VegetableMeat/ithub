@@ -68,7 +68,7 @@ const SelfProfile: React.FC<Props> = (props: Props) => {
 					borderColor: "#64B9DE",
 					maxWidth: "500px",
 					width: "100%",
-					marginBottom: "1px",
+					marginBottom: "10px",
 					textTransform: "none",
 				}}
 				variant='outlined'
@@ -84,7 +84,7 @@ const SelfProfile: React.FC<Props> = (props: Props) => {
 					borderColor: "#3E2924",
 					maxWidth: "500px",
 					width: "100%",
-					marginBottom: "2px",
+					marginTop: "10px",
 				}}
 				variant='outlined'
 				href={`/${user}${ROUTES.FAVORITES}`}
