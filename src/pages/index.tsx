@@ -32,8 +32,7 @@ const Top: React.FC = () => {
 
 	return (
 		<Layout title={"top"}>
-      <Navigation />
-			<Main>{memo}</Main>
+			<Main><Navigation />{memo}</Main>
 		</Layout>
 	);
 };
