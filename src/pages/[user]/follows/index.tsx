@@ -1,22 +1,26 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Layout from "@/components/organisms/layout";
-import FolderList from "@/components/organisms/folder-list";
+import FollowList from "@/components/organisms/follow-list";
 import Sidebar from "@/components/organisms/sidebar";
 import styles from "./style.module.css";
 
-import folderData from "@/fixtures/folder.json";
 import userData from "@/fixtures/user.json";
+import followData from "@/fixtures/follow.json";
 import tagData from "@/fixtures/tag.json";
 
-const User: React.FC = () => {
+const Follows: React.FC = () => {
 	const router = useRouter();
 	const { user } = router.query;
 	return (
 		<Layout title={user}>
-			<div className={styles.userContainer}>
-				<main className={styles.folderListContainer}>
-					<FolderList folderData={folderData} />
+			<div className={styles.followsContainer}>
+				<main className={styles.followListContainer}>
+					<FollowList
+						displayText={"フォロー中"}
+						userData={userData}
+						followData={followData}
+					/>
 				</main>
 				<Sidebar userData={userData} tagData={tagData} />
 			</div>
@@ -24,4 +28,4 @@ const User: React.FC = () => {
 	);
 };
 
-export default User;
+export default Follows;

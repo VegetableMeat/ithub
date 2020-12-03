@@ -2,8 +2,8 @@ import React from "react";
 import style from "./style.module.css";
 import Navigation from "@/components/molecules/navigation";
 import Main from "@/components/organisms/main";
-import SideMenu from "@/components/organisms/sideMenu";
 import Memo from "@/components/molecules/memo";
+import Layout from "@/components/organisms/layout";
 
 const Top: React.FC = () => {
   // テストデータ
@@ -28,16 +28,14 @@ const Top: React.FC = () => {
     });
   }
 
-  let memo = test.map((data) => <Memo image={data.image} memo={data.memo} />);
+	let memo = test.map((data) => <Memo image={data.image} memo={data.memo} />);
 
-  return (
-    <main>
-      <Main>
-        <Navigation />
-        {memo}
-      </Main>
-    </main>
-  );
+	return (
+		<Layout title={"top"}>
+      <Navigation />
+			<Main>{memo}</Main>
+		</Layout>
+	);
 };
 
 export default Top;

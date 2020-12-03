@@ -1,0 +1,71 @@
+.profile {
+	display: block;
+	text-align: center;
+	width: 300px;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+}
+
+@media (max-width: 770px) {
+	.profile {
+		width: 100%;
+	}
+}
+
+.avatarContainer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: "emp avatar setting";
+}
+
+.avatar {
+	grid-area: avatar;
+	justify-self: center;
+}
+
+.settingIcon {
+	grid-area: setting;
+	position: relative;
+	top: -5px;
+	left: 30px;
+}
+
+.userName {
+	font-size: 24px;
+	font-weight: 400;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+
+.userID {
+	font-size: 16px;
+	font-weight: 400;
+	color: #413431c9;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 5px 0px;
+}
+
+.userText {
+	font-size: 13px;
+}
+
+.githubIcon {
+	margin-right: 5px;
+}
+
+.twitterIcon {
+	margin-left: 5px;
+}
+
+.followLink {
+	color: "#764527";
+	border-width: 22px;
+}
+
+.line {
+	max-width: 500px;
+	margin: 0 auto;
+	height: 1px;
+	border-top: 1px #c4c4c4 solid;
+}

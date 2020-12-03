@@ -1,9 +1,15 @@
-html {
-  width: 100%;
-  background-color: #f6f6f6;
+html,
+body {
+	width: 100%;
+	font-family: "Roboto", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #f6f6f6;
+	color: #3e2924;
+	font-size: 16px;
 }
 main {
-  display: inline-flex;
+	display: inline-flex;
 }
 /* main {
   max-width: 768px;
