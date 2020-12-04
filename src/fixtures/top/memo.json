@@ -1,0 +1,34 @@
+[
+  {
+    "image": {
+      "src": "/icon/search.svg",
+      "alt": "画像",
+      "width": 50,
+      "height": 50
+    },
+    "memo": {
+      "title": "React + TypeScriptのチュートリアル",
+      "icon": "R",
+      "user_name": "React",
+      "user_id": "react_type",
+      "update_time": "1日前",
+      "favorite": 10
+    }
+  },
+  {
+    "image": {
+      "src": "/icon/search.svg",
+      "alt": "画像",
+      "width": 50,
+      "height": 50
+    },
+    "memo": {
+      "title": "React + TypeScriptのチュートリアル",
+      "icon": "R",
+      "user_name": "React",
+      "user_id": "react_type",
+      "update_time": "2日前",
+      "favorite": 10
+    }
+  }
+]
