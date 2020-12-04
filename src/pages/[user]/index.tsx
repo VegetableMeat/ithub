@@ -1,27 +1,32 @@
 import React from "react";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 import Layout from "@/components/organisms/layout";
-import FolderList from "@/components/organisms/folder-list";
+import FolderContainer from "@/components/organisms/folder/folder-container";
 import Sidebar from "@/components/organisms/sidebar";
 import styles from "./style.module.css";
+import type { User } from "@/models/user/entity";
+import type { Folder } from "@/models/folder/entity";
+import { API_URL } from "@/libs/api";
 
-import folderData from "@/fixtures/folder.json";
-import userData from "@/fixtures/user.json";
-import tagData from "@/fixtures/tag.json";
-
-const User: React.FC = () => {
+const UserIndex: React.FC = () => {
 	const router = useRouter();
-	const { user } = router.query;
+	const userID = router.query.user;
+	if (!userID) {
+		return null;
+	}
+	const user = useSWR<User, Error>(`${API_URL}/users/${userID}`);
+	const folders = useSWR<Folder[], Error>(`${API_URL}/users/${userID}/folders`);
 	return (
-		<Layout title={user}>
+		<Layout title={userID}>
 			<div className={styles.userContainer}>
 				<main className={styles.folderListContainer}>
-					<FolderList folderData={folderData} />
+					<FolderContainer folders={folders} />
 				</main>
-				<Sidebar userData={userData} tagData={tagData} />
+				<Sidebar user={user} userID={userID as string} />
 			</div>
 		</Layout>
 	);
 };
 
-export default User;
+export default UserIndex;

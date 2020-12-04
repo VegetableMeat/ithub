@@ -1,0 +1,13 @@
+.followTextWrapper {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.followText {
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0;
+}
+
+.followErrorMessage {
+}
