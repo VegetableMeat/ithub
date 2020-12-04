@@ -1,0 +1,18 @@
+.folderWrapper {
+	margin: 10px;
+	height: 100%;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+}
+
+.noneFolderText {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 600;
+	margin-top: 30px;
+	width: 100%;
+	height: 100%;
+}

@@ -1,0 +1,11 @@
+.tagWrapper {
+	text-align: center;
+	margin-top: 15px;
+}
+
+.noneTagText {
+	display: flex;
+	justify-content: center;
+	margin-bottom: -10px;
+	font-size: 13px;
+}

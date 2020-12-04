@@ -1,13 +1,18 @@
-.folderLink {
-	margin-top: -10px;
-	margin-bottom: -20px;
-}
-
 .folder {
-	height: 130px;
+	height: 100px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+@media (max-width: 770px) {
+	.folder {
+		height: 100px;
+	}
+}
+
+.folderLink {
+	margin-top: -10px;
+	margin-bottom: -20px;
 }
 
 .folderIcon {
@@ -19,6 +24,6 @@
 
 .folderName {
 	position: relative;
-	top: -35px;
+	top: 5px;
 	left: 0px;
 }

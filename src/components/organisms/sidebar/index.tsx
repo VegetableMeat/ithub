@@ -1,21 +1,21 @@
 import React from "react";
-import TagList from "@/components/molecules/tag-list";
-import SelfProfile from "@/components/molecules/profile";
-import { userData } from "@/models/user/entity";
-import { tagData } from "@/models/tag/entity";
+import { responseInterface } from "swr";
+import TagContainer from "@/components/molecules/tag/tag-container";
+import ProfileContainer from "@/components/molecules/profile-container";
+import type { User } from "@/models/user/entity";
 import styles from "./style.module.css";
 
 type Props = {
-	userData: userData;
-	tagDatas: tagData[];
+	user: responseInterface<User, Error>;
+	userID: string;
 };
 
 const Sidebar: React.FC<Props> = (props) => {
-	const { userData, tagDatas } = props;
+	const { user, userID } = props;
 	return (
 		<aside className={styles.aside}>
-			<SelfProfile userData={userData} />
-			<TagList tagDatas={tagDatas} />
+			<ProfileContainer user={user} />
+			<TagContainer userID={userID} />
 		</aside>
 	);
 };

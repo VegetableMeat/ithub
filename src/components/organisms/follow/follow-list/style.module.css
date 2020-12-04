@@ -1,0 +1,23 @@
+.followTextWrapper {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.followText {
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0;
+}
+
+.noneFollowText {
+	display: flex;
+	justify-content: center;
+	margin-top: -15px;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.line {
+	margin: 2px 0 5px;
+	border-top: 1px #c4c4c4 solid;
+}

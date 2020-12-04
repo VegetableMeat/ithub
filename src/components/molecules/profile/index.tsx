@@ -1,98 +1,113 @@
 import React from "react";
-import { useRouter } from "next/router";
+import Link from "next/link";
+import { makeStyles } from "@material-ui/styles";
 import Avatar from "react-avatar";
-import SettingsIcon from "@material-ui/icons/Settings";
-import GitHubIcon from "@material-ui/icons/GitHub";
-import TwitterIcon from "@material-ui/icons/Twitter";
+import { GrUserSettings } from "react-icons/gr";
+import { FaTwitterSquare, FaGithubSquare } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
-import Link from "@/components/atoms/link";
+import Loading from "@/components/molecules/loading";
 import Text from "@/components/atoms/text";
-import { userData } from "@/models/user/entity";
+import type { User } from "@/models/user/entity";
 import * as ROUTES from "@/constants/routes";
-
 import styles from "./style.module.css";
 
 type Props = {
-	userData: userData;
+	user: User;
 };
 
+const useStyles = makeStyles(() => ({
+	avatar: {
+		"&:hover": {
+			filter: "brightness(98%)",
+		},
+	},
+	blueButton: {
+		color: "#64B9DE",
+		borderColor: "#64B9DE",
+		maxWidth: "500px",
+		width: "100%",
+		marginBottom: "5px",
+		textTransform: "none",
+	},
+	brownButton: {
+		borderColor: "#3E2924",
+		maxWidth: "500px",
+		width: "100%",
+	},
+}));
+
 const SelfProfile: React.FC<Props> = (props: Props) => {
-	const router = useRouter();
-	const { user } = router.query;
-	const { userData } = props;
+	const { user } = props;
+	const classes = useStyles();
+
+	if (!user) return <Loading />;
+
 	return (
-		<div className={styles.profile}>
+		<>
 			<div className={styles.avatarContainer}>
-				<Link className={styles.avatar} href={`/${user}`}>
-					<Avatar
-						alt={userData.name}
-						src='https://avatars2.githubusercontent.com/u/52918714?v=4'
-						round={true}
-						size='100px'
-					/>
+				<Link href={`/${user.user_id}`}>
+					<div className={styles.avatar}>
+						<Avatar
+							className={classes.avatar}
+							alt={user.name}
+							src={user.icon_link}
+							round={true}
+							size='100px'
+						/>
+					</div>
 				</Link>
-				<Link className={styles.settingIcon} href={ROUTES.SETTING}>
-					<SettingsIcon style={{ color: "#3E2924" }} />
-				</Link>
+				{user.is_you && (
+					<Link href={ROUTES.SETTING}>
+						<div className={styles.settingIcon}>
+							<GrUserSettings size={"1.5em"} style={{ color: "#3E2924" }} />
+						</div>
+					</Link>
+				)}
 			</div>
 
-			<Text className={styles.userName}>{userData.name}</Text>
-			<Text className={styles.userID}>@{userData.user_id}</Text>
+			<Text className={styles.userName}>{user.name}</Text>
+			<Text className={styles.userID}>@{user.user_id}</Text>
 
-			<Link className={styles.githubIcon} href={userData.github_link}>
-				<GitHubIcon style={{ color: "#3E2924" }} />
-			</Link>
+			<div className={styles.snsLinkWrapper}>
+				{user.github_link && (
+					<Link href={user.github_link}>
+						<FaGithubSquare size={"1.8em"} style={{ color: "#3E2924" }} />
+					</Link>
+				)}
+				{user.twitter_link && (
+					<Link href={user.twitter_link}>
+						<FaTwitterSquare size={"1.8em"} style={{ color: "#3E2924" }} />
+					</Link>
+				)}
+			</div>
 
-			<Link className={styles.twitterIcon} href={userData.twitter_link}>
-				<TwitterIcon style={{ color: "#3E2924" }} />
-			</Link>
-
-			<Text className={styles.userText}>{userData.user_text}</Text>
+			<Text className={styles.userText}>{user.user_text}</Text>
 
 			<Button
-				style={{
-					color: "#64B9DE",
-					borderColor: "#64B9DE",
-					maxWidth: "500px",
-					width: "100%",
-					marginBottom: "3px",
-					textTransform: "none",
-				}}
+				className={classes.blueButton}
 				variant='outlined'
-				href={`/${user}${ROUTES.FOLLOW}`}
+				href={`/${user.user_id}${ROUTES.FOLLOW}`}
 			>
-				{userData.follow_count} follow
+				{user.follow_count} follow
 			</Button>
 			<Button
-				style={{
-					color: "#64B9DE",
-					borderColor: "#64B9DE",
-					maxWidth: "500px",
-					width: "100%",
-					marginBottom: "10px",
-					textTransform: "none",
-				}}
+				className={classes.blueButton}
 				variant='outlined'
-				href={`/${user}${ROUTES.FOLLOWER}`}
+				href={`/${user.user_id}${ROUTES.FOLLOWER}`}
 			>
-				{userData.follower_count} follower
+				{user.follower_count} follower
 			</Button>
 
 			<p className={styles.line} />
 
 			<Button
-				style={{
-					borderColor: "#3E2924",
-					maxWidth: "500px",
-					width: "100%",
-					marginTop: "10px",
-				}}
+				className={classes.brownButton}
 				variant='outlined'
-				href={`/${user}${ROUTES.FAVORITES}`}
+				href={`/${user.user_id}${ROUTES.FAVORITES}`}
 			>
 				いいねした備忘録
 			</Button>
-		</div>
+		</>
 	);
 };
 
