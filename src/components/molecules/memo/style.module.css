@@ -1,9 +1,9 @@
 .memoCard {
   max-width: 100%;
-  display: inline-flex;
+  display: flex;
   padding: 10px 0;
   border-bottom: solid 2px #c4c4c4;
-  font-size: 1.2rem;
+  font-size: 17px;
 }
 .langImage {
   /* cursor: pointer; */
@@ -15,7 +15,7 @@
   place-items: center;
   margin-bottom: auto;
   border-radius: 5px;
-  background-color: #909090;
+  /* background-color: #909090; */
 }
 /* Main - langImageWrapper_width - Main_padding */
 .memo {
@@ -43,13 +43,13 @@
   grid-column: 1 / 2;
 }
 .writerName {
-  font-size: 1.1rem;
+  font-size: 15px;
 }
 .writerId {
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 .date {
-  font-size: 1.1rem;
+  font-size: 14px;
   opacity: 0.8;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
@@ -68,14 +68,25 @@
 @media screen and (max-width: 798px) {
   .memoCard {
     width: 100%;
-    font-size: 1rem;
   }
   .memo {
     width: calc(768px - 70px - 15px * 2);
     min-height: 70px;
   }
+}
+
+@media screen and (max-width: 600px) {
   .langImageWrapper {
     min-width: 70px;
-    min-height: 70px;
+  }
+  .title {
+    font-size: 15px;
+  }
+  .writerName {
+    font-size: 13px;
+  }
+  .writerId,
+  .date {
+    font-size: 12px;
   }
 }

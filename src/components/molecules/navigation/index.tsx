@@ -6,7 +6,7 @@ import {
   LocalOffer,
   MenuBook,
 } from "@material-ui/icons";
-import style from "./style.module.css";
+import styles from "./style.module.css";
 
 const Navigation: React.FC = () => {
   const [value, setValue] = React.useState("home");
@@ -19,7 +19,7 @@ const Navigation: React.FC = () => {
     <BottomNavigation
       value={value}
       onChange={handleChange}
-      className={style.navigation}
+      className={styles.navigation}
     >
       <BottomNavigationAction label="ホーム" value="home" icon={<Home />} />
       <BottomNavigationAction

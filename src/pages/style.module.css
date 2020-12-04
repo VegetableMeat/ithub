@@ -1,1 +1,19 @@
 /* Top */
+.topContainer {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+}
+.mainContainer {
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 808px) {
+  .mainContainer {
+    width: 100%;
+  }
+}

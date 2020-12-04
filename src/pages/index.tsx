@@ -1,9 +1,8 @@
 import React from "react";
-import style from "./style.module.css";
-import Navigation from "@/components/molecules/navigation";
-import Main from "@/components/organisms/main";
-import Memo from "@/components/molecules/memo";
 import Layout from "@/components/organisms/layout";
+import Navigation from "@/components/molecules/navigation";
+import Memo from "@/components/molecules/memo";
+import styles from "./style.module.css";
 
 const Top: React.FC = () => {
   // テストデータ
@@ -28,13 +27,18 @@ const Top: React.FC = () => {
     });
   }
 
-	let memo = test.map((data) => <Memo image={data.image} memo={data.memo} />);
+  let memo = test.map((data) => <Memo image={data.image} memo={data.memo} />);
 
-	return (
-		<Layout title={"top"}>
-			<Main><Navigation />{memo}</Main>
-		</Layout>
-	);
+  return (
+    <Layout title="top">
+      <div className={styles.topContainer}>
+        <main className={styles.mainContainer}>
+          <Navigation />
+          {memo}
+        </main>
+      </div>
+    </Layout>
+  );
 };
 
 export default Top;
