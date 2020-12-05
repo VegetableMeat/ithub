@@ -1,10 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
-import { tagData } from "@/models/tag/entity";
+import { Tag } from "@/models/tag/entity";
 
 type Props = {
-	tag: tagData;
+	tag: Tag;
 };
 
 const useStyles = makeStyles(() => ({
@@ -23,14 +23,14 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const Tag: React.FC<Props> = (props: Props) => {
+const TagComponent: React.FC<Props> = (props: Props) => {
 	const { tag } = props;
 	const classes = useStyles();
 	return (
 		<Button key={tag.id} disableRipple className={classes.tag} href={tag.link}>
-			{tag.name}
+			#{tag.name}
 		</Button>
 	);
 };
 
-export default Tag;
+export default TagComponent;

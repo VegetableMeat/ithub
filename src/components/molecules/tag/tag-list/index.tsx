@@ -23,7 +23,7 @@ const TagList: React.FC<Props> = (props: Props) => {
 				</div>
 			) : (
 				<div className={styles.noneTagText}>
-					<p>登録されたタグはありません</p>
+					<p>フォローしているタグはありません</p>
 				</div>
 			)}
 		</>

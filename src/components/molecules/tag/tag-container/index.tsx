@@ -19,7 +19,7 @@ const TagContainer: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.tagContainer}>
 			<FaTags size={"1.4em"} style={{ color: "#3E2924", marginRight: "5px" }} />
-			<span className={styles.tagText}>登録しているタグ</span>
+			<span className={styles.tagText}>フォローしているタグ</span>
 			{!error ? (
 				<TagList tags={data} />
 			) : (

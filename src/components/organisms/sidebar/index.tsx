@@ -11,10 +11,9 @@ type Props = {
 };
 
 const Sidebar: React.FC<Props> = (props) => {
-	const { user, userID } = props;
+	const { userID } = props;
 	return (
 		<aside className={styles.aside}>
-			<ProfileContainer user={user} />
 			<TagContainer userID={userID} />
 		</aside>
 	);

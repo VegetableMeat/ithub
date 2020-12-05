@@ -1,1 +1,1 @@
-export const API_ERROR_MESSAGE = "Failed Server connect";
+export const API_ERROR_MESSAGE = "Failed server connect";
