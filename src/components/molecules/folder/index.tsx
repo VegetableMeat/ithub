@@ -1,6 +1,6 @@
 import React from "react";
+import { makeStyles } from "@material-ui/styles";
 import FolderIcon from "@material-ui/icons/Folder";
-import Img from "@/components/atoms/img";
 import Link from "@/components/atoms/link";
 import styles from "./style.module.css";
 
@@ -10,19 +10,24 @@ type Props = {
 	folderName: string;
 };
 
+const useStyles = makeStyles(() => ({
+	folder: {
+		fontSize: "90px",
+		color: "#FFF48D",
+		"&:hover": {
+			color: "#f5eb8f",
+		},
+	},
+}));
+
 const Folder: React.FC<Props> = (props: Props) => {
-	const { iconUrl, folderLink, folderName } = props;
+	const { folderLink, folderName } = props;
+	const classes = useStyles();
 	return (
 		<div className={styles.folder}>
 			<Link className={styles.folderLink} href={folderLink}>
-				<FolderIcon
-					style={{
-						fontSize: "105px",
-						color: "#FFF48D",
-					}}
-				/>
+				<FolderIcon className={classes.folder} />
 			</Link>
-			<Img className={styles.folderIcon} imgUrl={iconUrl} alt={folderName} />
 			<span className={styles.folderName}>{folderName}</span>
 		</div>
 	);

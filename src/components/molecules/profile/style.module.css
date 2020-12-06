@@ -16,7 +16,7 @@
 .avatarContainer {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-areas: "emp avatar setting";
+	grid-template-areas: "... avatar setting";
 }
 
 .avatar {
@@ -26,9 +26,9 @@
 
 .settingIcon {
 	grid-area: setting;
-	position: relative;
-	top: -5px;
-	left: 30px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: end;
 }
 
 .userName {
@@ -50,22 +50,22 @@
 	font-size: 13px;
 }
 
-.githubIcon {
-	margin-right: 5px;
-}
-
-.twitterIcon {
-	margin-left: 5px;
+.snsLinkWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
 
 .followLink {
-	color: "#764527";
+	color: #3e2924;
 	border-width: 22px;
 }
 
 .line {
 	max-width: 500px;
 	margin: 0 auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
 	height: 1px;
 	border-top: 1px #c4c4c4 solid;
 }

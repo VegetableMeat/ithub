@@ -1,28 +1,34 @@
 import React from "react";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 import Layout from "@/components/organisms/layout";
-import FollowList from "@/components/organisms/follow-list";
+import FollowContainer from "@/components/organisms/follow/follow-container";
 import Sidebar from "@/components/organisms/sidebar";
+import { User } from "@/models/user/entity";
+import { API_URL } from "@/libs/api";
 import styles from "./style.module.css";
-
-import userData from "@/fixtures/user.json";
-import followData from "@/fixtures/follow.json";
-import tagData from "@/fixtures/tag.json";
 
 const Followers: React.FC = () => {
 	const router = useRouter();
-	const { user } = router.query;
+	const userID = router.query.user;
+	if (!userID) {
+		return null;
+	}
+	const folowers = useSWR<User[], Error>(
+		`${API_URL}/users/${userID}/followers`
+	);
+	const user = useSWR<User, Error>(`${API_URL}/users/${userID}`);
 	return (
-		<Layout title={user}>
+		<Layout title={userID}>
 			<div className={styles.followsContainer}>
 				<main className={styles.followListContainer}>
-					<FollowList
+					<FollowContainer
 						displayText={"フォロワー"}
-						userData={userData}
-						followData={[]}
+						follows={folowers}
+						userID={userID as string}
 					/>
 				</main>
-				<Sidebar userData={userData} tagData={tagData} />
+				<Sidebar user={user} userID={userID as string} />
 			</div>
 		</Layout>
 	);

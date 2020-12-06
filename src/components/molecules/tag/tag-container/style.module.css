@@ -1,5 +1,5 @@
 .tagContainer {
-	width: 300px;
+	width: 260px;
 	padding: 20px;
 	margin-top: 20px;
 	background: #ffffff;
@@ -9,6 +9,7 @@
 @media (max-width: 800px) {
 	.tagContainer {
 		margin-top: 5px;
+		padding: 10px;
 		width: 100%;
 	}
 }
@@ -17,6 +18,9 @@
 	font-weight: 600;
 }
 
-.tagWrapper {
-	margin-top: 15px;
+.tagErrorMessage {
+	margin-top: 5px;
+	display: flex;
+	text-align: center;
+	justify-content: center;
 }

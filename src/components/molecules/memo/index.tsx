@@ -2,33 +2,16 @@ import React from "react";
 import Image from "next/image";
 import { Avatar } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
+import { Memo as Memo_entity } from "@/models/top/memo/entity";
 import styles from "./style.module.css";
 
 type Props = {
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-  memo: {
-    title: string;
-    icon: string;
-    user_name: string;
-    user_id: string;
-    update_time: string;
-    favorite: number;
-  };
+  memos: Memo_entity;
 };
 
-/**
- * 渡されたデータを元に備忘録のタイトルと使用されている技術の画像
- * 及び著者名などの情報を持ったコンポーネントを提供します。
- * 渡すパラメータは上の type Props を参照してください。
- */
-
 const Memo: React.FC<Props> = (props) => {
-  const { image, memo } = props;
+  const { memos } = props;
+  const { image, memo } = memos;
   return (
     <div className={styles.memoCard}>
       <div className={styles.langImageWrapper}>

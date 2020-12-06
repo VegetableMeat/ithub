@@ -1,9 +1,11 @@
 {
 	"user_id": "taniwhy",
 	"name": "harry potter",
-	"github_link": "/test",
-	"twitter_link": "/test",
+	"icon_link": "https://avatars2.githubusercontent.com/u/52918714?v=4",
+	"github_link": "https://github.com/taniwhy",
+	"twitter_link": "https://github.com/taniwhy",
 	"user_text": "JS HTML CSS PHP/応用情報/パソコン自作",
 	"follow_count": 15,
-	"follower_count": 0
+	"follower_count": 0,
+	"is_you": true
 }
