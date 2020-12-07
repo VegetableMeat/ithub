@@ -9,7 +9,6 @@ import { API_URL } from "@/libs/api";
 
 const Top: React.FC = () => {
   const { data } = useSWR<Memo_entity[], Error>(`${API_URL}/top`);
-  console.log(data)
   const memo = data.map((data) => <Memo memos={data} />);
 
   return (
