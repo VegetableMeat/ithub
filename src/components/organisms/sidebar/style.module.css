@@ -1,10 +1,24 @@
 .aside {
-	flex-direction: column;
+	grid-area: sidebar;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 770px) {
 	.aside {
-		max-width: 1000px;
+		display: grid;
+		grid-auto-columns: minmax(1px, 100%);
+		grid-auto-rows: minmax(1px, auto) minmax(1px, auto) minmax(1px, auto);
+		grid-template-areas:
+			"profile follow"
+			"tags    tags  ";
+		gap: 5px;
+	}
+}
+
+@media (max-width: 480px) {
+	.aside {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		width: 100%;
 		height: 100%;
 	}

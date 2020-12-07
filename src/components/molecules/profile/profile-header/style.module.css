@@ -1,0 +1,152 @@
+.profileHeaderContainer {
+	grid-area: header;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-auto-rows: 45px 40px minmax(1px, 25px) 45px;
+	grid-template-areas:
+		" ...   avatar button"
+		" name  name   name  "
+		" id    id     id    "
+		" text  text   text  ";
+	min-height: 200px;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+}
+
+@media (max-width: 770px) {
+	.profileHeaderContainer {
+		grid-template-columns: repeat(3, 1fr);
+		grid-auto-rows: 40px minmax(1px, auto) minmax(1px, auto) minmax(1px, auto);
+		grid-template-areas:
+			" avatar button button"
+			" name   name   name  "
+			" id     id     id    "
+			" text   text   text  ";
+		padding: 20px;
+		min-height: 0px;
+	}
+}
+
+.avatar {
+	grid-area: avatar;
+	text-align: center;
+}
+
+@media (max-width: 770px) {
+	.avatar {
+		text-align: left;
+	}
+}
+.avatar div {
+	height: 100% !important;
+	width: 100% !important;
+	width: 125px !important;
+	height: 125px !important;
+}
+
+.avatar img {
+	width: 125px !important;
+	height: 125px !important;
+}
+
+.settingIcon {
+	grid-area: button;
+	justify-self: end;
+}
+
+@media (max-width: 770px) {
+	.avatar div {
+		width: 75px !important;
+		height: 75px !important;
+	}
+}
+@media (max-width: 770px) {
+	.avatar img {
+		width: 75px !important;
+		height: 75px !important;
+	}
+}
+
+.followButton {
+	grid-area: button;
+	display: flex;
+	justify-self: end;
+	align-self: start;
+}
+
+@media (max-width: 770px) {
+	.followButton {
+		height: 30px !important;
+	}
+}
+
+.userName {
+	grid-area: name;
+	text-align: center;
+	height: 100%;
+	font-size: 32px;
+	font-weight: 800;
+	margin: 0px;
+}
+
+@media (max-width: 770px) {
+	.userName {
+		text-align: left;
+		margin-bottom: -5px;
+		font-size: 26px;
+	}
+}
+
+.userID {
+	grid-area: id;
+	text-align: center;
+	position: relative;
+	right: 0.3em;
+	color: rgb(83, 75, 61);
+	font-size: 18px;
+	height: 100%;
+	margin: 0px;
+}
+
+@media (max-width: 770px) {
+	.userID {
+		font-size: 16px;
+		text-align: left;
+		right: 0;
+	}
+}
+
+.userText {
+	grid-area: text;
+	text-align: center;
+	align-self: center;
+	font-size: 16px;
+	margin: 0px;
+}
+
+@media (max-width: 770px) {
+	.userText {
+		margin-top: 10px;
+		text-align: left;
+	}
+}
+
+.other {
+	grid-area: other;
+	text-align: center;
+	align-self: center;
+	font-size: 16px;
+	margin: 0px;
+
+	display: flex;
+	text-align: center;
+	justify-content: center;
+}
+
+.birth {
+	position: relative;
+	top: -1px;
+}

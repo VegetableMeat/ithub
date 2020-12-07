@@ -1,0 +1,23 @@
+.followProfileContainer {
+	width: 100%;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+@media (max-width: 770px) {
+	.followProfileContainer {
+		grid-area: follow;
+		margin-bottom: 0px;
+	}
+}
+
+.line {
+	max-width: 500px;
+	margin: 0 auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	height: 1px;
+	border-top: 1px #c4c4c4 solid;
+}
