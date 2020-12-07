@@ -1,46 +1,41 @@
 import React from "react";
 import Image from "next/image";
-import style from "./style.module.css";
+import { Avatar } from "@material-ui/core";
+import { FavoriteBorder } from "@material-ui/icons";
+import { Memo as Memo_entity } from "@/models/top/memo/entity";
+import styles from "./style.module.css";
 
 type Props = {
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-  memo: {
-    title: string;
-    icon: string;
-    user_name: string;
-    user_id: number;
-    update_time: string;
-    favorite: number;
-  };
+  memos: Memo_entity;
 };
 
-/**
- * 渡されたデータを元に備忘録のタイトルと使用されている技術の画像
- * 及び著者名などの情報を持ったコンポーネントを提供します。
- * 渡すパラメータは上の type Props を参照してください。
- */
-
 const Memo: React.FC<Props> = (props) => {
-  const { image, memo } = props;
+  const { memos } = props;
+  const { image, memo } = memos;
   return (
-    <div className={style.memoCard}>
-      <div className={style.contents}>
-        <div className={style.langImageWrapper}>
-          <Image
-            className={style.langImage}
-            src={image.src}
-            alt={image.alt}
-            width={image.width}
-            height={image.height}
-          />
+    <div className={styles.memoCard}>
+      <div className={styles.langImageWrapper}>
+        <Image
+          className={styles.langImage}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+        />
+      </div>
+      <div className={styles.memo}>
+        <b>
+          <span className={styles.title}>{memo.title}</span>
+        </b>
+        <div className={styles.writer}>
+          <Avatar className={styles.writerIcon}>{memo.icon}</Avatar>
+          <span className={styles.writerName}>{memo.user_name}</span>
+          <span className={styles.writerId}>@{memo.user_id}</span>
+          <span className={styles.date}>{memo.update_time}</span>
         </div>
-        <div className={style.text}>
-          <span className={style.title}>{memo.title}</span>
+        <div className={styles.favorite}>
+          <FavoriteBorder />
+          <span>{memo.favorite}</span>
         </div>
       </div>
     </div>

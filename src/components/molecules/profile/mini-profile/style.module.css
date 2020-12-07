@@ -1,0 +1,51 @@
+.miniProfileContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	padding: 12px;
+	padding-bottom: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	margin-bottom: 15px;
+}
+
+@media (max-width: 770px) {
+	.miniProfileContainer {
+		margin-bottom: 0px;
+		grid-area: profile;
+	}
+}
+
+.titleWrapper {
+	display: flex;
+}
+
+.title {
+	line-height: 28px;
+	margin: 0px;
+	margin-left: 5px;
+	font-size: 16px;
+}
+
+.historyWrapper {
+	margin-top: 7px;
+	padding-left: 15px;
+}
+
+.historyWrapper span {
+	font-size: 14px;
+}
+
+.birth {
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+.postCount {
+	margin-left: 10px;
+}
+
+.commentCount {
+	margin-left: 10px;
+}

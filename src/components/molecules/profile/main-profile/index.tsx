@@ -1,19 +1,15 @@
 import React from "react";
 import Link from "next/link";
+import { responseInterface } from "swr";
+import type { User } from "@/models/user/entity";
 import { makeStyles } from "@material-ui/styles";
 import Avatar from "react-avatar";
 import { GrUserSettings } from "react-icons/gr";
 import { FaTwitterSquare, FaGithubSquare } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
 import Loading from "@/components/molecules/loading";
-import Text from "@/components/atoms/text";
-import type { User } from "@/models/user/entity";
 import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
-
-type Props = {
-	user: User;
-};
 
 const useStyles = makeStyles(() => ({
 	avatar: {
@@ -36,28 +32,33 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-const SelfProfile: React.FC<Props> = (props: Props) => {
+type Props = {
+	user: responseInterface<User, Error>;
+};
+
+const MainProfile: React.FC<Props> = (props: Props) => {
 	const { user } = props;
+	const { data, error } = user;
 	const classes = useStyles();
 
-	if (!user) return <Loading />;
+	if (!data) return <Loading />;
 
 	return (
-		<>
+		<div className={styles.profile}>
 			<div className={styles.avatarContainer}>
-				<Link href={`/${user.user_id}`}>
+				<Link href={`/${data.user_id}`}>
 					<div className={styles.avatar}>
 						<Avatar
 							className={classes.avatar}
-							alt={user.name}
-							src={user.icon_link}
+							alt={data.user_id}
+							src={data.icon_link}
 							round={true}
 							size='100px'
 						/>
 					</div>
 				</Link>
-				{user.is_you && (
-					<Link href={ROUTES.SETTING}>
+				{true && (
+					<Link href={"ROUTES.SETTING"}>
 						<div className={styles.settingIcon}>
 							<GrUserSettings size={"1.5em"} style={{ color: "#3E2924" }} />
 						</div>
@@ -65,37 +66,37 @@ const SelfProfile: React.FC<Props> = (props: Props) => {
 				)}
 			</div>
 
-			<Text className={styles.userName}>{user.name}</Text>
-			<Text className={styles.userID}>@{user.user_id}</Text>
+			<p className={styles.userName}>{data.name}</p>
+			<p className={styles.userID}>@{data.user_id}</p>
 
 			<div className={styles.snsLinkWrapper}>
-				{user.github_link && (
-					<Link href={user.github_link}>
+				{data.github_link && (
+					<Link href={data.github_link}>
 						<FaGithubSquare size={"1.8em"} style={{ color: "#3E2924" }} />
 					</Link>
 				)}
-				{user.twitter_link && (
-					<Link href={user.twitter_link}>
+				{data.twitter_link && (
+					<Link href={data.twitter_link}>
 						<FaTwitterSquare size={"1.8em"} style={{ color: "#3E2924" }} />
 					</Link>
 				)}
 			</div>
 
-			<Text className={styles.userText}>{user.user_text}</Text>
+			<p className={styles.userText}>{data.user_text}</p>
 
 			<Button
 				className={classes.blueButton}
 				variant='outlined'
-				href={`/${user.user_id}${ROUTES.FOLLOW}`}
+				href={`/${data.user_id}${ROUTES.FOLLOW}`}
 			>
-				{user.follow_count} follow
+				{data.follow_count}フォロー
 			</Button>
 			<Button
 				className={classes.blueButton}
 				variant='outlined'
-				href={`/${user.user_id}${ROUTES.FOLLOWER}`}
+				href={`/${data.user_id}${ROUTES.FOLLOWER}`}
 			>
-				{user.follower_count} follower
+				{data.follower_count}フォロワー
 			</Button>
 
 			<p className={styles.line} />
@@ -103,12 +104,12 @@ const SelfProfile: React.FC<Props> = (props: Props) => {
 			<Button
 				className={classes.brownButton}
 				variant='outlined'
-				href={`/${user.user_id}${ROUTES.FAVORITES}`}
+				href={`/${data.user_id}${ROUTES.FAVORITES}`}
 			>
 				いいねした備忘録
 			</Button>
-		</>
+		</div>
 	);
 };
 
-export default SelfProfile;
+export default MainProfile;
