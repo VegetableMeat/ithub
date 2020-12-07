@@ -1,7 +1,9 @@
 import React from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import MediaQuery from "react-responsive";
 import Layout from "@/components/organisms/layout";
+import ProfileHeader from "@/components/molecules/profile/profile-header";
 import FollowContainer from "@/components/organisms/follow/follow-container";
 import Sidebar from "@/components/organisms/sidebar";
 import { User } from "@/models/user/entity";
@@ -16,9 +18,11 @@ const Follows: React.FC = () => {
 	}
 	const follows = useSWR<User[], Error>(`${API_URL}/users/${userID}/follows`);
 	const user = useSWR<User, Error>(`${API_URL}/users/${userID}`);
+
 	return (
 		<Layout title={userID}>
 			<div className={styles.followsContainer}>
+				<ProfileHeader user={user} />
 				<main className={styles.followListContainer}>
 					<FollowContainer
 						displayText={"フォロー中"}
@@ -26,7 +30,9 @@ const Follows: React.FC = () => {
 						userID={userID as string}
 					/>
 				</main>
-				<Sidebar user={user} userID={userID as string} />
+				<MediaQuery query='(min-width: 771px)'>
+					<Sidebar user={user} userID={userID as string} />
+				</MediaQuery>
 			</div>
 		</Layout>
 	);

@@ -1,8 +1,10 @@
 import React from "react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import MediaQuery from "react-responsive";
 import CreateIcon from "@material-ui/icons/Create";
 import Layout from "@/components/organisms/layout";
+import ProfileHeader from "@/components/molecules/profile/profile-header";
 import FolderContainer from "@/components/organisms/folder/folder-container";
 import MemoTabs from "@/components/organisms/memo-tabs";
 import Sidebar from "@/components/organisms/sidebar";
@@ -13,33 +15,27 @@ import styles from "./style.module.css";
 
 const UserIndex: React.FC = () => {
 	const router = useRouter();
-	const userID = router.query.user;
-	if (!userID) {
-		return null;
-	}
+	const { user, tab } = router.query;
+	if (!user) return null;
 
-	const [tabQuery, setTabQuery] = React.useState("");
+	const [tabQuery, setTabQuery] = React.useState(tab as string);
 
-	React.useEffect(() => {
-		const { tab } = router.query;
-		setTabQuery(tab as string);
-	}, []);
+	const userRes = useSWR<User, Error>(`${API_URL}/users/${user}`);
+	const folders = useSWR<Folder[], Error>(`${API_URL}/users/${user}/folders`);
 
 	React.useEffect(() => {
 		if (!tabQuery) return;
 		if (tabQuery !== "tags" && tabQuery !== "new" && tabQuery !== "all") {
-			router.push({ pathname: `/${userID}` });
+			router.push({ pathname: `/${user}` });
 			return;
 		}
-		router.push({ pathname: `/${userID}`, query: { tab: tabQuery } });
+		router.push({ pathname: `/${user}`, query: { tab: tabQuery } });
 	}, [tabQuery]);
 
-	const user = useSWR<User, Error>(`${API_URL}/users/${userID}`);
-	const folders = useSWR<Folder[], Error>(`${API_URL}/users/${userID}/folders`);
-
 	return (
-		<Layout title={userID}>
+		<Layout title={user}>
 			<div className={styles.userContainer}>
+				<ProfileHeader user={userRes} />
 				<main className={styles.folderListContainer}>
 					<div className={styles.memoTextWrapper}>
 						<CreateIcon
@@ -56,18 +52,15 @@ const UserIndex: React.FC = () => {
 							setTabQuery(selectTab);
 						}}
 					/>
-					{(() => {
-						switch (tabQuery) {
-							case "new":
-								return null;
-							case "all":
-								return null;
-							default:
-								return <FolderContainer folders={folders} />;
-						}
-					})()}
+					{tabQuery === "tags" || tabQuery === undefined ? (
+						<FolderContainer folders={folders} />
+					) : (
+						<></>
+					)}
 				</main>
-				<Sidebar user={user} userID={userID as string} />
+				<MediaQuery query='(min-width: 771px)'>
+					<Sidebar user={userRes} userID={user as string} />
+				</MediaQuery>
 			</div>
 		</Layout>
 	);
