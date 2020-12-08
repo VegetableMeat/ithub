@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import Select from "@/components/atoms/select";
 import Button from "@/components/atoms/button";
@@ -17,6 +17,8 @@ const Header: React.FC = () => {
     { title: "F" },
   ];
 
+  const pathname = router.pathname.replace(/\//g, "");
+
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
@@ -31,35 +33,37 @@ const Header: React.FC = () => {
               onClick={() => router.push("/")}
             />
           </div>
-          <div className={styles.contents}>
-            <div className={styles.searchFieldWrapper}>
-              <Select
-                className={styles.searchField}
-                id={"search"}
-                label={"タグ検索"}
-                options={options}
-                limit={1}
-              />
+          {pathname === "login" || pathname === "signUp" ? null : (
+            <div className={styles.contents}>
+              <div className={styles.searchFieldWrapper}>
+                <Select
+                  className={styles.searchField}
+                  id={"search"}
+                  label={"タグ検索"}
+                  options={options}
+                  limit={1}
+                />
+              </div>
+              <div className={styles.searchButtonWrapper}>
+                <Image
+                  className={styles.searchButton}
+                  src="/icon/search.svg"
+                  alt="検索"
+                  width="22"
+                  height="22"
+                  onClick={() => {}}
+                />
+              </div>
+              <div className={styles.signUpButtonWrapper}>
+                <Button
+                  className={styles.signUpButton}
+                  func={() => router.push("/login")}
+                >
+                  ログイン
+                </Button>
+              </div>
             </div>
-            <div className={styles.searchButtonWrapper}>
-              <Image
-                className={styles.searchButton}
-                src="/icon/search.svg"
-                alt="検索"
-                width="22"
-                height="22"
-                onClick={() => {}}
-              />
-            </div>
-            <div className={styles.signUpButtonWrapper}>
-              <Button
-                className={styles.signUpButton}
-                func={() => router.push("/login")}
-              >
-                ログイン
-              </Button>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </header>
