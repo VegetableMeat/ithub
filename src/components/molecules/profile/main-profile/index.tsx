@@ -33,25 +33,22 @@ const useStyles = makeStyles(() => ({
 }));
 
 type Props = {
-	user: responseInterface<User, Error>;
+	user: User;
 };
 
 const MainProfile: React.FC<Props> = (props: Props) => {
 	const { user } = props;
-	const { data, error } = user;
 	const classes = useStyles();
-
-	if (!data) return <Loading />;
 
 	return (
 		<div className={styles.profile}>
 			<div className={styles.avatarContainer}>
-				<Link href={`/${data.user_id}`}>
+				<Link href={`/${user.user_id}`}>
 					<div className={styles.avatar}>
 						<Avatar
 							className={classes.avatar}
-							alt={data.user_id}
-							src={data.icon_link}
+							alt={user.user_id}
+							src={user.icon_link}
 							round={true}
 							size='100px'
 						/>
@@ -66,37 +63,37 @@ const MainProfile: React.FC<Props> = (props: Props) => {
 				)}
 			</div>
 
-			<p className={styles.userName}>{data.name}</p>
-			<p className={styles.userID}>@{data.user_id}</p>
+			<p className={styles.userName}>{user.name}</p>
+			<p className={styles.userID}>@{user.user_id}</p>
 
 			<div className={styles.snsLinkWrapper}>
-				{data.github_link && (
-					<Link href={data.github_link}>
+				{user.github_link && (
+					<Link href={user.github_link}>
 						<FaGithubSquare size={"1.8em"} style={{ color: "#3E2924" }} />
 					</Link>
 				)}
-				{data.twitter_link && (
-					<Link href={data.twitter_link}>
+				{user.twitter_link && (
+					<Link href={user.twitter_link}>
 						<FaTwitterSquare size={"1.8em"} style={{ color: "#3E2924" }} />
 					</Link>
 				)}
 			</div>
 
-			<p className={styles.userText}>{data.user_text}</p>
+			<p className={styles.userText}>{user.user_text}</p>
 
 			<Button
 				className={classes.blueButton}
 				variant='outlined'
-				href={`/${data.user_id}${ROUTES.FOLLOW}`}
+				href={`/${user.user_id}${ROUTES.FOLLOW}`}
 			>
-				{data.follow_count}フォロー
+				{user.follow_count}フォロー
 			</Button>
 			<Button
 				className={classes.blueButton}
 				variant='outlined'
-				href={`/${data.user_id}${ROUTES.FOLLOWER}`}
+				href={`/${user.user_id}${ROUTES.FOLLOWER}`}
 			>
-				{data.follower_count}フォロワー
+				{user.follower_count}フォロワー
 			</Button>
 
 			<p className={styles.line} />
@@ -104,7 +101,7 @@ const MainProfile: React.FC<Props> = (props: Props) => {
 			<Button
 				className={classes.brownButton}
 				variant='outlined'
-				href={`/${data.user_id}${ROUTES.FAVORITES}`}
+				href={`/${user.user_id}${ROUTES.FAVORITES}`}
 			>
 				いいねした備忘録
 			</Button>

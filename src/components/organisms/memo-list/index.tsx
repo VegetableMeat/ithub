@@ -1,0 +1,135 @@
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Error from "@/pages/_error";
+import axios from "axios";
+import { makeStyles } from "@material-ui/styles";
+import Avatar from "react-avatar";
+import { FaHashtag } from "react-icons/fa";
+import { GrFavorite } from "react-icons/gr";
+import { FaRegComment } from "react-icons/fa";
+import Loading from "@/components/molecules/loading";
+import { API_URL } from "@/libs/api";
+import * as ROUTES from "@/constants/routes";
+import styles from "./style.module.css";
+
+const useStyles = makeStyles(() => ({
+	avatar: {
+		height: "100%",
+		["@media (max-width: 770px)"]: {},
+		"&:hover": {
+			filter: "brightness(94%)",
+		},
+	},
+	brownButton: {
+		color: "#533a33",
+		borderColor: "#533a33",
+		textTransform: "none",
+		justifyContent: "center",
+	},
+}));
+
+type Props = {
+	tab: string;
+	userID: string;
+};
+
+const MemoList: React.FC<Props> = (props: Props) => {
+	const { tab, userID } = props;
+	const classes = useStyles();
+
+	const [memos, setMemos] = useState([]);
+	const [error, setError] = useState(null);
+	const [loading, setLoading] = useState(false);
+
+	useEffect(() => {
+		(async () => {
+			setLoading(true);
+
+			await axios
+				.get(`${API_URL}/users/${userID}${ROUTES.MEMOS}`, {
+					params: {
+						limit: 12,
+					},
+				})
+				.then((res) => {
+					setMemos(res.data);
+				})
+				.catch((err) => {
+					console.log(err);
+					setError(err);
+				});
+
+			setLoading(false);
+		})();
+	}, [tab]);
+
+	if (error) return <Error statusCode={500} />;
+	if (loading || !memos) return <Loading />;
+
+	return (
+		<div className={styles.memoContainer}>
+			{memos.length ? (
+				<>
+					{memos.map((memo) => (
+						<>
+							<div className={styles.memoWrapper}>
+								<div className={styles.profile}>
+									<Link href={`/${memo.user.user_id}`}>
+										<div className={styles.avatar}>
+											<Avatar
+												className={classes.avatar}
+												alt={memo.user.user_id}
+												src={memo.user.icon_link}
+												round={true}
+											/>
+										</div>
+									</Link>
+									<div className={styles.profileRight}>
+										<p className={styles.userName}>{memo.user.name}</p>
+										<p className={styles.createdDate}>{memo.created_at}</p>
+									</div>
+								</div>
+
+								<p className={styles.line} />
+
+								<div className={styles.memo}>
+									<h1 className={styles.memoTitle}>{memo.memo_title}</h1>
+									<p className={styles.shortLine} />
+									<div className={styles.memoInfoWrapper}>
+										<div className={styles.tagsWrapper}>
+											{memo.tags.map((tag) => (
+												<div className={styles.tag}>
+													<FaHashtag color={"#3e2924c5"} size={"0.8em"} />
+													<div className={styles.tagName}>{tag.name}</div>
+												</div>
+											))}
+										</div>
+										<div className={styles.memoInfo}>
+											<div className={styles.memoFavo}>
+												<GrFavorite />
+												<span className={styles.favoriteText}>
+													{memo.favorite_count}
+												</span>
+											</div>
+											<div className={styles.memoComment}>
+												<FaRegComment />
+												<span className={styles.commentText}>
+													{memo.comment_count}
+												</span>
+											</div>
+										</div>
+									</div>
+									<p className={styles.shortLine} />
+								</div>
+							</div>
+						</>
+					))}
+				</>
+			) : (
+				<div className={styles.noneMemoText}></div>
+			)}
+		</div>
+	);
+};
+
+export default MemoList;

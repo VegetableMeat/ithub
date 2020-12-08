@@ -30,7 +30,7 @@
 	grid-area: setting;
 	display: flex;
 	justify-content: flex-end;
-	align-items: end;
+	align-items: flex-end;
 }
 
 .userName {
