@@ -1,7 +1,7 @@
 import React from "react";
-import Image from "next/image";
 import { Avatar } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/styles";
 import { Memo as Memo_entity } from "@/models/top/memo/entity";
 import styles from "./style.module.css";
 
@@ -12,16 +12,19 @@ type Props = {
 const Memo: React.FC<Props> = (props) => {
   const { memos } = props;
   const { image, memo } = memos;
+  const useStyles = makeStyles(() => ({
+    langImage: {
+      width: image.width,
+      height: image.height,
+      borderRadius: "0",
+    },
+  }));
+  const classes = useStyles();
+
   return (
     <div className={styles.memoCard}>
       <div className={styles.langImageWrapper}>
-        <Image
-          className={styles.langImage}
-          src={image.src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-        />
+        <Avatar className={classes.langImage} src={image.src} />
       </div>
       <div className={styles.memo}>
         <b>
@@ -29,8 +32,10 @@ const Memo: React.FC<Props> = (props) => {
         </b>
         <div className={styles.writer}>
           <Avatar className={styles.writerIcon}>{memo.icon}</Avatar>
-          <span className={styles.writerName}>{memo.user_name}</span>
-          <span className={styles.writerId}>@{memo.user_id}</span>
+          <span className={styles.writerName}>
+            {memo.user_name}
+            <div className={styles.writerId}>@{memo.user_id}</div>
+          </span>
           <span className={styles.date}>{memo.update_time}</span>
         </div>
         <div className={styles.favorite}>

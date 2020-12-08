@@ -5,9 +5,6 @@
   border-bottom: solid 2px #c4c4c4;
   font-size: 17px;
 }
-.langImage {
-  /* cursor: pointer; */
-}
 .langImageWrapper {
   min-width: 100px;
   min-height: 100px;
@@ -15,7 +12,6 @@
   place-items: center;
   margin-bottom: auto;
   border-radius: 5px;
-  /* background-color: #909090; */
 }
 /* Main - langImageWrapper_width - Main_padding */
 .memo {
@@ -30,7 +26,7 @@
 }
 .writer {
   display: grid;
-  place-items: center;
+  /* place-items: center; */
   grid-template-rows: auto;
   grid-template-columns: auto auto auto 1fr;
 }
@@ -43,9 +39,11 @@
   grid-column: 1 / 2;
 }
 .writerName {
+  display: flex;
   font-size: 15px;
 }
 .writerId {
+  margin-left: 5px;
   font-size: 14px;
 }
 .date {
