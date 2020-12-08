@@ -9,12 +9,31 @@
 	margin: 0;
 }
 
+.followTextWrapper {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.followText {
+	font-size: 20px;
+	font-weight: 600;
+	margin: 0;
+}
+
 .noneFollowText {
 	display: flex;
 	justify-content: center;
-	margin-top: -15px;
+	align-items: center;
+	height: 100%;
+	margin-top: -50px;
 	font-size: 16px;
 	font-weight: 600;
+}
+
+@media (max-width: 770px) {
+	.noneFollowText {
+		margin-top: -40px;
+	}
 }
 
 .line {

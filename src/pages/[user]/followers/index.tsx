@@ -1,39 +1,56 @@
 import React from "react";
+import { GetServerSideProps } from "next";
+import Error from "next/error";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import MediaQuery from "react-responsive";
 import Layout from "@/components/organisms/layout";
 import ProfileHeader from "@/components/molecules/profile/profile-header";
-import FollowContainer from "@/components/organisms/follow/follow-container";
+import FollowList from "@/components/organisms/follow-list";
 import Sidebar from "@/components/organisms/sidebar";
-import { User } from "@/models/user/entity";
+import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
+import type { User } from "@/models/user/entity";
 import styles from "./style.module.css";
 
-const Follows: React.FC = () => {
-	const router = useRouter();
-	const userID = router.query.user;
-	if (!userID) {
-		return null;
-	}
-	const followers = useSWR<User[], Error>(
-		`${API_URL}/users/${userID}/followers`
+export interface ServerSideProps {
+	initialUserData: User;
+	initialFollowsData: User[];
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+	const initialUserData = await fetcher(`${API_URL}/users/${params.user}`);
+	const initialFollowsData = await fetcher(
+		`${API_URL}/users/${params.user}/followers`
 	);
-	const user = useSWR<User, Error>(`${API_URL}/users/${userID}`);
+	return { props: { initialUserData, initialFollowsData } };
+};
+
+const Follows = (props: ServerSideProps) => {
+	const router = useRouter();
+	const { user } = router.query;
+	const initialData = props.initialUserData;
+
+	const { data, error } = useSWR(`${API_URL}/users/${user}`, fetcher, {
+		initialData,
+	});
+
+	if (error) return <Error statusCode={500} />;
+	if (!data) return <p>Loading</p>;
 
 	return (
-		<Layout title={userID}>
+		<Layout title={data.user_id}>
 			<div className={styles.followsContainer}>
-				<ProfileHeader user={user} />
+				<ProfileHeader user={data} />
 				<main className={styles.followListContainer}>
-					<FollowContainer
+					<FollowList
+						follows={props.initialFollowsData}
 						displayText={"フォロワー"}
-						follows={followers}
-						userID={userID as string}
+						userID={data.user_id}
 					/>
 				</main>
 				<MediaQuery query='(min-width: 771px)'>
-					<Sidebar user={user} userID={userID as string} />
+					<Sidebar tags={data.follow_tags} user={data} />
 				</MediaQuery>
 			</div>
 		</Layout>

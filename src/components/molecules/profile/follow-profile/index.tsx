@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
-
+import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
 
 const useStyles = makeStyles(() => ({
@@ -35,14 +35,14 @@ const FollowProfile: React.FC<Props> = (props: Props) => {
 			<Button
 				className={classes.blueButton}
 				variant='outlined'
-				href={`/${userID}/follows`}
+				href={`/${userID}${ROUTES.FOLLOW}`}
 			>
 				15 フォロー
 			</Button>
 			<Button
 				className={classes.blueButton}
 				variant='outlined'
-				href={`/${userID}/followers`}
+				href={`/${userID}${ROUTES.FOLLOWER}`}
 			>
 				0 フォロワー
 			</Button>
@@ -52,7 +52,7 @@ const FollowProfile: React.FC<Props> = (props: Props) => {
 			<Button
 				className={classes.brownButton}
 				variant='outlined'
-				href={`/${userID}/favorite`}
+				href={`/${userID}${ROUTES.FAVORITES}`}
 			>
 				0 いいねノート
 			</Button>

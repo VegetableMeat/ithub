@@ -1,11 +1,58 @@
 {
 	"user_id": "taniwhy",
 	"name": "harry potter",
-	"icon_link": "https://avatars2.githubusercontent.com/u/52918714?v=4",
+	"icon_link": "https://res.cloudinary.com/practicaldev/image/fetch/s--oFiZ4_Hr--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/513057/88c9ac53-9fe0-4805-bcf8-e57b0939195b.jpeg",
 	"github_link": "https://github.com/taniwhy",
 	"twitter_link": "https://github.com/taniwhy",
 	"user_text": "JS HTML CSS PHP/応用情報/パソコン自作",
 	"follow_count": 15,
 	"follower_count": 0,
+	"follow_tags": [
+		{
+			"id": 1,
+			"link": "test",
+			"name": "Go"
+		},
+		{
+			"id": 2,
+			"link": "test",
+			"name": "Python"
+		},
+		{
+			"id": 3,
+			"link": "test",
+			"name": "Typescript"
+		},
+		{
+			"id": 4,
+			"link": "test",
+			"name": "HTML"
+		},
+		{
+			"id": 5,
+			"link": "test",
+			"name": "CSS"
+		},
+		{
+			"id": 6,
+			"link": "test",
+			"name": "Javascript"
+		},
+		{
+			"id": 7,
+			"link": "test",
+			"name": "PHP"
+		},
+		{
+			"id": 8,
+			"link": "test",
+			"name": "Java"
+		},
+		{
+			"id": 9,
+			"link": "test",
+			"name": "Ruby"
+		}
+	],
 	"is_you": true
 }
