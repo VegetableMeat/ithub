@@ -17,7 +17,7 @@ const AntTabs = withStyles({
 		borderBottom: "1px solid #e8e8e8",
 	},
 	indicator: {
-		backgroundColor: "#3e2924",
+		backgroundColor: "var(--base-color)",
 	},
 })(Tabs);
 
@@ -28,15 +28,15 @@ const AntTab = withStyles((theme: Theme) =>
 			minWidth: 72,
 			fontWeight: theme.typography.fontWeightRegular,
 			"&:hover": {
-				color: "#3e2924",
+				color: "var(--base-color)",
 				opacity: 1,
 			},
 			"&$selected": {
-				color: "#3e2924",
+				color: "var(--base-color)",
 				fontWeight: theme.typography.fontWeightMedium,
 			},
 			"&:focus": {
-				color: "#3e2924",
+				color: "var(--base-color)",
 			},
 		},
 		selected: {},

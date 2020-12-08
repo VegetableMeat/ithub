@@ -1,5 +1,6 @@
 import React from "react";
 import type { AppProps } from "next/app";
+import { ThemeProvider } from "@/components/organisms/theme";
 import "sanitize.css";
 import "@/styles/globals.css";
 
@@ -11,7 +12,11 @@ const App = ({ Component, pageProps }: AppProps) => {
 		}
 	}, []);
 
-	return <Component {...pageProps} />;
+	return (
+		<ThemeProvider>
+			<Component {...pageProps} />
+		</ThemeProvider>
+	);
 };
 
 export default App;

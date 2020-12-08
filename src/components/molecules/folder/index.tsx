@@ -13,9 +13,9 @@ type Props = {
 const useStyles = makeStyles(() => ({
 	folder: {
 		fontSize: "90px",
-		color: "#FFF48D",
+		color: "var(--folder-color)",
 		"&:hover": {
-			color: "#f5eb8f",
+			color: "var(--folder-color)",
 		},
 	},
 }));

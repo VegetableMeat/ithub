@@ -21,8 +21,8 @@ const useStyles = makeStyles(() => ({
 		},
 	},
 	brownButton: {
-		color: "#533a33",
-		borderColor: "#533a33",
+		color: "var(--base-color)",
+		borderColor: "var(--base-color)",
 		textTransform: "none",
 		justifyContent: "center",
 	},
@@ -64,7 +64,10 @@ const ProfileHeader: React.FC<Props> = (props: Props) => {
 					<MediaQuery query='(max-width: 480px)'>
 						<Link href={ROUTES.SETTING}>
 							<div className={styles.settingIcon}>
-								<GrUserSettings size={"1.5em"} style={{ color: "#3E2924" }} />
+								<GrUserSettings
+									size={"1.5em"}
+									style={{ color: "var(--base-color)" }}
+								/>
 							</div>
 						</Link>
 					</MediaQuery>

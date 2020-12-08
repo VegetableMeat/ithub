@@ -24,6 +24,7 @@
 .avatar {
 	grid-area: avatar;
 	align-self: center;
+	background-color: #1a1a1a;
 }
 
 .userNameWrapper {
@@ -56,7 +57,7 @@
 	height: 100%;
 	margin: 0px;
 	font-size: 15px;
-	color: #413431c9;
+	color: var(--base-color);
 	align-self: center;
 }
 

@@ -17,6 +17,8 @@ import { API_URL } from "@/libs/api";
 import type { User } from "@/models/user/entity";
 import styles from "./style.module.css";
 
+import { useTheme } from "@/hooks/theme";
+
 export interface ServerSideProps {
 	initialUserData: User;
 }
@@ -49,19 +51,20 @@ const UserIndex = (props: ServerSideProps) => {
 	if (error) return <Error statusCode={500} />;
 	if (!data) return <Loading />;
 
-	console.log(data);
+	const toggleTheme = useTheme();
 
 	return (
 		<Layout title={data.user_id}>
 			<div className={styles.userContainer}>
 				<ProfileHeader user={data} />
+				<button onClick={toggleTheme}>Toggle Theme</button>
 				<main className={styles.folderListContainer}>
 					<div className={styles.memoHeadWrapper}>
 						<div className={styles.memoTextWrapper}>
 							<CreateIcon
 								style={{
 									fontSize: "30px",
-									color: "#3E2924",
+									color: "var(--base-color)",
 									marginRight: "5px",
 								}}
 							/>

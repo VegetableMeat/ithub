@@ -14,7 +14,10 @@ const TagList: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.tagContainer}>
 			<div className={styles.titleWrapper}>
-				<FaTags size={"25"} style={{ color: "#3E2924", marginRight: "5px" }} />
+				<FaTags
+					size={"25"}
+					style={{ color: "var(--base-color)", marginRight: "5px" }}
+				/>
 				<span className={styles.tagText}>フォロータグ</span>
 			</div>
 			{tags.length ? (

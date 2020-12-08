@@ -14,11 +14,11 @@ const useStyles = makeStyles(() => ({
 		color: "white",
 		fontSize: "13px",
 		minWidth: "0px",
-		backgroundColor: "#3E2924",
+		backgroundColor: "var(--accent-color)",
 		height: "20px",
 		textTransform: "none",
 		"&:hover": {
-			backgroundColor: "#3e2924c5",
+			backgroundColor: "var(--accent-color)",
 		},
 	},
 }));

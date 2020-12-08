@@ -15,8 +15,8 @@
 	width: 100%;
 	height: 100%;
 	padding: 10px 10px 10px 0px;
-	border-left: 15px #a6bfc788 solid;
-	background: #eceef1a4;
+	border-left: 15px var(--accent-color) solid;
+	background: var(--background-color);
 	border-radius: 5px;
 	margin-bottom: 10px;
 }
@@ -24,7 +24,7 @@
 @media (max-width: 770px) {
 	.memoWrapper {
 		padding: 8px 10px 8px 0px;
-		border-left: 8px #a6bfc788 solid;
+		border-left: 8px var(--accent-color) solid;
 	}
 }
 
@@ -82,7 +82,7 @@
 	margin: 0px;
 	font-size: 16px;
 	font-weight: bold;
-	color: #554b49;
+	color: var(--base-color);
 }
 
 @media (max-width: 770px) {
@@ -95,7 +95,7 @@
 	margin: 0px;
 	margin-top: -5px;
 	font-size: 14px;
-	color: #554b49;
+	color: var(--base-color);
 }
 
 @media (max-width: 770px) {
@@ -151,7 +151,7 @@
 .tagName {
 	font-size: 12px;
 	font-weight: bold;
-	color: #3e2924c5;
+	color: var(--base-color);
 }
 
 .memoInfo {
@@ -160,9 +160,11 @@
 	justify-content: flex-end;
 	min-width: 75px;
 	margin-right: 10px;
+	color: var(--base-color);
 }
 
 .memoFavo {
+	color: var(--base-color);
 }
 
 .memoComment {

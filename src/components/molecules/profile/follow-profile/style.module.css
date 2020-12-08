@@ -1,7 +1,7 @@
 .followProfileContainer {
 	width: 100%;
 	padding: 20px;
-	background: #ffffff;
+	background: var(--box-background-color);
 	border-radius: 5px;
 	margin-bottom: 15px;
 }

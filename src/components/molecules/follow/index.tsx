@@ -49,8 +49,9 @@ const Follow: React.FC<Props> = (props: Props) => {
 				<div className={styles.buttonWrapper}>
 					<Button
 						style={{
-							borderColor: "#3E2924",
+							borderColor: "var(--accent-color)",
 							marginBottom: "2px",
+							color: "var(--accent-color)",
 						}}
 						variant='outlined'
 					>

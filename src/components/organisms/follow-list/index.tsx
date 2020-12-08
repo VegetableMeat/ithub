@@ -23,7 +23,7 @@ const FollowList: React.FC<Props> = (props: Props) => {
 				<PermIdentityIcon
 					style={{
 						fontSize: "30px",
-						color: "#3E2924",
+						color: "var(--base-color)",
 						marginRight: "5px",
 					}}
 				/>
@@ -33,7 +33,7 @@ const FollowList: React.FC<Props> = (props: Props) => {
 				<>
 					{follows.map((follow, index) => (
 						<>
-							<Follow followData={follow} />
+							<Follow key={follow.user_id} followData={follow} />
 							{follows.length != index + 1 && <p className={styles.line}></p>}
 						</>
 					))}

@@ -1,7 +1,7 @@
 .tagContainer {
 	width: 100%;
 	padding: 12px;
-	background: #ffffff;
+	background: var(--box-background-color);
 	border-radius: 5px;
 }
 
