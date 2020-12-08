@@ -9,8 +9,7 @@ import styles from "./style.module.css";
 const useStyles = makeStyles(() => ({
   googleButton: {
     color: "#808080",
-    maxWidth: "250px",
-    width: "50%",
+    width: "250px",
     height: "40px",
     fontWeight: "bold",
     marginBottom: "5px",

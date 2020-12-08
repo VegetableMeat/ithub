@@ -2,21 +2,32 @@
 .signUpContainer {
   display: flex;
   justify-content: center;
-  height: 60vh;
+  height: 80vh;
 }
 .main {
   flex-direction: column;
   justify-content: center;
+  width: 540px;
+  padding: 0 20px;
 }
 .title {
   font-size: 36px;
   font-weight: bold;
-  padding-bottom: 10px;
 }
-.form {
-  align-content: end;
+.inputWrapper,
+.inputWrapper_ {
+  padding: 8px 0;
 }
-/* .text {
-  font-size: 18px;
-  padding-bottom: 20px;
-} */
+
+@media screen and (max-width: calc(500px + 40px * 2)) {
+  .inputWrapper div,
+  .inputWrapper_ div {
+    width: 100%;
+  }
+  .inputWrapper_ {
+    padding: 0;
+  }
+  .inputWrapper_ > div {
+    padding-bottom: 5px;
+  }
+}
