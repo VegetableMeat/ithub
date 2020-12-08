@@ -1,0 +1,199 @@
+.memoContainer {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 15px;
+}
+
+@media (max-width: 770px) {
+	.memoContainer {
+		margin-top: 10px;
+	}
+}
+
+.memoWrapper {
+	width: 100%;
+	height: 100%;
+	padding: 10px 10px 10px 0px;
+	border-left: 15px #a6bfc788 solid;
+	background: #eceef1a4;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+@media (max-width: 770px) {
+	.memoWrapper {
+		padding: 8px 10px 8px 0px;
+		border-left: 8px #a6bfc788 solid;
+	}
+}
+
+.profile {
+	display: flex;
+	align-items: center;
+	margin-left: 8px;
+	margin-top: -4px;
+	margin-bottom: 5px;
+}
+
+@media (max-width: 770px) {
+	.profile {
+		margin-left: 6px;
+	}
+}
+
+.profileRight {
+	margin-left: 10px;
+}
+
+.avatar {
+	width: 35px !important;
+	height: 35px !important;
+}
+
+@media (max-width: 770px) {
+	.avatar {
+		text-align: left;
+		width: 30px !important;
+		height: 30px !important;
+	}
+}
+
+.avatar div {
+	width: 35px !important;
+	height: 35px !important;
+}
+
+.avatar img {
+	width: 35px !important;
+	height: 35px !important;
+	background-clip: padding-box !important;
+	border: 1px #435b863f solid !important;
+}
+
+@media (max-width: 770px) {
+	.avatar img {
+		width: 30px !important;
+		height: 30px !important;
+	}
+}
+
+.userName {
+	margin: 0px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #554b49;
+}
+
+@media (max-width: 770px) {
+	.userName {
+		font-size: 14px;
+	}
+}
+
+.createdDate {
+	margin: 0px;
+	margin-top: -5px;
+	font-size: 14px;
+	color: #554b49;
+}
+
+@media (max-width: 770px) {
+	.createdDate {
+		font-size: 12px;
+	}
+}
+
+.memoTitle {
+	margin: 2px 0px 0px 0px;
+	font-size: 22px;
+}
+
+@media (max-width: 770px) {
+	.memoTitle {
+		font-size: 16px;
+	}
+}
+
+.memo {
+	margin: 0px 0px 0px 45px;
+}
+
+@media (max-width: 770px) {
+	.memo {
+		text-align: left;
+		margin-left: 20px;
+	}
+}
+
+.memoInfoWrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tagsWrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 5px 0 5px 0;
+}
+
+.tag {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 13px;
+	margin-right: 10px;
+}
+
+.tagName {
+	font-size: 12px;
+	font-weight: bold;
+	color: #3e2924c5;
+}
+
+.memoInfo {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	min-width: 75px;
+	margin-right: 10px;
+}
+
+.memoFavo {
+}
+
+.memoComment {
+	margin-left: 15px;
+}
+
+.favoriteText {
+	font-size: 13px;
+	margin-left: 5px;
+}
+
+.commentText {
+	font-size: 13px;
+	margin-left: 5px;
+}
+
+.line {
+	margin: 0px;
+	height: 1px;
+	border-top: 1px #a6bfc788 solid;
+}
+
+.shortLine {
+	margin: 0px;
+	margin-left: -45px;
+	height: 1px;
+	border-top: 1px #a6bfc788 solid;
+}
+
+@media (max-width: 770px) {
+	.shortLine {
+		margin-left: -20px;
+	}
+}

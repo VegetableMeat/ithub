@@ -1,8 +1,20 @@
 /* Login */
-.main {
-  margin: auto;
-  display: block;
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
 }
-.main span {
-  color: #3e2924;
+.main {
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.text {
+  font-size: 18px;
+  padding-bottom: 20px;
 }

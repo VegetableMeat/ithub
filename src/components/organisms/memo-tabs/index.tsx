@@ -69,11 +69,8 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 	let initialTab: number;
 	const { tab } = router.query;
 	switch (tab) {
-		case "new":
+		case "tags":
 			initialTab = 1;
-			break;
-		case "all":
-			initialTab = 2;
 			break;
 		default:
 			initialTab = 0;
@@ -85,13 +82,10 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 		setSelecetTab(newTab);
 		switch (newTab) {
 			case 0:
-				handleChange("tags");
-				break;
-			case 1:
 				handleChange("new");
 				break;
-			case 2:
-				handleChange("all");
+			case 1:
+				handleChange("tags");
 				break;
 		}
 	};
@@ -99,9 +93,8 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.memoTabsContainer}>
 			<AntTabs value={selecetTab} onChange={handleChangeTabs}>
-				<AntTab label='Tags' />
-				<AntTab label='New' />
-				<AntTab label='All' />
+				<AntTab label='Latest' />
+				<AntTab label='Tag' />
 			</AntTabs>
 			<Typography className={classes.padding} />
 		</div>

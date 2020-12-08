@@ -1,14 +1,22 @@
 /* Signup */
+.signUpContainer {
+  display: flex;
+  justify-content: center;
+  height: 60vh;
+}
 .main {
-  margin: auto;
-  display: block;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 10px;
 }
 .form {
-  display: inline-grid;
+  align-content: end;
 }
-.main span {
-  color: #3e2924;
-}
-.inputWrapper {
-  display: inline-flex;
-}
+/* .text {
+  font-size: 18px;
+  padding-bottom: 20px;
+} */

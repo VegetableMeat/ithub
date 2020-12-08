@@ -1,6 +1,5 @@
 .memoTabsContainer {
 	display: flex;
-	text-align: start;
-	justify-content: start;
-	width: 100%;
+	text-align: flex-start;
+	justify-content: flex-start;
 }

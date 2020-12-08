@@ -1,24 +1,26 @@
 import React from "react";
-import TagComponent from "@/components/atoms/tag";
-import Loading from "@/components/molecules/loading";
-import { Tag } from "@/models/tag/entity";
+import { FaTags } from "react-icons/fa";
+import Tag from "@/components/atoms/tag";
+import { Tag as TagEntity } from "@/models/tag/entity";
 import styles from "./style.module.css";
 
 type Props = {
-	tags: Tag[];
+	tags: TagEntity[];
 };
 
 const TagList: React.FC<Props> = (props: Props) => {
 	const { tags } = props;
 
-	if (!tags) return <Loading />;
-
 	return (
-		<>
+		<div className={styles.tagContainer}>
+			<div className={styles.titleWrapper}>
+				<FaTags size={"25"} style={{ color: "#3E2924", marginRight: "5px" }} />
+				<span className={styles.tagText}>フォロータグ</span>
+			</div>
 			{tags.length ? (
 				<div className={styles.tagWrapper}>
 					{tags.map((tag) => (
-						<TagComponent tag={tag} />
+						<Tag tag={tag} />
 					))}
 				</div>
 			) : (
@@ -26,7 +28,7 @@ const TagList: React.FC<Props> = (props: Props) => {
 					<p>フォローしているタグはありません</p>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

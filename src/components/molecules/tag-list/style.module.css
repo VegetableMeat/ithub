@@ -27,3 +27,15 @@
 	text-align: center;
 	justify-content: center;
 }
+
+.tagWrapper {
+	text-align: left;
+	margin-top: 15px;
+}
+
+.noneTagText {
+	display: flex;
+	justify-content: center;
+	margin-bottom: -10px;
+	font-size: 13px;
+}
