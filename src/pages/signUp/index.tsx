@@ -1,91 +1,66 @@
 import { useRouter } from "next/router";
 import React from "react";
-import Head from "next/head";
-import Image from "next/image";
+import { TextField } from "@material-ui/core";
+import Layout from "@/components/organisms/layout";
 import Input from "@/components/atoms/input";
 import Button from "@/components/atoms/button";
-import headerStyle from "@/components/organisms/header/style.module.css";
-import style from "./style.module.css";
-
-export const getServerSideProps = async (context) => ({
-  props: {
-    noLayout: true,
-  },
-});
+import styles from "./style.module.css";
 
 const signUp: React.FC = () => {
   const router = useRouter();
   return (
-    <div className="noLayout">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
-        ></meta>
-      </Head>
-      <header>
-        <div className={headerStyle.headerContainer}>
-          <div className={headerStyle.headerContents}>
-            <div className={headerStyle.titleWrapper}>
-              <Image
-                className={headerStyle.title}
-                src="/icon/title.svg"
-                alt="備忘録"
-                width="120"
-                height="60"
-                onClick={() => router.push("/")}
+    <Layout title="signUp">
+      <div className={styles.signUpContainer}>
+        <main className={styles.main}>
+          <div className={styles.title}>ユーザー設定</div>
+          <div className={styles.form}>
+            <div className={styles.inputWrapper}>
+              <span>ユーザー名*</span>
+              <TextField
+                // className={className}
+                id={"name"}
+                label={"5文字以上で～"}
+                type={"text"}
+                variant={"standard"}
               />
             </div>
+            <div className={styles.inputWrapper}>
+              <span>ユーザーID*</span>
+              <TextField
+                // className={className}
+                id={"id"}
+                label={"5文字以上で～"}
+                type={"text"}
+                variant={"standard"}
+              />
+            </div>
+            <div className={styles.inputWrapper}>
+              <span>Github</span>
+              <TextField
+                // className={className}
+                id={"github"}
+                label={"GithubのID"}
+                type={"text"}
+                variant={"standard"}
+              />
+            </div>
+            <div className={styles.inputWrapper}>
+              <span>Twitter</span>
+              <TextField
+                // className={className}
+                id={"twitter"}
+                label={"TwitterのID"}
+                type={"text"}
+                variant={"standard"}
+              />
+            </div>
+            <Button className={styles.submit} func={() => router.push("/")}>
+              登録
+            </Button>
           </div>
-        </div>
-      </header>
-      <main className={style.main}>
-        <div className={style.title}>ユーザー設定</div>
-        <div className={style.form}>
-          <div className={style.inputWrapper}>
-            <span>ユーザー名*</span>
-            <Input
-              className={style.input}
-              id={"name"}
-              label={"5文字以上で～"}
-              type={"text"}
-            />
-          </div>
-          <div className={style.inputWrapper}>
-            <span>ユーザーID*</span>
-            <Input
-              className={style.input}
-              id={"id"}
-              label={"5文字以上で～"}
-              type={"text"}
-            />
-          </div>
-          <div className={style.inputWrapper}>
-            <span>Github</span>
-            <Input
-              className={style.input}
-              id={"github"}
-              label={"GithubのID"}
-              type={"text"}
-            />
-          </div>
-          <div className={style.inputWrapper}>
-            <span>Twitter</span>
-            <Input
-              className={style.input}
-              id={"twitter"}
-              label={"TwitterのID"}
-              type={"text"}
-            />
-          </div>
-          <Button className={style.submit} func={() => router.push("/")}>
-            登録
-          </Button>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </Layout>
   );
 };
 
