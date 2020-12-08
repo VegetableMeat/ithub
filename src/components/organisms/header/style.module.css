@@ -26,8 +26,7 @@
   width: 1250px;
   max-height: 60px;
 }
-.title,
-.searchButton {
+.title {
   cursor: pointer;
 }
 .titleWrapper img {
@@ -41,7 +40,7 @@
 
 /* 検索ボタンラッパー */
 .searchButtonWrapper {
-  height: 22px;
+  height: 30px;
   margin-top: auto;
   margin-bottom: auto;
 }
