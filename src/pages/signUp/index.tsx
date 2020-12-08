@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
   submitButton: {
     width: "100%",
     height: "40px",
-    marginTop: "10px",
+    marginTop: "30px",
     color: "#FFF",
     backgroundColor: "#3e2924",
     "&:hover": {
