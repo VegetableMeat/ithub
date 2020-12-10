@@ -6,7 +6,7 @@
 .followTextWrapper {
 	display: flex;
 	width: 100%;
-	margin-top: 10px;
+	margin: 5px 10px 15px 0px;
 	margin-bottom: 10px;
 	padding-right: 10px;
 }
