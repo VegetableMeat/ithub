@@ -27,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   width: 1250px;
-  max-height: 60px;
+  max-height: 50px;
 }
 .title {
   cursor: pointer;
@@ -40,7 +40,7 @@
 }
 .contents {
   display: flex;
-  margin: 12.5px 0;
+  margin: auto 0;
 }
 
 /* 検索ボタンラッパー */
