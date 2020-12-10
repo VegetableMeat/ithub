@@ -12,7 +12,6 @@ const MiniProfile: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.miniProfileContainer}>
 			<div className={styles.titleWrapper}>
-				<AiOutlineHistory size={"25"} />
 				<h1 className={styles.title}>History</h1>
 			</div>
 

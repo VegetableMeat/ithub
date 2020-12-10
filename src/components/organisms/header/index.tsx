@@ -85,7 +85,7 @@ const Header: React.FC = () => {
 					<div className={styles.titleWrapper}>
 						<img
 							className={styles.title}
-							src={theme === "light" ? "/logo.png" : "/logo_dark.png"}
+							src={theme === "light" ? "/logo.svg" : "/logo_dark.svg"}
 							alt='備忘録'
 							onClick={() => router.push("/")}
 						/>

@@ -26,7 +26,7 @@ const useStyles = makeStyles(() =>
 			maxWidth: "500px",
 			width: "100%",
 			textTransform: "none",
-			fontFamily: ["Inter", "sans-serif"].join(","),
+			fontFamily: ["Inter", "Noto Sans JP", "sans-serif"].join(","),
 			fontWeight: 400,
 		},
 	})

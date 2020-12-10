@@ -27,6 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 	useEffect(() => {
 		setLoading(false);
+		document.body.classList.add("no-sroll");
 	});
 
 	useEffect(() => {

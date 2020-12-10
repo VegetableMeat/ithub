@@ -14,10 +14,6 @@ const TagList: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.tagContainer}>
 			<div className={styles.titleWrapper}>
-				<AiOutlinePaperClip
-					size={"25"}
-					style={{ color: "var(--base-color)" }}
-				/>
 				<span className={styles.tagText}>Following Tags</span>
 			</div>
 			{tags.length ? (

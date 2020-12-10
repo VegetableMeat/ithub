@@ -26,14 +26,13 @@
 .title {
 	line-height: 28px;
 	margin: 0px;
-	margin-left: 5px;
 	font-size: 16px;
 	font-weight: 600;
 }
 
 .historyWrapper {
 	margin-top: 7px;
-	padding-left: 15px;
+	padding-left: 5px;
 }
 
 .historyWrapper span {
