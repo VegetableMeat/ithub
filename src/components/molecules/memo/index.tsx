@@ -37,10 +37,10 @@ const Memo: React.FC<Props> = (props) => {
             <div className={styles.writerId}>@{memo.user_id}</div>
           </span>
           <span className={styles.date}>{memo.update_time}</span>
-        </div>
-        <div className={styles.favorite}>
-          <FavoriteBorder />
-          <span>{memo.favorite}</span>
+          <div className={styles.favorite}>
+            <FavoriteBorder />
+            {memo.favorite}
+          </div>
         </div>
       </div>
     </div>

@@ -21,20 +21,20 @@ const Navigation: React.FC = () => {
       onChange={handleChange}
       className={styles.navigation}
     >
-      <BottomNavigationAction label="ホーム" value="home" icon={<Home />} />
+      <BottomNavigationAction label="Home" value="home" icon={<Home />} />
       <BottomNavigationAction
-        label="おすすめ"
+        label="Recommend"
         value="recommend"
         icon={<FeaturedPlayList />}
       />
-      <BottomNavigationAction
+      {/* <BottomNavigationAction
         label="人気タグ"
         value="tag"
         icon={<LocalOffer />}
-      />
+      /> */}
       <BottomNavigationAction
-        label="人気備忘録"
-        value="memo"
+        label="Popular"
+        value="popular"
         icon={<MenuBook />}
       />
     </BottomNavigation>

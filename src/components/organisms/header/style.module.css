@@ -15,9 +15,11 @@
   background: #c1d6db;
   padding: 0 10px;
 }
-.headerContainer .searchFieldWrapper,
-.headerContainer .searchButtonWrapper,
-.headerContainer .signUpButtonWrapper {
+.searchFieldWrapper,
+.searchButtonWrapper,
+.signUpButtonWrapper,
+.avatarWrapper,
+.writeButtonWrapper {
   margin-left: 10px;
 }
 .headerContents {
@@ -82,4 +84,9 @@
 .searchField label {
   font-size: 10px;
   transform: translate(1.4em, 1.25em) scale(1);
+}
+
+.avatarWrapper {
+  width: 35px;
+  height: 35px;
 }

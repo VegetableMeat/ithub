@@ -1,6 +1,7 @@
 /* Navigation */
 .navigation {
-  margin-top: 15px;
+  margin-bottom: 20px;
+  background-color: transparent !important;
 }
 .navigation span {
   font-size: 14px !important;
