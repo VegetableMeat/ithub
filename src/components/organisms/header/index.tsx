@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { useToggleTheme } from "@/context/theme";
 import Select from "@/components/atoms/select";
 import Button from "@/components/atoms/button";
 import style from "./style.module.css";
@@ -17,17 +18,17 @@ const Header: React.FC = () => {
 		{ title: "F" },
 	];
 
+	const { theme } = useToggleTheme();
+
 	return (
 		<header>
 			<div className={style.headerContainer}>
 				<div className={style.headerContents}>
 					<div className={style.titleWrapper}>
-						<Image
+						<img
 							className={style.title}
-							src='/icon/title.svg'
+							src={theme === "light" ? "/logo.png" : "/logo_dark.png"}
 							alt='備忘録'
-							width='120'
-							height='60'
 							onClick={() => router.push("/")}
 						/>
 					</div>

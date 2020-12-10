@@ -1,12 +1,12 @@
 import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/styles";
 import FolderIcon from "@material-ui/icons/Folder";
-import Link from "@/components/atoms/link";
 import styles from "./style.module.css";
 
 type Props = {
 	iconUrl?: string;
-	folderLink: string;
 	folderName: string;
 };
 
@@ -21,12 +21,21 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Folder: React.FC<Props> = (props: Props) => {
-	const { folderLink, folderName } = props;
+	const { folderName } = props;
+	const router = useRouter();
 	const classes = useStyles();
+	const { tab, user } = router.query;
 	return (
 		<div className={styles.folder}>
-			<Link className={styles.folderLink} href={folderLink}>
-				<FolderIcon className={classes.folder} />
+			<Link
+				href={{
+					pathname: "/[user]",
+					query: { user: user, tab: tab, tag: folderName },
+				}}
+			>
+				<div className={styles.folderLink}>
+					<FolderIcon className={classes.folder} />
+				</div>
 			</Link>
 			<span className={styles.folderName}>{folderName}</span>
 		</div>

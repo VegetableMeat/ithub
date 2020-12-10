@@ -28,7 +28,6 @@ const FolderContainer: React.FC<Props> = (props: Props) => {
 						<Folder
 							key={folder.id}
 							iconUrl={folder.icon}
-							folderLink={folder.link}
 							folderName={folder.name}
 						/>
 					))}

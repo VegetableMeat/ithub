@@ -1,14 +1,18 @@
 import React from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
+import { useToggleTheme } from "@/context/theme";
 import Error from "next/error";
 import useSWR from "swr";
 import MediaQuery from "react-responsive";
 import Layout from "@/components/organisms/layout";
 import ProfileHeader from "@/components/molecules/profile/profile-header";
+import FolderList from "@/components/organisms/folder-list";
 import MemoList from "@/components/organisms/memo-list";
+import MemoTabs from "@/components/organisms/memo-tabs";
 import Sidebar from "@/components/organisms/sidebar";
-import CreateIcon from "@material-ui/icons/Create";
+import Loading from "@/components/molecules/loading";
+import { GoChevronDown } from "react-icons/go";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { User } from "@/models/user/entity";
@@ -23,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	return { props: { initialUserData } };
 };
 
-const Favorites = (props: ServerSideProps) => {
+const UserIndex = (props: ServerSideProps) => {
 	const router = useRouter();
 	const { user } = router.query;
 	const initialData = props.initialUserData;
@@ -33,26 +37,29 @@ const Favorites = (props: ServerSideProps) => {
 	});
 
 	if (error) return <Error statusCode={500} />;
-	if (!data) return <p>Loading</p>;
+	if (!data) return <Loading />;
+
+	const { toggleTheme } = useToggleTheme();
 
 	return (
 		<Layout title={data.user_id}>
+			<button onClick={toggleTheme}>Toggle Theme</button>
 			<div className={styles.userContainer}>
 				<ProfileHeader user={data} />
 				<main className={styles.folderListContainer}>
 					<div className={styles.memoHeadWrapper}>
 						<div className={styles.memoTextWrapper}>
-							<CreateIcon
+							<GoChevronDown
 								style={{
-									fontSize: "30px",
-									color: "#3E2924",
+									fontSize: "28px",
+									color: "var(--base-color)",
 									marginRight: "5px",
 								}}
 							/>
-							<h1 className={styles.memoText}>いいねしたノート</h1>
+							<h1 className={styles.memoText}>{"いいね"}</h1>
 						</div>
 					</div>
-					<MemoList tab={""} userID={data.user_id} />
+					<MemoList tab={"new"} userID={data.user_id} />
 				</main>
 				<MediaQuery query='(min-width: 771px)'>
 					<Sidebar tags={data.follow_tags} user={data} />
@@ -62,4 +69,4 @@ const Favorites = (props: ServerSideProps) => {
 	);
 };
 
-export default Favorites;
+export default UserIndex;

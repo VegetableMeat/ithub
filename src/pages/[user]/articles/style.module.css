@@ -1,12 +1,18 @@
-.mainWrapper {
-	display: flex;
+.rootContainer {
+	display: grid;
+	grid-auto-columns: minmax(1px, 700px);
+	grid-auto-rows: minmax(1px, auto);
+	grid-template-areas: " main ";
 	justify-content: center;
-	align-items: center;
-	background-color: #ffffff;
+	margin: 10px 20px 20px 20px;
 }
 
-.content {
-	max-width: 900px;
+.mainContainer {
+	grid-area: main;
+	background-color: #ffffff;
+	border: 1px #dfdfdf solid;
+	padding: 40px;
+	border-radius: 5px;
 }
 
 .markdown div {
@@ -50,9 +56,9 @@
  */
 .markdown h1 {
 	color: #494949;
+	font-size: 38px;
 	font-weight: bold;
-	border: solid 3px #528aa0;
-	padding: 0.5em;
+	margin: 0px;
 	border-radius: 0.5em;
 }
 

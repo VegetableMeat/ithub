@@ -1,12 +1,12 @@
 .follow {
 	display: grid;
-	grid-auto-columns: 60px 1fr 110px;
-	grid-auto-rows: minmax(1px, auto) 1fr 1fr;
+	grid-auto-columns: 45px 1fr 100px;
+	grid-auto-rows: minmax(1px, auto) minmax(1px, auto) minmax(1px, auto);
 	grid-template-areas:
 		"avatar name button"
 		"avatar id	 button"
 		"...    text text	 ";
-	margin-left: 10px;
+	padding: 5px 10px 5px 10px;
 }
 
 @media (max-width: 770px) {
@@ -30,11 +30,10 @@
 .userNameWrapper {
 	grid-area: name;
 	display: flex;
-	height: 50%;
 }
 
 .userName {
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 600;
 	height: 100%;
 	margin: 0px;
@@ -54,20 +53,19 @@
 
 .userID {
 	grid-area: id;
+	position: relative;
+	top: -3px;
 	height: 100%;
 	margin: 0px;
-	font-size: 15px;
+	font-size: 13px;
 	color: var(--base-color);
 	align-self: center;
 }
 
 .userText {
 	grid-area: text;
-	font-size: 16px;
-	height: 100%;
+	font-size: 14px;
 	margin: 0px;
-	align-self: center;
-	margin: 5px 0 10px 0;
 }
 
 @media (max-width: 770px) {

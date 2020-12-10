@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
 import Button from "@material-ui/core/Button";
+import { FaHashtag } from "react-icons/fa";
 import { Tag } from "@/models/tag/entity";
 
 type Props = {
@@ -9,17 +10,22 @@ type Props = {
 
 const useStyles = makeStyles(() => ({
 	tag: {
-		marginRight: "3px",
-		marginBottom: "3px",
-		color: "white",
+		marginRight: "4px",
+		marginBottom: "4px",
+		color: "var(--tag-font-color)",
 		fontSize: "13px",
 		minWidth: "0px",
-		backgroundColor: "var(--accent-color)",
-		height: "20px",
+		backgroundColor: "var(--tag-background-color)",
+		border: "1px var(--tag-boder-color) solid",
+		height: "21px",
 		textTransform: "none",
 		"&:hover": {
-			backgroundColor: "var(--accent-color)",
+			backgroundColor: "var(--tag-background-color)",
 		},
+	},
+	tagName: {
+		marginLeft: "3px",
+		fontWeight: "bold",
 	},
 }));
 
@@ -28,7 +34,8 @@ const TagComponent: React.FC<Props> = (props: Props) => {
 	const classes = useStyles();
 	return (
 		<Button key={tag.id} disableRipple className={classes.tag} href={tag.link}>
-			#{tag.name}
+			<FaHashtag color={"var(--tag-font-color)"} size={"0.9em"} />
+			<span className={classes.tagName}>{tag.name}</span>
 		</Button>
 	);
 };

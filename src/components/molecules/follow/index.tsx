@@ -30,9 +30,9 @@ const Follow: React.FC<Props> = (props: Props) => {
 					<Avatar
 						className={classes.avatar}
 						alt={followData.name}
-						src='https://avatars2.githubusercontent.com/u/52918714?v=4'
+						src={followData.icon_link}
 						round={true}
-						size='45px'
+						size='35px'
 					/>
 				</Link>
 
@@ -51,7 +51,11 @@ const Follow: React.FC<Props> = (props: Props) => {
 						style={{
 							borderColor: "var(--accent-color)",
 							marginBottom: "2px",
+							padding: "1px 0 1px 0",
+							textTransform: "none",
 							color: "var(--accent-color)",
+							fontSize: "12px",
+							minWidth: "0",
 						}}
 						variant='outlined'
 					>

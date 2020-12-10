@@ -2,6 +2,7 @@
 	width: 100%;
 	padding: 12px;
 	background: var(--box-background-color);
+	border: 1px var(--boder-color) solid;
 	border-radius: 5px;
 }
 

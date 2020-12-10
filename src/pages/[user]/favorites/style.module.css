@@ -28,13 +28,13 @@
 	justify-content: space-between;
 	width: 100%;
 	padding-right: 10px;
-	height: 49px;
 }
 
 .memoTextWrapper {
 	display: flex;
 	align-items: center;
 	margin-top: 10px;
+	margin-left: 5px;
 }
 
 @media (max-width: 770px) {
@@ -56,15 +56,14 @@
 	flex-direction: column;
 	max-width: 600px;
 	width: 100%;
-	padding: 5px 20px 20px 20px;
 	margin-right: 20px;
-	background: var(--box-background-color);
+	background: var(--background-color);
 	border-radius: 5px;
 }
 
 @media (max-width: 770px) {
 	.folderListContainer {
 		max-width: 770px;
-		padding: 5px;
+		padding: 0px;
 	}
 }

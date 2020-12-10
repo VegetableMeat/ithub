@@ -51,15 +51,17 @@ const ProfileHeader: React.FC<Props> = (props: Props) => {
 			{user.is_you ? (
 				<>
 					<MediaQuery query='(min-width: 481px)'>
-						<div className={styles.followButton}>
-							<Button
-								className={classes.brownButton}
-								variant='outlined'
-								href={`${ROUTES.SETTING}`}
-							>
-								プロフィール設定
-							</Button>
-						</div>
+						<Link
+							href={{
+								pathname: `/${ROUTES.SETTING}`,
+							}}
+						>
+							<div className={styles.followButton}>
+								<Button className={classes.brownButton} variant='outlined'>
+									Settings
+								</Button>
+							</div>
+						</Link>
 					</MediaQuery>
 					<MediaQuery query='(max-width: 480px)'>
 						<Link href={ROUTES.SETTING}>

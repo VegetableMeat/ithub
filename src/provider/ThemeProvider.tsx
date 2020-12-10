@@ -1,7 +1,6 @@
 import React from "react";
+import { themeContext } from "@/context/theme";
 import { useTheme } from "@/hooks/theme";
-
-const themeContext = React.createContext<ReturnType<typeof useTheme>>(() => {});
 
 export const ThemeProvider: React.FC = (props) => {
 	const toggleTheme = useTheme();
@@ -12,5 +11,3 @@ export const ThemeProvider: React.FC = (props) => {
 		</themeContext.Provider>
 	);
 };
-
-export const useToggleTheme = () => React.useContext(themeContext);

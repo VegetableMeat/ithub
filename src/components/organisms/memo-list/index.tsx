@@ -90,11 +90,9 @@ const MemoList: React.FC<Props> = (props: Props) => {
 										</div>
 									</div>
 
-									<p className={styles.line} />
-
 									<div className={styles.memo}>
 										<h1 className={styles.memoTitle}>{memo.memo_title}</h1>
-										<p className={styles.shortLine} />
+
 										<div className={styles.memoInfoWrapper}>
 											<div className={styles.tagsWrapper}>
 												{memo.tags.map((tag) => (
@@ -122,7 +120,6 @@ const MemoList: React.FC<Props> = (props: Props) => {
 												</div>
 											</div>
 										</div>
-										<p className={styles.shortLine} />
 									</div>
 								</div>
 							</Link>

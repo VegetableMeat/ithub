@@ -1,0 +1,19 @@
+.line {
+	margin: 0px;
+	border-top: 1px #dfdfdf solid;
+}
+
+.followTextWrapper {
+	display: flex;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-right: 10px;
+}
+
+.followText {
+	height: 100%;
+	font-size: 24px;
+	font-weight: 600;
+	margin: 0;
+}

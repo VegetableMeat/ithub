@@ -1,5 +1,4 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import {
 	makeStyles,
 	withStyles,
@@ -11,29 +10,41 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import styles from "./style.module.css";
 
-const AntTabs = withStyles({
-	root: {
-		marginLeft: "20px",
-		borderBottom: "1px solid #e8e8e8",
-	},
-	indicator: {
-		backgroundColor: "var(--base-color)",
-	},
-})(Tabs);
+interface StyledTabsProps {
+	value: number;
+	onChange: (event: React.ChangeEvent<{}>, newValue: number) => void;
+}
 
-const AntTab = withStyles((theme: Theme) =>
+const StyledTabs = withStyles({
+	indicator: {
+		display: "flex",
+		justifyContent: "center",
+		backgroundColor: "transparent",
+		"& > span": {
+			maxWidth: 50,
+			width: "100%",
+			backgroundColor: "var(--accent-color);",
+		},
+	},
+})((props: StyledTabsProps) => (
+	<Tabs {...props} TabIndicatorProps={{ children: <span /> }} />
+));
+
+const AntTab = withStyles(() =>
 	createStyles({
 		root: {
 			textTransform: "none",
 			minWidth: 72,
-			fontWeight: theme.typography.fontWeightRegular,
+			fontSize: "16px",
+			position: "relative",
+			top: "8px",
 			"&:hover": {
 				color: "var(--base-color)",
 				opacity: 1,
 			},
 			"&$selected": {
 				color: "var(--base-color)",
-				fontWeight: theme.typography.fontWeightMedium,
+				fontWeight: 800,
 			},
 			"&:focus": {
 				color: "var(--base-color)",
@@ -58,44 +69,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 type Props = {
+	initialTab: string;
 	handleChange: (selectTab: string) => void;
 };
 
 const MemoTabs: React.FC<Props> = (props: Props) => {
-	const { handleChange } = props;
-	const router = useRouter();
+	const { initialTab, handleChange } = props;
 	const classes = useStyles();
 
-	let initialTab: number;
-	const { tab } = router.query;
-	switch (tab) {
-		case "tags":
-			initialTab = 1;
-			break;
-		default:
-			initialTab = 0;
-	}
+	const [selecetTab, setSelecetTab] = React.useState<number>(0);
 
-	const [selecetTab, setSelecetTab] = React.useState(initialTab);
+	useEffect(() => {
+		initialTab === "tags" ? setSelecetTab(1) : setSelecetTab(0);
+	});
 
 	const handleChangeTabs = (e: React.ChangeEvent<{}>, newTab: number) => {
 		setSelecetTab(newTab);
-		switch (newTab) {
-			case 0:
-				handleChange("new");
-				break;
-			case 1:
-				handleChange("tags");
-				break;
-		}
+		newTab === 0 ? handleChange("new") : handleChange("tags");
 	};
 
 	return (
 		<div className={styles.memoTabsContainer}>
-			<AntTabs value={selecetTab} onChange={handleChangeTabs}>
+			<StyledTabs value={selecetTab} onChange={handleChangeTabs}>
 				<AntTab label='Latest' />
 				<AntTab label='Tag' />
-			</AntTabs>
+			</StyledTabs>
 			<Typography className={classes.padding} />
 		</div>
 	);
