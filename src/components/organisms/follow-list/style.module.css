@@ -1,6 +1,12 @@
-.followTextWrapper {
+.followListContainer {
+	background: var(--box-background-color);
+	border: 1px var(--boder-color) solid;
+	border-radius: 5px;
 	display: flex;
-	margin-bottom: 20px;
+	flex-direction: column;
+	min-height: 15%;
+	width: 100%;
+	margin-top: 10px;
 }
 
 .followText {
@@ -25,18 +31,11 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-	margin-top: -50px;
 	font-size: 16px;
 	font-weight: 600;
 }
 
-@media (max-width: 770px) {
-	.noneFollowText {
-		margin-top: -40px;
-	}
-}
-
 .line {
-	margin: 2px 0 5px;
-	border-top: 1px #c4c4c4 solid;
+	margin: 0px;
+	border-top: 1px var(--boder-color) solid;
 }

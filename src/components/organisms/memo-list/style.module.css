@@ -2,29 +2,22 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	margin-top: 15px;
-}
-
-@media (max-width: 770px) {
-	.memoContainer {
-		margin-top: 10px;
-	}
+	margin-top: 10px;
 }
 
 .memoWrapper {
 	width: 100%;
 	height: 100%;
 	padding: 10px 10px 10px 0px;
-	border-left: 15px #a6bfc788 solid;
-	background: #eceef1a4;
+	box-shadow: 0 0 0 1px var(--boder-color);
+	background: var(--memo-background-color);
 	border-radius: 5px;
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 
 @media (max-width: 770px) {
 	.memoWrapper {
 		padding: 8px 10px 8px 0px;
-		border-left: 8px #a6bfc788 solid;
 	}
 }
 
@@ -80,9 +73,9 @@
 
 .userName {
 	margin: 0px;
-	font-size: 16px;
+	font-size: 15px;
 	font-weight: bold;
-	color: #554b49;
+	color: var(--base-color);
 }
 
 @media (max-width: 770px) {
@@ -95,7 +88,7 @@
 	margin: 0px;
 	margin-top: -5px;
 	font-size: 14px;
-	color: #554b49;
+	color: var(--base-color);
 }
 
 @media (max-width: 770px) {
@@ -106,7 +99,8 @@
 
 .memoTitle {
 	margin: 2px 0px 0px 0px;
-	font-size: 22px;
+	font-size: 20px;
+	color: var(--base-color);
 }
 
 @media (max-width: 770px) {
@@ -151,7 +145,7 @@
 .tagName {
 	font-size: 12px;
 	font-weight: bold;
-	color: #3e2924c5;
+	color: var(--base-color);
 }
 
 .memoInfo {
@@ -160,9 +154,11 @@
 	justify-content: flex-end;
 	min-width: 75px;
 	margin-right: 10px;
+	color: var(--base-color);
 }
 
 .memoFavo {
+	color: var(--base-color);
 }
 
 .memoComment {
@@ -182,18 +178,18 @@
 .line {
 	margin: 0px;
 	height: 1px;
-	border-top: 1px #a6bfc788 solid;
+	border-top: 1px var(--boder-color) solid;
 }
 
 .shortLine {
 	margin: 0px;
-	margin-left: -45px;
+	margin-left: -35px;
 	height: 1px;
-	border-top: 1px #a6bfc788 solid;
+	border-top: 1px var(--boder-color) solid;
 }
 
 @media (max-width: 770px) {
 	.shortLine {
-		margin-left: -20px;
+		margin-left: -10px;
 	}
 }

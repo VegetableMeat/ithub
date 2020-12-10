@@ -4,6 +4,7 @@ import { Button, TextField, Avatar } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/styles";
 import { Search } from "@material-ui/icons";
+import { useToggleTheme } from "@/context/theme";
 import Image from "next/image";
 import styles from "./style.module.css";
 
@@ -12,9 +13,9 @@ const useStyles = makeStyles(() => ({
     textTransform: "capitalize",
     width: "100%",
     color: "#FFF",
-    backgroundColor: "#3e2924",
+    backgroundColor: "var(--accent-color);",
     "&:hover": {
-      backgroundColor: "#3e2924c5",
+      backgroundColor: "var(--accent-color);",
     },
   },
   searchButton: {
@@ -22,7 +23,7 @@ const useStyles = makeStyles(() => ({
     height: "30px",
     "&:hover": {
       cursor: "pointer",
-      color: "#3e2924c5",
+      color: "var(--accent-color);",
       transition:
         "color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
     },
@@ -76,18 +77,16 @@ const Header: React.FC = () => {
   ];
 
   const pathname = router.pathname.replace(/\//g, "");
-
+  const { theme } = useToggleTheme();
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
         <div className={styles.headerContents}>
           <div className={styles.titleWrapper}>
-            <Image
+            <img
               className={styles.title}
-              src="/icon/title.svg"
+              src={theme === "light" ? "/logo.png" : "/logo_dark.png"}
               alt="備忘録"
-              width="120"
-              height="60"
               onClick={() => router.push("/")}
             />
           </div>

@@ -8,6 +8,7 @@ import Layout from "@/components/organisms/layout";
 import ProfileHeader from "@/components/molecules/profile/profile-header";
 import FollowList from "@/components/organisms/follow-list";
 import Sidebar from "@/components/organisms/sidebar";
+import { GoChevronDown } from "react-icons/go";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { User } from "@/models/user/entity";
@@ -21,7 +22,7 @@ export interface ServerSideProps {
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 	const initialUserData = await fetcher(`${API_URL}/users/${params.user}`);
 	const initialFollowsData = await fetcher(
-		`${API_URL}/users/${params.user}/followers`
+		`${API_URL}/users/${params.user}/follows`
 	);
 	return { props: { initialUserData, initialFollowsData } };
 };
@@ -43,9 +44,19 @@ const Follows = (props: ServerSideProps) => {
 			<div className={styles.followsContainer}>
 				<ProfileHeader user={data} />
 				<main className={styles.followListContainer}>
+					<div className={styles.followTextWrapper}>
+						<GoChevronDown
+							style={{
+								fontSize: "28px",
+								color: "var(--base-color)",
+								marginRight: "5px",
+							}}
+						/>
+						<h1 className={styles.followText}>{"Follower"}</h1>
+					</div>
 					<FollowList
-						follows={props.initialFollowsData}
-						displayText={"フォロワー"}
+						follows={[]}
+						displayText={"Follower"}
 						userID={data.user_id}
 					/>
 				</main>

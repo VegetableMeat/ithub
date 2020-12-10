@@ -1,0 +1,224 @@
+.rootContainer {
+	display: grid;
+	grid-auto-columns: minmax(1px, 700px);
+	grid-auto-rows: minmax(1px, auto);
+	grid-template-areas: " main ";
+	justify-content: center;
+	margin: 10px 20px 20px 20px;
+}
+
+.mainContainer {
+	grid-area: main;
+	background-color: #ffffff;
+	border: 1px #dfdfdf solid;
+	padding: 40px;
+	border-radius: 5px;
+}
+
+.markdown div {
+	white-space: pre-wrap;
+}
+
+.markdown body {
+	background-color: #ffffff;
+	color: #494949;
+}
+
+/**
+ * codeタグ（コードテキスト）
+ */
+.markdown code {
+	font-family: "Meiryo", Menlo, Monaco, Consolas, "Droid Sans Mono",
+		"Courier New", monospace, "Droid Sans Fallback";
+}
+
+/**
+ * preタグ（整形済みテキスト）
+ */
+.markdown pre {
+	color: #fff;
+	background-color: rgb(16, 33, 70);
+	border-radius: 5px;
+	padding: 20px;
+	font-family: "Meiryo", Menlo, Monaco, Consolas, "Droid Sans Mono",
+		"Courier New", monospace, "Droid Sans Fallback";
+}
+
+/**
+ * blockquoteタグ（引用）
+ */
+.markdown blockquote {
+	border-color: #528aa0;
+}
+
+/**
+ * h1タグ（見出し1）
+ */
+.markdown h1 {
+	color: #494949;
+	font-size: 38px;
+	font-weight: bold;
+	margin: 0px;
+	border-radius: 0.5em;
+}
+
+.markdown h2 {
+	color: #494949;
+	position: relative;
+	font-weight: bold;
+	margin: 0 0 1.5em;
+	padding: 0.5em 0.5em 0.5em 2.1em;
+	border-bottom: 2px solid #528aa0;
+}
+.markdown h2:before {
+	content: "□";
+	font-size: 180%;
+	position: absolute;
+	color: #528aa0;
+	top: 0.15em;
+	left: 0.1em;
+	height: 12px;
+	width: 12px;
+}
+.markdown h2:after {
+	content: "□";
+	font-size: 120%;
+	position: absolute;
+	color: #000000;
+	top: 0.78em;
+	left: 0;
+	height: 12px;
+	width: 12px;
+}
+
+.markdown h3 {
+	color: #494949;
+	padding: 0.5em 0.75em;
+	background-color: #f4f4f4;
+	border-left: 6px solid #528aa0;
+}
+
+/**
+ * h4タグ（見出し4）
+ */
+.markdown h4 {
+	color: #494949;
+	padding: 0.5em 0.75em;
+	background-color: #f4f4f4;
+	border-radius: 6px;
+}
+
+/**
+ * h5タグ（見出し5）
+ */
+.markdown h5 {
+	color: #494949;
+	padding: 0.5em 0.75em;
+	border-bottom-style: dotted;
+	border-bottom-color: #528aa0;
+	border-bottom-width: thin;
+}
+
+/**
+ * tableタグ（表）
+ */
+.markdown table thead th {
+	background: #528aa0;
+	font-weight: bold;
+	vertical-align: top;
+	color: #fff;
+}
+
+.markdown table th,
+.markdown table td {
+	padding: 6px 13px;
+	border: 1px solid #ddd;
+}
+.markdown table tr {
+	background-color: #fff;
+	border-top: 1px solid #ccc;
+}
+.markdowntable tr:nth-child(2n) {
+	background-color: #f8f8f8;
+}
+
+/**
+ * hrタグ（水平線）
+ */
+.markdown hr {
+	background-color: #fff;
+	border-color: #528aa0;
+	border-top: 1px dashed #528aa0;
+}
+
+/**
+ * ulタグ（リスト）
+ */
+.markdown ul li {
+	padding: 0px;
+	margin: 0px;
+}
+.markdown ul li {
+	list-style-type: none !important;
+	list-style-image: none !important;
+	margin: 5px 0px 5px 0px !important;
+}
+.markdown ul li {
+	position: relative;
+	padding-left: 20px;
+}
+
+.markdown ul li:after {
+	content: "";
+	display: block;
+	position: absolute;
+	background: #528aa0;
+	width: 9px;
+	height: 9px;
+	top: 5px;
+	left: 5px;
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+}
+
+/**
+ * olタグ（順序リスト）
+ */
+.markdown ol {
+	counter-reset: li;
+	padding: 0;
+	list-style: none;
+}
+.markdown ol li {
+	position: relative;
+	margin: 0 0 8px 4em;
+	padding: 2px 8px;
+}
+
+.markdown ol li:before {
+	content: counter(li);
+	counter-increment: li;
+	position: absolute;
+	top: -2px;
+	left: -2em;
+	width: 2em;
+	padding: 3px 0;
+	color: #fff;
+	background: #528aa0;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 20px;
+}
+
+/**
+ * aタグ（リンク）
+ */
+.markdown a {
+	color: #4078c0;
+	text-decoration: none;
+}
+.markdown a:hover,
+.markdown a:active {
+	text-decoration: underline;
+}
