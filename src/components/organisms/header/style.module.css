@@ -1,12 +1,18 @@
 /* Header */
+.header {
+	height: 60px;
+}
 .headerContainer {
+	z-index: 1;
+	position: fixed;
+	display: flex;
+	justify-content: center;
 	top: 0px;
 	left: 0px;
 	width: 100%;
 	max-height: 60px;
 	height: auto;
-	background: var(--header-background-color);
-	border-bottom: 1px var(--header-boder-color) solid;
+	background: #c1d6db;
 	padding: 0 10px;
 }
 .headerContainer .searchFieldWrapper,
@@ -15,10 +21,9 @@
 	margin-left: 10px;
 }
 .headerContents {
-	display: inline-flex;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 1000px;
+	display: flex;
+	justify-content: space-between;
+	width: 1250px;
 	max-height: 60px;
 }
 .title,
@@ -26,14 +31,12 @@
 	cursor: pointer;
 }
 .titleWrapper img {
-	padding: 8px;
-	max-height: 100%;
-	max-width: 100%;
-	border-radius: 12px;
+	min-width: 120px;
+	min-height: 60px;
 }
 .contents {
-	display: inline-flex;
-	margin: 12.5px 10px 12.5px 120px;
+	display: flex;
+	margin: 12.5px 0;
 }
 
 /* Material-uiのボタン */
@@ -41,7 +44,7 @@
 	font-size: 10px;
 	min-width: 4rem;
 	height: 35px;
-	background-color: var(--accent-color) !important;
+	background-color: #3e2924 !important;
 	color: #fff !important;
 	border: 1px !important;
 	border-radius: 5px !important;
