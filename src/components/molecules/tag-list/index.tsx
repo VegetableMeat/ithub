@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTags } from "react-icons/fa";
+import { AiOutlinePaperClip } from "react-icons/ai";
 import Tag from "@/components/atoms/tag";
 import { Tag as TagEntity } from "@/models/tag/entity";
 import styles from "./style.module.css";
@@ -14,13 +14,16 @@ const TagList: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.tagContainer}>
 			<div className={styles.titleWrapper}>
-				<FaTags size={"25"} style={{ color: "#3E2924", marginRight: "5px" }} />
+				<AiOutlinePaperClip
+					size={"25"}
+					style={{ color: "var(--base-color)" }}
+				/>
 				<span className={styles.tagText}>フォロータグ</span>
 			</div>
 			{tags.length ? (
 				<div className={styles.tagWrapper}>
 					{tags.map((tag) => (
-						<Tag tag={tag} />
+						<Tag key={tag.id} tag={tag} />
 					))}
 				</div>
 			) : (

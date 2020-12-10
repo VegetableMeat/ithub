@@ -1,6 +1,8 @@
 import React from "react";
 import { GetServerSideProps } from "next";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { useToggleTheme } from "@/context/theme";
 import Error from "next/error";
 import useSWR from "swr";
 import MediaQuery from "react-responsive";
@@ -11,7 +13,9 @@ import MemoList from "@/components/organisms/memo-list";
 import MemoTabs from "@/components/organisms/memo-tabs";
 import Sidebar from "@/components/organisms/sidebar";
 import Loading from "@/components/molecules/loading";
-import CreateIcon from "@material-ui/icons/Create";
+import { GoChevronDown } from "react-icons/go";
+import { AiFillFolderOpen } from "react-icons/ai";
+import { RiArrowGoBackFill } from "react-icons/ri";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { User } from "@/models/user/entity";
@@ -28,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
 const UserIndex = (props: ServerSideProps) => {
 	const router = useRouter();
-	const { tab, user } = router.query;
+	const { user, tab, tag } = router.query;
 	const initialData = props.initialUserData;
 
 	const [tabQuery, setTabQuery] = React.useState(tab as string);
@@ -38,9 +42,26 @@ const UserIndex = (props: ServerSideProps) => {
 	});
 
 	React.useEffect(() => {
+		setTabQuery(tab as string);
+	}, [tab]);
+
+	React.useEffect(() => {
 		if (!tabQuery) return;
-		if (tabQuery !== "tags" && tabQuery !== "new" && tabQuery !== "all") {
-			router.push({ pathname: `/${data.user_id}` });
+		if (tabQuery === "new") {
+			router.push({ pathname: `/${data.user_id}`, query: { tab: "new" } });
+			return;
+		}
+		if (tabQuery !== "tags") {
+			router.push({
+				pathname: `/${data.user_id}`,
+			});
+			return;
+		}
+		if (tag) {
+			router.push({
+				pathname: `/${data.user_id}`,
+				query: { tab: tabQuery, tag: tag },
+			});
 			return;
 		}
 		router.push({ pathname: `/${data.user_id}`, query: { tab: tabQuery } });
@@ -49,31 +70,69 @@ const UserIndex = (props: ServerSideProps) => {
 	if (error) return <Error statusCode={500} />;
 	if (!data) return <Loading />;
 
-	console.log(data);
+	const { toggleTheme } = useToggleTheme();
 
 	return (
 		<Layout title={data.user_id}>
+			<button onClick={toggleTheme}>Toggle Theme</button>
 			<div className={styles.userContainer}>
 				<ProfileHeader user={data} />
 				<main className={styles.folderListContainer}>
 					<div className={styles.memoHeadWrapper}>
 						<div className={styles.memoTextWrapper}>
-							<CreateIcon
-								style={{
-									fontSize: "30px",
-									color: "#3E2924",
-									marginRight: "5px",
-								}}
-							/>
-							<h1 className={styles.memoText}>投稿</h1>
+							{tag ? (
+								<AiFillFolderOpen
+									style={{
+										fontSize: "28px",
+										color: "var(--base-color)",
+										marginRight: "5px",
+									}}
+								/>
+							) : (
+								<GoChevronDown
+									style={{
+										fontSize: "28px",
+										color: "var(--base-color)",
+										marginRight: "5px",
+									}}
+								/>
+							)}
+
+							<h1 className={styles.memoText}>
+								<span>
+									{tabQuery === "tags" ? (
+										tag ? (
+											<>
+												{tag}
+												<Link
+													href={{
+														pathname: "/[user]",
+														query: { user: user, tab: "tags" },
+													}}
+												>
+													<span className={styles.backButton}>
+														back
+														<RiArrowGoBackFill />
+													</span>
+												</Link>
+											</>
+										) : (
+											"タグ"
+										)
+									) : (
+										"最新"
+									)}
+								</span>
+							</h1>
 						</div>
 						<MemoTabs
+							initialTab={tabQuery}
 							handleChange={(selectTab: string) => {
 								setTabQuery(selectTab);
 							}}
 						/>
 					</div>
-					{tabQuery === "tags" ? (
+					{tabQuery === "tags" && !tag ? (
 						<FolderList userID={data.user_id} />
 					) : (
 						<MemoList tab={tabQuery} userID={data.user_id} />

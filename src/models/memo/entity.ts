@@ -5,7 +5,6 @@ export type Memo = {
 	id: number;
 	user: User;
 	memo_title: string;
-	memo_text: string;
 	tags: Tag[];
 	favorite_count: number;
 	comment_count: number;

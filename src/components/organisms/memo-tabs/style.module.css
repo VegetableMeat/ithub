@@ -2,4 +2,5 @@
 	display: flex;
 	text-align: flex-start;
 	justify-content: flex-start;
+	margin-top: -10px;
 }

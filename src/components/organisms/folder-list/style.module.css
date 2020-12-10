@@ -1,6 +1,9 @@
 .folderContainer {
+	background: var(--header-background-color);
+	box-shadow: 0 0 0 1px var(--boder-color);
+	border-radius: 5px;
 	width: 100%;
-	margin-top: 15px;
+	margin-top: 10px;
 	height: auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -10,10 +13,18 @@
 
 .folderWrapper {
 	margin: 10px;
+	padding: 10px;
 	height: 100%;
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+	gap: 1px;
+}
+
+@media (max-width: 770px) {
+	.folderWrapper {
+		margin: 5px;
+	}
 }
 
 .noneFolderText {

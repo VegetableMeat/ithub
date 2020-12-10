@@ -5,7 +5,7 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/styles";
 import Avatar from "react-avatar";
 import { FaHashtag } from "react-icons/fa";
-import { GrFavorite } from "react-icons/gr";
+import { MdFavoriteBorder } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 import Loading from "@/components/molecules/loading";
 import { API_URL } from "@/libs/api";
@@ -21,8 +21,8 @@ const useStyles = makeStyles(() => ({
 		},
 	},
 	brownButton: {
-		color: "#533a33",
-		borderColor: "#533a33",
+		color: "var(--base-color)",
+		borderColor: "var(--base-color)",
 		textTransform: "none",
 		justifyContent: "center",
 	},
@@ -55,7 +55,6 @@ const MemoList: React.FC<Props> = (props: Props) => {
 					setMemos(res.data);
 				})
 				.catch((err) => {
-					console.log(err);
 					setError(err);
 				});
 
@@ -72,56 +71,58 @@ const MemoList: React.FC<Props> = (props: Props) => {
 				<>
 					{memos.map((memo) => (
 						<>
-							<div className={styles.memoWrapper}>
-								<div className={styles.profile}>
-									<Link href={`/${memo.user.user_id}`}>
-										<div className={styles.avatar}>
-											<Avatar
-												className={classes.avatar}
-												alt={memo.user.user_id}
-												src={memo.user.icon_link}
-												round={true}
-											/>
+							<Link href={`/${userID}/articles/${memo.id}`}>
+								<div className={styles.memoWrapper}>
+									<div className={styles.profile}>
+										<Link href={`/${memo.user.user_id}`}>
+											<div className={styles.avatar}>
+												<Avatar
+													className={classes.avatar}
+													alt={memo.user.user_id}
+													src={memo.user.icon_link}
+													round={true}
+												/>
+											</div>
+										</Link>
+										<div className={styles.profileRight}>
+											<p className={styles.userName}>{memo.user.name}</p>
+											<p className={styles.createdDate}>{memo.created_at}</p>
 										</div>
-									</Link>
-									<div className={styles.profileRight}>
-										<p className={styles.userName}>{memo.user.name}</p>
-										<p className={styles.createdDate}>{memo.created_at}</p>
 									</div>
-								</div>
 
-								<p className={styles.line} />
+									<div className={styles.memo}>
+										<h1 className={styles.memoTitle}>{memo.memo_title}</h1>
 
-								<div className={styles.memo}>
-									<h1 className={styles.memoTitle}>{memo.memo_title}</h1>
-									<p className={styles.shortLine} />
-									<div className={styles.memoInfoWrapper}>
-										<div className={styles.tagsWrapper}>
-											{memo.tags.map((tag) => (
-												<div className={styles.tag}>
-													<FaHashtag color={"#3e2924c5"} size={"0.8em"} />
-													<div className={styles.tagName}>{tag.name}</div>
+										<div className={styles.memoInfoWrapper}>
+											<div className={styles.tagsWrapper}>
+												{memo.tags.map((tag) => (
+													<div className={styles.tag}>
+														<FaHashtag
+															color={"var(--base-color)"}
+															size={"0.8em"}
+														/>
+														<div className={styles.tagName}>{tag.name}</div>
+													</div>
+												))}
+											</div>
+											<div className={styles.memoInfo}>
+												<div className={styles.memoFavo}>
+													<MdFavoriteBorder size={"1.1em"} />
+													<span className={styles.favoriteText}>
+														{memo.favorite_count}
+													</span>
 												</div>
-											))}
-										</div>
-										<div className={styles.memoInfo}>
-											<div className={styles.memoFavo}>
-												<GrFavorite />
-												<span className={styles.favoriteText}>
-													{memo.favorite_count}
-												</span>
-											</div>
-											<div className={styles.memoComment}>
-												<FaRegComment />
-												<span className={styles.commentText}>
-													{memo.comment_count}
-												</span>
+												<div className={styles.memoComment}>
+													<FaRegComment />
+													<span className={styles.commentText}>
+														{memo.comment_count}
+													</span>
+												</div>
 											</div>
 										</div>
 									</div>
-									<p className={styles.shortLine} />
 								</div>
-							</div>
+							</Link>
 						</>
 					))}
 				</>
