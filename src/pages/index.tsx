@@ -25,7 +25,7 @@ const Top = (props: ServerSideProps) => {
     initialData,
   });
 
-  const memo = data.map((data) => <Memo memos={data} />);
+  const memo = data.map((data, index) => <Memo key={index} memos={data} />);
 
   return (
     <Layout title="top">

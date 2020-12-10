@@ -33,7 +33,7 @@
 }
 
 .userName {
-	font-size: 16px;
+	font-size: 17px;
 	font-weight: 600;
 	height: 100%;
 	margin: 0px;
@@ -54,17 +54,19 @@
 .userID {
 	grid-area: id;
 	position: relative;
-	top: -3px;
+	top: -5px;
 	height: 100%;
 	margin: 0px;
 	font-size: 13px;
-	color: var(--base-color);
+	font-weight: 600;
+	color: var(--sub-font-color);
 	align-self: center;
 }
 
 .userText {
 	grid-area: text;
-	font-size: 14px;
+	font-size: 13px;
+	font-weight: 400;
 	margin: 0px;
 }
 

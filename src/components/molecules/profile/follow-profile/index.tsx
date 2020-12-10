@@ -17,6 +17,8 @@ const useStyles = makeStyles(() =>
 			width: "100%",
 			marginBottom: "5px",
 			textTransform: "none",
+			fontFamily: ["Inter", "sans-serif"].join(","),
+			fontWeight: 400,
 		},
 		brownButton: {
 			borderColor: "var(--sub-button-color)",
@@ -24,6 +26,8 @@ const useStyles = makeStyles(() =>
 			maxWidth: "500px",
 			width: "100%",
 			textTransform: "none",
+			fontFamily: ["Inter", "sans-serif"].join(","),
+			fontWeight: 400,
 		},
 	})
 );

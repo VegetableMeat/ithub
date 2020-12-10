@@ -24,6 +24,8 @@
 
 .folderName {
 	position: relative;
+	font-size: 15px;
+	font-weight: 400;
 	top: 5px;
 	left: 0px;
 }

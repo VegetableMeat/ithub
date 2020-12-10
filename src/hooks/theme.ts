@@ -20,6 +20,7 @@ export const setLightTheme = () => {
 	document.documentElement.style.setProperty("--accent-color", "#19d3da");
 	document.documentElement.style.setProperty("--base-color", "#373a40");
 	document.documentElement.style.setProperty("--font-color", "#222222");
+	document.documentElement.style.setProperty("--sub-font-color", "#0000009f");
 	document.documentElement.style.setProperty("--sub-button-color", "#373a40");
 	document.documentElement.style.setProperty("--folder-color", "#f5eb8f");
 	document.documentElement.style.setProperty("--memo-background-color", "#FFF");

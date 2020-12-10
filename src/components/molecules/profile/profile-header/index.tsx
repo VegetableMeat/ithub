@@ -25,6 +25,8 @@ const useStyles = makeStyles(() => ({
 		borderColor: "var(--base-color)",
 		textTransform: "none",
 		justifyContent: "center",
+		fontWeight: 400,
+		fontFamily: ["Inter", "sans-serif"].join(","),
 	},
 }));
 

@@ -20,6 +20,7 @@
 
 .titleWrapper {
 	display: flex;
+	align-items: center;
 }
 
 .title {
@@ -27,6 +28,7 @@
 	margin: 0px;
 	margin-left: 5px;
 	font-size: 16px;
+	font-weight: 600;
 }
 
 .historyWrapper {
@@ -36,6 +38,7 @@
 
 .historyWrapper span {
 	font-size: 14px;
+	font-weight: 500;
 }
 
 .birth {

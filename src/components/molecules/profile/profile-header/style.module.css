@@ -88,8 +88,7 @@
 	grid-area: name;
 	text-align: center;
 	height: 100%;
-	font-size: 32px;
-	font-weight: 800;
+	font-size: 30px;
 	margin: 0px;
 }
 
@@ -106,8 +105,10 @@
 	text-align: center;
 	position: relative;
 	right: 0.3em;
-	color: var(--base-color);
-	font-size: 18px;
+	top: -5px;
+	color: var(--sub-font-color);
+	font-size: 16px;
+	font-weight: 400;
 	height: 100%;
 	margin: 0px;
 }
@@ -125,6 +126,7 @@
 	text-align: center;
 	align-self: center;
 	font-size: 16px;
+	font-weight: 400;
 	margin: 0px;
 }
 

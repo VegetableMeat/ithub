@@ -117,10 +117,10 @@ const UserIndex = (props: ServerSideProps) => {
 												</Link>
 											</>
 										) : (
-											"タグ"
+											"Tags"
 										)
 									) : (
-										"最新"
+										"New"
 									)}
 								</span>
 							</h1>

@@ -37,6 +37,7 @@ const AntTab = withStyles(() =>
 			minWidth: 72,
 			fontSize: "16px",
 			position: "relative",
+			fontFamily: ["Inter", "sans-serif"].join(","),
 			top: "8px",
 			"&:hover": {
 				color: "var(--base-color)",
@@ -44,7 +45,7 @@ const AntTab = withStyles(() =>
 			},
 			"&$selected": {
 				color: "var(--base-color)",
-				fontWeight: 800,
+				fontWeight: 600,
 			},
 			"&:focus": {
 				color: "var(--base-color)",

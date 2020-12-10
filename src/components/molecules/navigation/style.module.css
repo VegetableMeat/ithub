@@ -1,11 +1,16 @@
 /* Navigation */
 .navigation {
-  margin-top: 15px;
+  margin-bottom: 20px;
+  background-color: transparent !important;
 }
 .navigation span {
   font-size: 14px !important;
   font-weight: bold;
   color: #3e2924 !important;
+}
+.navigation span > span {
+  transition: font-size 0s, opacity 0s;
+  transition-delay: 0s;
 }
 .navigation svg {
   width: 32px;

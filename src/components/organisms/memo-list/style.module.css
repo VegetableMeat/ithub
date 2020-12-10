@@ -73,8 +73,8 @@
 
 .userName {
 	margin: 0px;
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 16px;
+	font-weight: 500;
 	color: var(--base-color);
 }
 
@@ -86,8 +86,9 @@
 
 .createdDate {
 	margin: 0px;
-	margin-top: -5px;
+	margin-top: -2px;
 	font-size: 14px;
+	font-weight: 400;
 	color: var(--base-color);
 }
 
@@ -100,6 +101,7 @@
 .memoTitle {
 	margin: 2px 0px 0px 0px;
 	font-size: 20px;
+	font-weight: 500;
 	color: var(--base-color);
 }
 
@@ -143,8 +145,9 @@
 }
 
 .tagName {
-	font-size: 12px;
-	font-weight: bold;
+	margin-left: 2px;
+	font-size: 14px;
+	font-weight: 500;
 	color: var(--base-color);
 }
 
@@ -167,12 +170,14 @@
 
 .favoriteText {
 	font-size: 13px;
-	margin-left: 5px;
+	font-weight: 500;
+	margin-left: 3px;
 }
 
 .commentText {
 	font-size: 13px;
-	margin-left: 5px;
+	font-weight: 500;
+	margin-left: 3px;
 }
 
 .line {
