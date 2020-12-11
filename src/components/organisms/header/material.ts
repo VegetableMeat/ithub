@@ -46,11 +46,11 @@ const Material = () => {
     },
     menuItem: {
       fontSize: "14px",
+      "&:first-child": {
+        backgroundColor: "#FFF",
+      },
       "&:hover": {
         color: "#FFF",
-        backgroundColor: "var(--accent-color);",
-      },
-      "&:first-child": {
         backgroundColor: "var(--accent-color);",
       },
     },
