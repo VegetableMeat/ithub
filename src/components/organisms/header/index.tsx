@@ -113,6 +113,9 @@ const Header: React.FC = () => {
               </MediaQuery>
               {isLogin ? (
                 <>
+                  <div className={styles.writeButtonWrapper}>
+                    <Button className={classes.button}>write memo</Button>
+                  </div>
                   <button
                     className={classes.avatarButton}
                     ref={anchorRef}
@@ -149,27 +152,36 @@ const Header: React.FC = () => {
                         <Paper>
                           <ClickAwayListener onClickAway={handleClose}>
                             <MenuList
-                              className={classes.menuList}
                               autoFocusItem={open}
                               id="menu-list-grow"
                               onKeyDown={handleListKeyDown}
-                              onMouseEnter={handleOpen}
-                              onMouseLeave={handleClose}
+                              // onMouseEnter={handleOpen}
+                              // onMouseLeave={handleClose}
                             >
-                              <MenuItem onClick={handleClose}>Profile</MenuItem>
-                              <MenuItem onClick={handleClose}>
+                              <MenuItem
+                                className={classes.menuItem}
+                                onClick={handleClose}
+                              >
+                                Profile
+                              </MenuItem>
+                              <MenuItem
+                                className={classes.menuItem}
+                                onClick={handleClose}
+                              >
                                 My account
                               </MenuItem>
-                              <MenuItem onClick={handleClose}>Logout</MenuItem>
+                              <MenuItem
+                                className={classes.menuItem}
+                                onClick={handleClose}
+                              >
+                                Logout
+                              </MenuItem>
                             </MenuList>
                           </ClickAwayListener>
                         </Paper>
                       </Grow>
                     )}
                   </Popper>
-                  <div className={styles.writeButtonWrapper}>
-                    <Button className={classes.button}>write memo</Button>
-                  </div>
                 </>
               ) : (
                 <div className={styles.signUpButtonWrapper}>

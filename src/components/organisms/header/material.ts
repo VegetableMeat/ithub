@@ -44,8 +44,15 @@ const Material = () => {
       marginRight: "10px",
       width: "150px",
     },
-    menuList: {
+    menuItem: {
       fontSize: "14px",
+      "&:hover": {
+        color: "#FFF",
+        backgroundColor: "var(--accent-color);",
+      },
+      "&:first-child": {
+        backgroundColor: "var(--accent-color);",
+      },
     },
   }));
 
