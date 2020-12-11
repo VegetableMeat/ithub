@@ -103,37 +103,40 @@ const ProfileHeader: React.FC<Props> = (props: Props) => {
 			<p className={styles.userID}>@{user.user_id}</p>
 			<p className={styles.userText}>{user.user_text}</p>
 			<div className={styles.other}>
-				<span
-					onClick={() => {
-						handleOpen("Following");
-					}}
-				>
-					<span style={{ fontWeight: 500 }}>{user.follow_count}</span>
-					<span className={styles.followCount}>Following</span>
-				</span>
-				<span
-					onClick={() => {
-						handleOpen("Followers");
-					}}
-				>
-					<span style={{ fontWeight: 500 }}>{user.follower_count}</span>
-					<span className={styles.followerCount}>Followers</span>
-				</span>
+				<div className={styles.FollowInfoBlock}>
+					<div
+						className={styles.followCountWrapper}
+						onClick={() => {
+							handleOpen("Following");
+						}}
+					>
+						<span className={styles.followCount}>{user.follow_count}</span>
+						<span className={styles.followCountText}>Following</span>
+					</div>
+					<div
+						className={styles.followerCountWrapper}
+						onClick={() => {
+							handleOpen("Followers");
+						}}
+					>
+						<span className={styles.followerCount}>{user.follower_count}</span>
+						<span className={styles.followerCountText}>Followers</span>
+					</div>
+				</div>
+
 				<div className={styles.snsLinkWrapper}>
 					{user.github_link && (
 						<Link href={user.github_link}>
-							<GrGithub
-								size={"1.5em"}
-								style={{ color: "var(--sub-font-color)", marginRight: "10px" }}
-							/>
+							<div className={styles.snsIcon}>
+								<GrGithub size={"1.5em"} />
+							</div>
 						</Link>
 					)}
 					{user.twitter_link && (
 						<Link href={user.twitter_link}>
-							<GrTwitter
-								size={"1.5em"}
-								style={{ color: "var(--sub-font-color)" }}
-							/>
+							<div className={styles.snsIcon}>
+								<GrTwitter size={"1.5em"} />
+							</div>
 						</Link>
 					)}
 				</div>

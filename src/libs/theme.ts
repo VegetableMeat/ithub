@@ -14,7 +14,7 @@ const setProperty = (key: string, value: string): void => {
 
 /*
 
-Ligt Themex
+Ligt Theme
 
 */
 export const setLightTheme = (): void => {
