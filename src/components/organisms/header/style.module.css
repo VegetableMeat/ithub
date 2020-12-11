@@ -1,6 +1,6 @@
 /* Header */
 .header {
-  height: 55px;
+  height: 58px;
 }
 .headerContainer {
   z-index: 1;
@@ -10,7 +10,7 @@
   top: 0px;
   left: 0px;
   width: 100%;
-  max-height: 60px;
+  max-height: 58px;
   height: auto;
   background: var(--header-background-color);
   border-bottom: 1px var(--header-boder-color) solid;
