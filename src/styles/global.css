@@ -1,25 +1,25 @@
 html,
 body {
-	padding: 0;
-	margin: 0px;
-	width: 100%;
-	height: 100%;
-	font-family: "Roboto", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-size-adjust: 100%;
-	-moz-osx-font-smoothing: grayscale;
-	background-color: var(--background-color);
-	color: var(--base-color);
-	font-size: 16px;
-	overflow-x: hidden;
+  padding: 0;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--base-color);
+  font-size: 16px;
+  overflow-x: hidden;
 }
 main {
-	display: inline-flex;
+  display: inline-flex;
 }
 
 #__next,
 .main {
-	height: 100%;
+  height: 100%;
 }
 /* main {
   max-width: 768px;

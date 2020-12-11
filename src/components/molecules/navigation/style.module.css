@@ -6,7 +6,7 @@
 .navigation span {
   font-size: 14px !important;
   font-weight: bold;
-  color: #3e2924 !important;
+  color: var(--base-color) !important;
 }
 .navigation span > span {
   transition: font-size 0s, opacity 0s;
