@@ -7,13 +7,13 @@
 	display: flex;
 	width: 100%;
 	margin: 5px 10px 15px 0px;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	padding-right: 10px;
 }
 
 .followText {
 	height: 100%;
-	font-size: 24px;
+	font-size: 22px;
 	font-weight: 600;
 	margin: 0;
 }

@@ -20,10 +20,13 @@ const StyledTabs = withStyles({
 		display: "flex",
 		justifyContent: "center",
 		backgroundColor: "transparent",
+		height: "4px",
+
 		"& > span": {
 			maxWidth: 50,
 			width: "100%",
 			backgroundColor: "var(--accent-color);",
+			borderRadius: "5px",
 		},
 	},
 })((props: StyledTabsProps) => (
@@ -35,7 +38,7 @@ const AntTab = withStyles(() =>
 		root: {
 			textTransform: "none",
 			minWidth: 72,
-			fontSize: "16px",
+			fontSize: "17px",
 			position: "relative",
 			fontFamily: ["Inter", "sans-serif"].join(","),
 			top: "8px",
@@ -45,7 +48,7 @@ const AntTab = withStyles(() =>
 			},
 			"&$selected": {
 				color: "var(--base-color)",
-				fontWeight: 600,
+				fontWeight: 700,
 			},
 			"&:focus": {
 				color: "var(--base-color)",
@@ -82,18 +85,39 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 
 	useEffect(() => {
 		initialTab === "tags" ? setSelecetTab(1) : setSelecetTab(0);
+		switch (initialTab) {
+			case "tags":
+				setSelecetTab(0);
+				break;
+			case "new":
+				setSelecetTab(1);
+				break;
+			case "saved":
+				setSelecetTab(2);
+				break;
+		}
 	});
 
 	const handleChangeTabs = (e: React.ChangeEvent<{}>, newTab: number) => {
 		setSelecetTab(newTab);
-		newTab === 0 ? handleChange("new") : handleChange("tags");
+		switch (newTab) {
+			case 0:
+				handleChange("tags");
+				break;
+			case 1:
+				handleChange("new");
+				break;
+			case 2:
+				handleChange("saved");
+		}
 	};
 
 	return (
 		<div className={styles.memoTabsContainer}>
 			<StyledTabs value={selecetTab} onChange={handleChangeTabs}>
-				<AntTab label='Latest' />
 				<AntTab label='Tag' />
+				<AntTab label='Latest' />
+				<AntTab label='Saved' />
 			</StyledTabs>
 			<Typography className={classes.padding} />
 		</div>

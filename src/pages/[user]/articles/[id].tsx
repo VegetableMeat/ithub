@@ -6,9 +6,7 @@ import Layout from "@/components/organisms/layout";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { MemoMarkdown } from "@/models/memo-markdown/entity";
-import styles from "./style.module.css";
-
-import markdown from "@/fixtures/memo-md2.json";
+import styles from "@/styles/Articles.module.css";
 
 export interface ServerSideProps {
 	initialMemoData: MemoMarkdown;

@@ -6,7 +6,8 @@
 	padding: 12px;
 	padding-bottom: 20px;
 	background: var(--box-background-color);
-	border: 1px var(--boder-color) solid;
+	border: 1px var(--border-color) solid;
+	box-shadow: var(--box-shadow-color);
 	border-radius: 5px;
 	margin-bottom: 13px;
 }
@@ -37,7 +38,7 @@
 
 .historyWrapper span {
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 }
 
 .birth {

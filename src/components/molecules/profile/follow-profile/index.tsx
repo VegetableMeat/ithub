@@ -73,17 +73,6 @@ const FollowProfile: React.FC<Props> = (props: Props) => {
 			>
 				0 Followers
 			</Button>
-			<p className={styles.line} />
-
-			<Button
-				className={classes.brownButton}
-				variant='outlined'
-				onClick={() => {
-					handleOpen("Saving");
-				}}
-			>
-				0 Saving
-			</Button>
 			<FollowListModal
 				modalOpen={modalOpen}
 				displayText={displayText}

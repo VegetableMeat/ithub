@@ -101,6 +101,7 @@ const MemoList: React.FC<Props> = (props: Props) => {
 															style={{
 																color: "#818181",
 																fontWeight: 500,
+																fontSize: "15px",
 															}}
 														>
 															#

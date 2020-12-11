@@ -17,6 +17,7 @@ body {
 body {
 	overflow-y: scroll;
 	overflow-x: hidden;
+	transition: 0.3s;
 }
 
 main {
@@ -27,6 +28,7 @@ main {
 .main {
 	height: 100%;
 }
+
 /* main {
   max-width: 768px;
   width: auto;

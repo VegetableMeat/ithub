@@ -31,7 +31,7 @@ const useStyles = makeStyles(() => ({
 	avatar: {
 		width: "35px",
 		height: "35px",
-		backgroundColor: "#FFF",
+		backgroundColor: "var(--avatar-background-color);",
 		"&:hover": {
 			cursor: "pointer",
 		},
