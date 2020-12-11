@@ -78,7 +78,7 @@ const Header: React.FC = () => {
           <div className={styles.titleWrapper}>
             <img
               className={styles.title}
-              src={theme === "light" ? "/logo.png" : "/logo_dark.png"}
+              src={theme === "light" ? "/logo.svg" : "/logo_dark.svg"}
               alt="備忘録"
               onClick={() => router.push("/")}
             />
@@ -155,8 +155,8 @@ const Header: React.FC = () => {
                               autoFocusItem={open}
                               id="menu-list-grow"
                               onKeyDown={handleListKeyDown}
-                              // onMouseEnter={handleOpen}
-                              // onMouseLeave={handleClose}
+                              onMouseEnter={handleOpen}
+                              onMouseLeave={handleClose}
                             >
                               <MenuItem
                                 className={classes.menuItem}

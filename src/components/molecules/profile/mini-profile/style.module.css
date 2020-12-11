@@ -6,7 +6,8 @@
 	padding: 12px;
 	padding-bottom: 20px;
 	background: var(--box-background-color);
-	border: 1px var(--boder-color) solid;
+	border: 1px var(--border-color) solid;
+	box-shadow: var(--box-shadow-color);
 	border-radius: 5px;
 	margin-bottom: 13px;
 }
@@ -20,22 +21,24 @@
 
 .titleWrapper {
 	display: flex;
+	align-items: center;
 }
 
 .title {
 	line-height: 28px;
 	margin: 0px;
-	margin-left: 5px;
 	font-size: 16px;
+	font-weight: 600;
 }
 
 .historyWrapper {
 	margin-top: 7px;
-	padding-left: 15px;
+	padding-left: 5px;
 }
 
 .historyWrapper span {
 	font-size: 14px;
+	font-weight: 400;
 }
 
 .birth {

@@ -17,11 +17,6 @@ const Sidebar: React.FC<Props> = (props) => {
 	const { user, tags, noneHeader } = props;
 	return (
 		<aside className={styles.aside}>
-			{noneHeader ? (
-				<MainProfile user={user} />
-			) : (
-				<FollowProfile userID={user.user_id} />
-			)}
 			<MiniProfile />
 			<TagList tags={tags} />
 		</aside>

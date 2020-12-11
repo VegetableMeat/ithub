@@ -1,9 +1,9 @@
 .folderContainer {
 	background: var(--header-background-color);
-	box-shadow: 0 0 0 1px var(--boder-color);
+	border: 1px var(--border-color) solid;
+	box-shadow: var(--box-shadow-color);
 	border-radius: 5px;
 	width: 100%;
-	margin-top: 10px;
 	height: auto;
 	display: flex;
 	flex-wrap: wrap;

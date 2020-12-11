@@ -27,7 +27,7 @@ const App = ({ Component, pageProps }: AppProps) => {
 
 	useEffect(() => {
 		setLoading(false);
-	}, []);
+	});
 
 	useEffect(() => {
 		const jssStyles = document.querySelector("#jss-server-side");

@@ -97,10 +97,15 @@ const MemoList: React.FC<Props> = (props: Props) => {
 											<div className={styles.tagsWrapper}>
 												{memo.tags.map((tag) => (
 													<div className={styles.tag}>
-														<FaHashtag
-															color={"var(--base-color)"}
-															size={"0.8em"}
-														/>
+														<span
+															style={{
+																color: "#818181",
+																fontWeight: 500,
+																fontSize: "15px",
+															}}
+														>
+															#
+														</span>
 														<div className={styles.tagName}>{tag.name}</div>
 													</div>
 												))}

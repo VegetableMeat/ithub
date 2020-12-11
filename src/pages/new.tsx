@@ -14,16 +14,6 @@ const DynamicComponentWithNoSSR = dynamic(
 const Articles = () => {
 	const [markdown, setMarkdown] = useState("");
 
-	React.useEffect(() => {
-		axios
-			.post(`http://localhost:8000`, {
-				mark: markdown,
-			})
-			.then((res) => {
-				console.log(res.data);
-			});
-	}, [markdown]);
-
 	return (
 		<Layout title={""}>
 			<DynamicComponentWithNoSSR onChange={(e) => setMarkdown(e)} />
