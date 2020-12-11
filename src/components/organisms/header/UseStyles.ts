@@ -1,9 +1,9 @@
 import { makeStyles } from "@material-ui/styles";
 
-const Material = () => {
+const UseStyles = () => {
   const useStyles = makeStyles(() => ({
     button: {
-      textTransform: "capitalize",
+      textTransform: "none",
       width: "100%",
       color: "#FFF",
       backgroundColor: "var(--accent-color);",
@@ -59,4 +59,4 @@ const Material = () => {
   return useStyles();
 };
 
-export default Material;
+export default UseStyles;

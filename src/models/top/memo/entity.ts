@@ -1,9 +1,8 @@
 export type Memo = {
   image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
+    dataIcon: string;
+    path: string;
+    viewBox: string;
   };
   memo: {
     title: string;
