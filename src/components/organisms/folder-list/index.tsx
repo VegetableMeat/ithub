@@ -1,5 +1,5 @@
 import React from "react";
-import Error from "next/error";
+import Error from "@/pages/_error";
 import useSWR from "swr";
 import Folder from "@/components/molecules/folder";
 import Loading from "@/components/molecules/loading";

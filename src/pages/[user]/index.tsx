@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import Link from "next/link";
+import Error from "next/error";
 import { useRouter } from "next/router";
 import { useToggleTheme } from "@/context/theme";
-import Error from "next/error";
 import useSWR from "swr";
 import MediaQuery from "react-responsive";
 import Layout from "@/components/organisms/layout";
@@ -19,7 +19,7 @@ import { RiArrowGoBackFill } from "react-icons/ri";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { User } from "@/models/user/entity";
-import styles from "./style.module.css";
+import styles from "@/styles/UserIndex.module.css";
 
 export interface ServerSideProps {
 	initialUserData: User;
@@ -31,9 +31,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 };
 
 const UserIndex = (props: ServerSideProps) => {
+	const initialData = props.initialUserData;
+	const { toggleTheme } = useToggleTheme();
 	const router = useRouter();
 	const { user, tab, tag } = router.query;
-	const initialData = props.initialUserData;
 
 	const [tabQuery, setTabQuery] = React.useState(tab as string);
 
@@ -41,45 +42,42 @@ const UserIndex = (props: ServerSideProps) => {
 		initialData,
 	});
 
-	React.useEffect(() => {
+	useEffect(() => {
 		setTabQuery(tab as string);
 	}, [tab]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		if (!tabQuery) return;
-		if (tabQuery === "new") {
-			router.push({ pathname: `/${data.user_id}`, query: { tab: "new" } });
-			return;
+		switch (tabQuery) {
+			case "saved":
+				router.push({ pathname: `/${data.user_id}`, query: { tab: "saved" } });
+				return;
+			case "new":
+				router.push({ pathname: `/${data.user_id}`, query: { tab: "new" } });
+				return;
+			case "tags":
+				if (tag) {
+					router.push({
+						pathname: `/${data.user_id}`,
+						query: { tab: tabQuery, tag: tag },
+					});
+					return;
+				}
+				router.push({ pathname: `/${data.user_id}`, query: { tab: tabQuery } });
 		}
-		if (tabQuery !== "tags") {
-			router.push({
-				pathname: `/${data.user_id}`,
-			});
-			return;
-		}
-		if (tag) {
-			router.push({
-				pathname: `/${data.user_id}`,
-				query: { tab: tabQuery, tag: tag },
-			});
-			return;
-		}
-		router.push({ pathname: `/${data.user_id}`, query: { tab: tabQuery } });
 	}, [tabQuery]);
 
 	if (error) return <Error statusCode={500} />;
 	if (!data) return <Loading />;
 
-	const { toggleTheme } = useToggleTheme();
-
 	return (
 		<Layout title={data.user_id}>
 			<button onClick={toggleTheme}>Toggle Theme</button>
-			<div className={styles.userContainer}>
+			<div className={styles.content}>
 				<ProfileHeader user={data} />
-				<main className={styles.folderListContainer}>
-					<div className={styles.memoHeadWrapper}>
-						<div className={styles.memoTextWrapper}>
+				<main className={styles.mainContainer}>
+					<div className={styles.mainTabWrapper}>
+						<div className={styles.mainTabLeft}>
 							{tag ? (
 								<AiFillFolderOpen
 									style={{
@@ -98,31 +96,31 @@ const UserIndex = (props: ServerSideProps) => {
 								/>
 							)}
 
-							<h1 className={styles.memoText}>
-								<span>
-									{tabQuery === "tags" ? (
-										tag ? (
-											<>
-												{tag}
-												<Link
-													href={{
-														pathname: "/[user]",
-														query: { user: user, tab: "tags" },
-													}}
-												>
-													<span className={styles.backButton}>
-														back
-														<RiArrowGoBackFill />
-													</span>
-												</Link>
-											</>
-										) : (
-											"タグ"
-										)
+							<h1 className={styles.mainTabLeftText}>
+								{tabQuery === "tags" ? (
+									tag ? (
+										<>
+											{tag}
+											<Link
+												href={{
+													pathname: "/[user]",
+													query: { user: user, tab: "tags" },
+												}}
+											>
+												<span className={styles.backButton}>
+													back
+													<RiArrowGoBackFill />
+												</span>
+											</Link>
+										</>
 									) : (
-										"最新"
-									)}
-								</span>
+										"Tags"
+									)
+								) : tabQuery === "saved" ? (
+									"Saved List"
+								) : (
+									"New"
+								)}
 							</h1>
 						</div>
 						<MemoTabs

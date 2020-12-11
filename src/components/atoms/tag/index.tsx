@@ -16,16 +16,17 @@ const useStyles = makeStyles(() => ({
 		fontSize: "13px",
 		minWidth: "0px",
 		backgroundColor: "var(--tag-background-color)",
-		border: "1px var(--tag-boder-color) solid",
-		height: "21px",
+		border: "1px var(--accent-color) solid",
+		height: "22px",
 		textTransform: "none",
 		"&:hover": {
 			backgroundColor: "var(--tag-background-color)",
 		},
 	},
 	tagName: {
+		fontFamily: ["Inter", "sans-serif"].join(","),
 		marginLeft: "3px",
-		fontWeight: "bold",
+		fontWeight: 500,
 	},
 }));
 

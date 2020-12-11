@@ -4,7 +4,7 @@ import { Button, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import Image from "next/image";
 import Layout from "@/components/organisms/layout";
-import styles from "@/styles/SignUp.module.css";
+import styles from "@/styles/Login.module.css";
 
 const useStyles = makeStyles(() => ({
 	googleButton: {

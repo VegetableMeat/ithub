@@ -5,6 +5,7 @@ import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import Follow from "@/components/molecules/follow";
 import { GoChevronDown } from "react-icons/go";
+import { RiCloseLine } from "react-icons/ri";
 import styles from "./style.module.css";
 
 import { User } from "@/models/user/entity";
@@ -35,9 +36,16 @@ const useStyles = makeStyles((theme: Theme) =>
 			justifyContent: "center",
 			flexDirection: "column",
 		},
+		followModalHeader: {
+			display: "flex",
+		},
+		closeButton: {
+			display: "flex",
+			paddingRight: "5px",
+			paddingTop: "5px",
+		},
 		paper: {
 			backgroundColor: "var(--box-background-color)",
-
 			outline: "none",
 			borderRadius: "5px",
 			padding: "0 10px 10px 10px",
@@ -85,16 +93,27 @@ const FollowListModal: React.FC<Props> = (props: Props) => {
 				<Fade in={modalOpen}>
 					<>
 						<div className={classes.paperHeader}>
-							<div className={styles.followTextWrapper}>
-								<GoChevronDown
-									style={{
-										fontSize: "28px",
-										color: "var(--base-color)",
-										marginRight: "5px",
-										marginTop: "3px",
-									}}
-								/>
-								<h1 className={styles.followText}>{displayText}</h1>
+							<div className={classes.followModalHeader}>
+								<div className={styles.followTextWrapper}>
+									<GoChevronDown
+										style={{
+											fontSize: "28px",
+											color: "var(--base-color)",
+											marginRight: "5px",
+											marginTop: "3px",
+										}}
+									/>
+									<h1 className={styles.followText}>{displayText}</h1>
+								</div>
+								<div className={classes.closeButton}>
+									<RiCloseLine
+										style={{
+											fontSize: "32px",
+											color: "var(--base-color)",
+										}}
+										onClick={handleClose}
+									/>
+								</div>
 							</div>
 						</div>
 						<div className={classes.paper}>
