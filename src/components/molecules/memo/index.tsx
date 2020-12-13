@@ -14,14 +14,13 @@ const Memo: React.FC<Props> = (props) => {
   const { image, memo } = memos;
 
   return (
-    <div className={styles.memoCard}>
-      <div className={styles.langImageWrapper}>
-        {/* <Avatar className={classes.langImage} src={image.src} /> */}
+    <article className={styles.memoItemContainer}>
+      <div className={styles.langImage}>
         <Svg image={image} />
       </div>
-      <div className={styles.memo}>
+      <div className={styles.memoItemContent}>
         <b>
-          <span className={styles.title}>{memo.title}</span>
+          <a className={styles.link}>{memo.title}</a>
         </b>
         <div className={styles.writer}>
           <Avatar className={styles.writerIcon}>{memo.icon}</Avatar>
@@ -36,7 +35,7 @@ const Memo: React.FC<Props> = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

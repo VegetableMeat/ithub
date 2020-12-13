@@ -38,6 +38,9 @@ export const setLightTheme = (): void => {
   setProperty("--button-hover-color", "#19d3dac0");
   setProperty("--navigation-focus", "#19d3da");
   setProperty("--navigation-unfocus", "#808080");
+  setProperty("--textfield-border-color", "rgb(25, 211, 218, 0.5)");
+  setProperty("--textfield-border-hover-color", "#19d3da");
+  setProperty("--textfield-border-focus-color", "#19d3da");
 };
 
 /*
@@ -66,4 +69,7 @@ export const setDarkTheme = (): void => {
   setProperty("--button-hover-color", "#00ff00c0");
   setProperty("--navigation-focus", "#00ff00");
   setProperty("--navigation-unfocus", "#f7f7f7");
+  setProperty("--textfield-border-color", "rgb(0, 255, 0, 0.5)");
+  setProperty("--textfield-border-hover-color", "#00ff00");
+  setProperty("--textfield-border-focus-color", "#00ff00");
 };

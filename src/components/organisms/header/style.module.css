@@ -37,7 +37,7 @@
 .headerContents {
   display: flex;
   justify-content: space-between;
-  width: 768px;
+  width: 960px;
   height: inherit;
 }
 .title {

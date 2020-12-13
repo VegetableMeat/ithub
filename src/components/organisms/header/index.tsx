@@ -26,12 +26,26 @@ const Header: React.FC<Props> = (props) => {
   const { noHeaderContents } = props;
   const CssTextField = withStyles({
     root: {
+      borderBox: "border-box",
       width: "inherit",
       height: "36px",
       "& input": {
         padding: "0 12px",
         height: "inherit",
         fontSize: "12px",
+        color: "var(--accent-color);",
+        border: "solid 1px var(--textfield-border-color);",
+        borderRadius: "5px",
+        "&:hover": {
+          border: "solid 1px var(--textfield-border-hover-color);",
+        },
+        "&:focus": {
+          border: "solid 2px var(--textfield-border-focus-color);",
+          padding: "0 11px",
+        },
+      },
+      "& input::placeholder": {
+        color: "var(--accent-color);",
       },
       "& label.Mui-focused": {
         color: "var(--accent-color);",
@@ -44,6 +58,9 @@ const Header: React.FC<Props> = (props) => {
         "&.Mui-focused fieldset": {
           borderColor: "var(--accent-color);",
         },
+      },
+      "& [class^='PrivateNotchedOutline-root']": {
+        border: "0",
       },
     },
   })(TextField);
@@ -120,6 +137,7 @@ const Header: React.FC<Props> = (props) => {
                     className={styles.searchField}
                     placeholder={"Search"}
                     variant="outlined"
+                    inputProps={{ spellCheck: "false" }}
                   />
                 </div>
               </MediaQuery>

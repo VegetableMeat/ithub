@@ -2,18 +2,18 @@ import React from "react";
 import { makeStyles } from "@material-ui/styles";
 
 type Props = {
+  className?: string;
   image: object;
 };
 
 const Svg: React.FC<Props> = (props) => {
-  const { image } = props;
+  const { className, image } = props;
   const useStyles = makeStyles(() => ({
     langImage: {
       width: "50px",
     },
   }));
   const classes = useStyles();
-
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ const Svg: React.FC<Props> = (props) => {
       focusable="false"
       data-prefix="fab"
       data-icon={image.dataIcon}
-      className={classes.langImage}
+      className={className === void 0 ? classes.langImage : className}
       role="img"
       viewBox={`0 0 ${image.viewBox}`}
     >

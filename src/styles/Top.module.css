@@ -2,7 +2,6 @@
 .topContainer {
   display: flex;
   justify-content: center;
-  height: calc(100% - 58px);
   padding: 20px;
 }
 .mainContainer {
@@ -11,10 +10,22 @@
   border-radius: 5px;
   background-color: transparent;
 }
+.memoList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
 @media screen and (max-width: calc(960px + 20px * 2)) {
   .mainContainer {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .memoList {
+    justify-content: center;
+    flex-direction: column;
   }
 }
 

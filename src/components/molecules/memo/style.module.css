@@ -1,15 +1,16 @@
-.memoCard {
-  max-width: 100%;
+.memoItemContainer {
+  max-width: calc(50% - 6px);
+  min-width: calc(50% - 6px);
   display: flex;
   padding: 15px 15px 15px 7.5px;
   border: solid 1px var(--border-color);
   box-shadow: var(--box-shadow-color);
-  margin-bottom: 6px;
+  margin: 0 3px 6px 3px;
   font-size: 17px;
   background: var(--box-background-color);
   border-radius: 5px;
 }
-.langImageWrapper {
+.langImage {
   min-width: 100px;
   min-height: 80px;
   display: grid;
@@ -18,24 +19,22 @@
   border-radius: 5px;
 }
 
-.memo {
+.memoItemContent {
   width: calc(100% - 100px);
   min-height: 70px;
   padding-left: 7.5px;
 }
-.title {
+.link {
   display: block;
   width: 100%;
   margin-bottom: 10px;
 }
 .writer {
   display: grid;
-  /* place-items: center; */
   grid-template-rows: 20px 20px;
   grid-template-columns: auto auto auto 1fr;
 }
 .writer span {
-  /* font-size: 1rem; */
   margin-left: 5px;
 }
 .writerIcon {
@@ -71,20 +70,22 @@
 .favoriteNum {
   width: 1rem;
 }
-@media screen and (max-width: 798px) {
-  .memoCard {
-    width: 100%;
+
+@media screen and (max-width: 900px) {
+  .memoItemContainer {
+    max-width: calc(100% - 6px);
+    width: calc(100% - 6px);
   }
-  .memo {
-    width: calc(768px - 70px - 15px * 2);
+  .memoItemContent {
+    width: calc(870px - 70px - 15px * 2);
   }
 }
 
 @media screen and (max-width: 600px) {
-  .langImageWrapper {
+  .langImage {
     min-width: 70px;
   }
-  .title {
+  .link {
     font-size: 14px;
   }
   .writerName {
