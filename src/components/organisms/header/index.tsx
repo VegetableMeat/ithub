@@ -194,7 +194,7 @@ const Header: React.FC<Props> = (props) => {
                                   onClick={handleClose}
                                 >
                                   <EventNote className={classes.menuIcon} />
-                                  Your latest note
+                                  Your note
                                 </MenuItem>
                                 <MenuItem
                                   className={classes.menuItem}
