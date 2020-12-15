@@ -110,16 +110,6 @@ export const useStyles = () => {
         color: "var(--button-hover-color);",
       },
     },
-
-    user: {
-      display: "block",
-    },
-    name: {
-      fontWeight: "bold",
-    },
-    id: {
-      fontSize: "12px",
-    },
   }));
 
   return useStyles();

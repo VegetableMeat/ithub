@@ -179,11 +179,11 @@ const Header: React.FC<Props> = (props) => {
                                   className={classes.menuItem}
                                   onClick={handleClose}
                                 >
-                                  <div className={classes.user}>
-                                    <div className={classes.name}>
+                                  <div style={{ display: "block" }}>
+                                    <div style={{ fontWeight: "bold" }}>
                                       {"VegetableMeat"}
                                     </div>
-                                    <div className={classes.id}>
+                                    <div style={{ fontSize: "12px" }}>
                                       @{"vegetable_meat"}
                                     </div>
                                   </div>
