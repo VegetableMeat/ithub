@@ -14,7 +14,6 @@ import {
 } from "@material-ui/core";
 import {
   Search,
-  AccountCircle,
   ExitToApp,
   EventNote,
   SaveAlt,
