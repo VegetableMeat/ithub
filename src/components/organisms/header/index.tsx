@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import {
   Button,
-  TextField,
   Avatar,
   ClickAwayListener,
   Grow,
@@ -10,12 +9,20 @@ import {
   Popper,
   MenuItem,
   MenuList,
+  InputBase,
+  IconButton,
 } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
-import { withStyles } from "@material-ui/styles";
+import {
+  Search,
+  AccountCircle,
+  ExitToApp,
+  EventNote,
+  SaveAlt,
+  Settings,
+} from "@material-ui/icons";
 import MediaQuery from "react-responsive";
 import { useToggleTheme } from "@/context/theme";
-import UseStyles from "./UseStyles";
+import { useStyles } from "./Material";
 import styles from "./style.module.css";
 
 type Props = {
@@ -24,49 +31,9 @@ type Props = {
 
 const Header: React.FC<Props> = (props) => {
   const { noHeaderContents } = props;
-  const CssTextField = withStyles({
-    root: {
-      borderBox: "border-box",
-      width: "inherit",
-      height: "36px",
-      "& input": {
-        padding: "0 12px",
-        height: "inherit",
-        fontSize: "12px",
-        color: "var(--accent-color);",
-        border: "solid 1px var(--textfield-border-color);",
-        borderRadius: "5px",
-        "&:hover": {
-          border: "solid 1px var(--textfield-border-hover-color);",
-        },
-        "&:focus": {
-          border: "solid 2px var(--textfield-border-focus-color);",
-          padding: "0 11px",
-        },
-      },
-      "& input::placeholder": {
-        color: "var(--accent-color);",
-      },
-      "& label.Mui-focused": {
-        color: "var(--accent-color);",
-      },
-      "& .MuiInput-underline:after": {
-        borderBottomColor: "var(--accent-color);",
-      },
-      "& .MuiOutlinedInput-root": {
-        height: "inherit",
-        "&.Mui-focused fieldset": {
-          borderColor: "var(--accent-color);",
-        },
-      },
-      "& [class^='PrivateNotchedOutline-root']": {
-        border: "0",
-      },
-    },
-  })(TextField);
 
   const router = useRouter();
-  const classes = UseStyles();
+  const classes = useStyles();
   const isLogin = true;
 
   const [open, setOpen] = React.useState(false);
@@ -133,12 +100,23 @@ const Header: React.FC<Props> = (props) => {
             <>
               <MediaQuery query="(min-width: 601px)">
                 <div className={styles.searchFieldWrapper}>
-                  <CssTextField
-                    className={styles.searchField}
-                    placeholder={"Search"}
+                  <Paper
+                    component="form"
                     variant="outlined"
-                    inputProps={{ spellCheck: "false" }}
-                  />
+                    className={classes.searchPaper}
+                  >
+                    <IconButton
+                      className={classes.iconButton}
+                      aria-label="menu"
+                    >
+                      <Search className={classes.searchIcon} />
+                    </IconButton>
+                    <InputBase
+                      className={classes.input}
+                      placeholder="Search"
+                      inputProps={{ "aria-label": "search" }}
+                    />
+                  </Paper>
                 </div>
               </MediaQuery>
               <div className={styles.contents}>
@@ -150,7 +128,7 @@ const Header: React.FC<Props> = (props) => {
                       </div>
                     </MediaQuery>
                     <div className={styles.writeButtonWrapper}>
-                      <Button className={classes.button}>Write a memo</Button>
+                      <Button className={classes.button}>Write a note</Button>
                     </div>
                     <button
                       className={classes.avatarButton}
@@ -185,7 +163,10 @@ const Header: React.FC<Props> = (props) => {
                                 : "center bottom",
                           }}
                         >
-                          <Paper>
+                          <Paper
+                            variant="outlined"
+                            className={classes.menuPaper}
+                          >
                             <ClickAwayListener onClickAway={handleClose}>
                               <MenuList
                                 autoFocusItem={open}
@@ -198,19 +179,44 @@ const Header: React.FC<Props> = (props) => {
                                   className={classes.menuItem}
                                   onClick={handleClose}
                                 >
-                                  Profile
+                                  <div className={classes.user}>
+                                    <div className={classes.name}>
+                                      {"VegetableMeat"}
+                                    </div>
+                                    <div className={classes.id}>
+                                      @{"vegetable_meat"}
+                                    </div>
+                                  </div>
+                                </MenuItem>
+                                <div className={classes.menuBorder} />
+                                <MenuItem
+                                  className={classes.menuItem}
+                                  onClick={handleClose}
+                                >
+                                  <EventNote className={classes.menuIcon} />
+                                  Your latest note
                                 </MenuItem>
                                 <MenuItem
                                   className={classes.menuItem}
                                   onClick={handleClose}
                                 >
-                                  My account
+                                  <SaveAlt className={classes.menuIcon} />
+                                  Your saved note
+                                </MenuItem>
+                                <div className={classes.menuBorder} />
+                                <MenuItem
+                                  className={classes.menuItem}
+                                  onClick={handleClose}
+                                >
+                                  <Settings className={classes.menuIcon} />
+                                  Settings
                                 </MenuItem>
                                 <MenuItem
                                   className={classes.menuItem}
                                   onClick={handleClose}
                                 >
-                                  Logout
+                                  <ExitToApp className={classes.menuIcon} />
+                                  Signout
                                 </MenuItem>
                               </MenuList>
                             </ClickAwayListener>
