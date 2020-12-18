@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Avatar } from "@material-ui/core";
 import { FavoriteBorder } from "@material-ui/icons";
 import { Memo as Memo_entity } from "@/models/top/memo/entity";
@@ -19,18 +20,26 @@ const Memo: React.FC<Props> = (props) => {
         <Svg image={image} />
       </div>
       <div className={styles.memoItemContent}>
-        <b>
-          <a className={styles.link}>{memo.title}</a>
-        </b>
+        <Link href={{ pathname: "/" }}>
+          <div className={styles.title}>
+            <b>{memo.title}</b>
+          </div>
+        </Link>
         <div className={styles.writer}>
-          <Avatar className={styles.writerIcon}>{memo.icon}</Avatar>
-          <span className={styles.writerName}>
-            {memo.user_name}
-            <div className={styles.writerId}>@{memo.user_id}</div>
-          </span>
+          <Link href={{ pathname: `/${memo.user_id}` }}>
+            <Avatar className={styles.writerIcon}>{memo.icon}</Avatar>
+          </Link>
+          <Link href={{ pathname: `/${memo.user_id}` }}>
+            <span className={styles.writerName}>
+              <div style={{ display: "flex" }}>
+                {memo.user_name}
+                <div className={styles.writerId}>@{memo.user_id}</div>
+              </div>
+            </span>
+          </Link>
           <span className={styles.date}>{memo.update_time}</span>
           <div className={styles.favorite}>
-            <FavoriteBorder />
+            <FavoriteBorder style={{ width: "18px", height: "18px" }} />
             <div className={styles.favoriteNum}>{memo.favorite}</div>
           </div>
         </div>

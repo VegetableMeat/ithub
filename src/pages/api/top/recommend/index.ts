@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import memoData from "@/fixtures/top/home.json";
+import memoData from "@/fixtures/top/recommend.json";
 // Fake users data
 export default (req: NextApiRequest, res: NextApiResponse<typeof memoData>) => {
   // Get data from your database

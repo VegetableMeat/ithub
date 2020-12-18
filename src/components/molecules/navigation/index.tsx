@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
 import { Home, FeaturedPlayList, MenuBook } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
-import styles from "./style.module.css";
+
+type Props = {
+  query: string;
+};
 
 const useStyles = makeStyles({
   bottomNavigation: {
     backgroundColor: "transparent",
     marginBottom: "20px",
+    height: "60px",
   },
   bottomNavigationAction: {
     fontWeight: "bold",
@@ -18,18 +23,25 @@ const useStyles = makeStyles({
   },
 });
 
-const Navigation: React.FC = () => {
+const Navigation: React.FC<Props> = (props) => {
+  const router = useRouter();
+  let { query } = props;
+  if (query === void 0 || query === "") query = "home";
   const classes = useStyles();
-  const [value, setValue] = React.useState("home");
+  const [naviQuery, setNaviQuery] = React.useState<string>(query);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
-    setValue(newValue);
+    setNaviQuery(newValue);
+    if (newValue === "home") {
+      router.push({ pathname: "/", query: { navi: "" } }, { pathname: "/" });
+    } else {
+      router.push({ pathname: "/", query: { navi: newValue } });
+    }
   };
-
   return (
     <BottomNavigation
       className={classes.bottomNavigation}
-      value={value}
+      value={naviQuery}
       onChange={handleChange}
     >
       <BottomNavigationAction

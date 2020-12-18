@@ -73,6 +73,12 @@
   height: 35px;
 }
 
+.userMenu {
+  position: relative;
+  width: 35px;
+  height: 35px;
+}
+
 @media screen and (max-width: 600px) {
   .titleWrapper {
     margin-right: 0;

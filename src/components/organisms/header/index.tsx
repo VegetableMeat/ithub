@@ -16,8 +16,8 @@ import {
   Search,
   ExitToApp,
   EventNote,
-  SaveAlt,
   Settings,
+  Favorite,
 } from "@material-ui/icons";
 import MediaQuery from "react-responsive";
 import { useToggleTheme } from "@/context/theme";
@@ -56,13 +56,6 @@ const Header: React.FC<Props> = (props) => {
 
     setOpen(false);
   };
-
-  function handleListKeyDown(event: React.KeyboardEvent) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
 
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -127,102 +120,103 @@ const Header: React.FC<Props> = (props) => {
                       </div>
                     </MediaQuery>
                     <div className={styles.writeButtonWrapper}>
-                      <Button className={classes.button}>Write a note</Button>
+                      <Button className={classes.button}>Write a memo</Button>
                     </div>
-                    <button
-                      className={classes.avatarButton}
-                      ref={anchorRef}
-                      aria-controls={open ? "menu-list-grow" : undefined}
-                      aria-haspopup="true"
-                      onClick={handleToggle}
-                      onMouseEnter={handleOpen}
-                    >
-                      <div className={styles.avatarWrapper}>
-                        <Avatar
-                          className={classes.avatar}
-                          src="https://avatars0.githubusercontent.com/u/41997570?s=460&u=d7609d3029ff5a356c7bb573c94a8f4664488e40&v=4"
-                        />
-                      </div>
-                    </button>
-                    <Popper
-                      className={classes.popper}
-                      open={open}
-                      anchorEl={anchorRef.current}
-                      role={undefined}
-                      transition
-                      disablePortal
-                    >
-                      {({ TransitionProps, placement }) => (
-                        <Grow
-                          {...TransitionProps}
-                          style={{
-                            transformOrigin:
-                              placement === "bottom"
-                                ? "center top"
-                                : "center bottom",
-                          }}
-                        >
-                          <Paper
-                            variant="outlined"
-                            className={classes.menuPaper}
+                    <div className={styles.userMenu}>
+                      <button
+                        className={classes.avatarButton}
+                        ref={anchorRef}
+                        aria-controls={open ? "menu-list-grow" : undefined}
+                        aria-haspopup="true"
+                        onClick={handleToggle}
+                        onMouseEnter={handleOpen}
+                      >
+                        <div className={styles.avatarWrapper}>
+                          <Avatar
+                            className={classes.avatar}
+                            src="https://avatars0.githubusercontent.com/u/41997570?s=460&u=d7609d3029ff5a356c7bb573c94a8f4664488e40&v=4"
+                          />
+                        </div>
+                      </button>
+                      <Popper
+                        className={classes.popper}
+                        open={open}
+                        anchorEl={anchorRef.current}
+                        role={undefined}
+                        transition
+                        disablePortal
+                      >
+                        {({ TransitionProps, placement }) => (
+                          <Grow
+                            {...TransitionProps}
+                            style={{
+                              transformOrigin:
+                                placement === "bottom"
+                                  ? "center top"
+                                  : "center bottom",
+                            }}
                           >
-                            <ClickAwayListener onClickAway={handleClose}>
-                              <MenuList
-                                autoFocusItem={open}
-                                id="menu-list-grow"
-                                onKeyDown={handleListKeyDown}
-                                onMouseEnter={handleOpen}
-                                onMouseLeave={handleClose}
-                              >
-                                <MenuItem
-                                  className={classes.menuItem}
-                                  onClick={handleClose}
+                            <Paper
+                              variant="outlined"
+                              className={classes.menuPaper}
+                            >
+                              <ClickAwayListener onClickAway={handleClose}>
+                                <MenuList
+                                  autoFocusItem={open}
+                                  id="menu-list-grow"
+                                  onMouseEnter={handleOpen}
+                                  onMouseLeave={handleClose}
                                 >
-                                  <div style={{ display: "block" }}>
-                                    <div style={{ fontWeight: "bold" }}>
-                                      {"VegetableMeat"}
+                                  <MenuItem
+                                    className={classes.menuItem}
+                                    onClick={handleClose}
+                                  >
+                                    <div style={{ display: "block" }}>
+                                      <div style={{ fontWeight: "bold" }}>
+                                        {"VegetableMeat"}
+                                      </div>
+                                      <div style={{ fontSize: "12px" }}>
+                                        @{"vegetable_meat"}
+                                      </div>
                                     </div>
-                                    <div style={{ fontSize: "12px" }}>
-                                      @{"vegetable_meat"}
-                                    </div>
-                                  </div>
-                                </MenuItem>
-                                <div className={classes.menuBorder} />
-                                <MenuItem
-                                  className={classes.menuItem}
-                                  onClick={handleClose}
-                                >
-                                  <EventNote className={classes.menuIcon} />
-                                  Your note
-                                </MenuItem>
-                                <MenuItem
-                                  className={classes.menuItem}
-                                  onClick={handleClose}
-                                >
-                                  <SaveAlt className={classes.menuIcon} />
-                                  Your saved note
-                                </MenuItem>
-                                <div className={classes.menuBorder} />
-                                <MenuItem
-                                  className={classes.menuItem}
-                                  onClick={handleClose}
-                                >
-                                  <Settings className={classes.menuIcon} />
-                                  Settings
-                                </MenuItem>
-                                <MenuItem
-                                  className={classes.menuItem}
-                                  onClick={handleClose}
-                                >
-                                  <ExitToApp className={classes.menuIcon} />
-                                  Signout
-                                </MenuItem>
-                              </MenuList>
-                            </ClickAwayListener>
-                          </Paper>
-                        </Grow>
-                      )}
-                    </Popper>
+                                  </MenuItem>
+                                  <div className={classes.menuBorder} />
+                                  <MenuItem
+                                    className={classes.menuItem}
+                                    onClick={handleClose}
+                                  >
+                                    <EventNote className={classes.menuIcon} />
+                                    Your memo
+                                  </MenuItem>
+                                  <MenuItem
+                                    className={classes.menuItem}
+                                    onClick={handleClose}
+                                  >
+                                    <Favorite className={classes.menuIcon} />
+                                    Your saved memo
+                                  </MenuItem>
+                                  <div className={classes.menuBorder} />
+                                  <MenuItem
+                                    className={classes.menuItem}
+                                    onClick={handleClose}
+                                  >
+                                    <Settings className={classes.menuIcon} />
+                                    Settings
+                                  </MenuItem>
+                                  <MenuItem
+                                    className={classes.menuItem}
+                                    onClick={handleClose}
+                                  >
+                                    <ExitToApp className={classes.menuIcon} />
+                                    Signout
+                                  </MenuItem>
+                                </MenuList>
+                              </ClickAwayListener>
+                            </Paper>
+                          </Grow>
+                        )}
+                      </Popper>
+                    </div>
                   </>
                 ) : (
                   <div className={styles.signUpButtonWrapper}>

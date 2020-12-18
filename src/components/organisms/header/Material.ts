@@ -41,10 +41,11 @@ export const useStyles = () => {
       borderRadius: "50%",
     },
     popper: {
-      marginTop: "8px",
-      marginRight: "10px",
+      paddingTop: "8px",
       width: "auto",
-      transform: "none",
+      transform: "none !important",
+      top: "30px !important",
+      left: "-120px !important",
     },
     menuItem: {
       transition: "none",

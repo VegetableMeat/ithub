@@ -47,6 +47,7 @@ export const setLightTheme = (): void => {
   setProperty("--header-button-text-color", "#fff");
   setProperty("--header-menu-text-color", "#808080");
   setProperty("--header-menu-hover-background-color", "#19d3dac0");
+  setProperty("--title-hover-color", "#373a40a0");
 };
 
 /*
@@ -84,4 +85,5 @@ export const setDarkTheme = (): void => {
   setProperty("--header-button-text-color", "#000");
   setProperty("--header-menu-text-color", "#c7c7c7");
   setProperty("--header-menu-hover-background-color", "#00ff00c0");
+  setProperty("--title-hover-color", "#00ff00a0");
 };
