@@ -21,11 +21,11 @@ const Articles = (props: ServerSideProps) => {
 	const { initialMemoData } = props;
 	return (
 		<Layout>
-			<div className={styles.rootContainer}>
+			<div className={styles.content}>
 				<main className={styles.mainContainer}>
 					<ReactMarkdown
 						plugins={[gfm]}
-						className={styles.markdown}
+						className={"markdown"}
 						children={initialMemoData.markdown}
 					/>
 				</main>

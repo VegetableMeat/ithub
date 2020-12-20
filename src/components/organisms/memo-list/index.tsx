@@ -66,13 +66,13 @@ const MemoList: React.FC<Props> = (props: Props) => {
 	if (loading || !memos) return <Loading />;
 
 	return (
-		<div className={styles.memoContainer}>
+		<article className={styles.memoContainer}>
 			{memos.length ? (
 				<>
 					{memos.map((memo) => (
 						<>
 							<Link href={`/${userID}/articles/${memo.id}`}>
-								<div className={styles.memoWrapper}>
+								<section className={styles.memoWrapper}>
 									<div className={styles.profile}>
 										<Link href={`/${memo.user.user_id}`}>
 											<div className={styles.avatar}>
@@ -126,7 +126,7 @@ const MemoList: React.FC<Props> = (props: Props) => {
 											</div>
 										</div>
 									</div>
-								</div>
+								</section>
 							</Link>
 						</>
 					))}
@@ -134,7 +134,7 @@ const MemoList: React.FC<Props> = (props: Props) => {
 			) : (
 				<div className={styles.noneMemoText}></div>
 			)}
-		</div>
+		</article>
 	);
 };
 

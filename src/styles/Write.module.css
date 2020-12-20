@@ -1,0 +1,27 @@
+.content {
+	display: grid;
+	grid-auto-columns: minmax(300px, 750px) minmax(200px, 400px);
+	grid-auto-rows: auto 1fr;
+	grid-template-areas:
+		" form   sidebar"
+		" editor sidebar ";
+	justify-content: center;
+	height: 100%;
+	gap: 10px;
+	padding: 88px 20px 10em 20px;
+}
+
+.buttonWrapper {
+	grid-area: button;
+}
+
+.buttonSticky {
+	position: sticky;
+	bottom: 0;
+}
+
+.inputFileBtnHide {
+	opacity: 0;
+	appearance: none;
+	position: absolute;
+}

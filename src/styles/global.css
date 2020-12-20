@@ -12,6 +12,7 @@ body {
 	background-color: var(--background-color);
 	color: var(--base-color);
 	font-size: 16px;
+	caret-color: var(--caret-color) !important;
 }
 
 body {

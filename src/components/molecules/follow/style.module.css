@@ -9,18 +9,6 @@
 	padding: 5px 10px 5px 10px;
 }
 
-@media (max-width: 770px) {
-	.follow {
-		grid-auto-columns: 60px 1fr;
-		grid-auto-rows: minmax(1px, auto) minmax(1px, auto) minmax(1px, auto) 45px;
-		grid-template-areas:
-			"avatar name"
-			"avatar id	"
-			"text   text"
-			"button button";
-	}
-}
-
 .avatar {
 	grid-area: avatar;
 	align-self: center;
@@ -44,13 +32,6 @@
 	text-decoration: underline;
 }
 
-@media (max-width: 770px) {
-	.userName {
-		margin: 5px 0 0 0;
-		font-size: 16px;
-	}
-}
-
 .userID {
 	grid-area: id;
 	position: relative;
@@ -70,13 +51,6 @@
 	margin: 0px;
 }
 
-@media (max-width: 770px) {
-	.userText {
-		margin: 5px 0 0 0;
-		font-size: 15px;
-	}
-}
-
 .buttonWrapper {
 	grid-area: button;
 	display: flex;
@@ -87,18 +61,4 @@
 .buttonWrapper button {
 	width: 100px;
 	max-height: 30px;
-}
-
-@media (max-width: 770px) {
-	.buttonWrapper {
-		justify-content: center;
-	}
-}
-
-@media (max-width: 770px) {
-	.buttonWrapper button {
-		max-width: 400px;
-		width: 90%;
-		height: 70%;
-	}
 }

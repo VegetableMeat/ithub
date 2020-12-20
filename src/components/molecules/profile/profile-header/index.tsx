@@ -3,15 +3,13 @@ import Link from "next/link";
 import MediaQuery from "react-responsive";
 import { makeStyles } from "@material-ui/styles";
 import Avatar from "react-avatar";
+import { GrTwitter, GrGithub } from "react-icons/gr";
 import { GrUserSettings } from "react-icons/gr";
-
 import Button from "@material-ui/core/Button";
+import FollowListModal from "@/components/molecules/modal/follow-list-modal";
 import type { User } from "@/models/user/entity";
 import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
-
-import FollowListModal from "@/components/molecules/modal/follow-list-modal";
-import { GrTwitter, GrGithub } from "react-icons/gr";
 
 const useStyles = makeStyles(() => ({
 	avatar: {

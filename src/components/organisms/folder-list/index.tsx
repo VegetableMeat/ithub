@@ -21,7 +21,7 @@ const FolderContainer: React.FC<Props> = (props: Props) => {
 	if (!data) return <Loading />;
 
 	return (
-		<div className={styles.folderContainer}>
+		<article className={styles.folderContainer}>
 			{data.length ? (
 				<div className={styles.folderWrapper}>
 					{data.map((folder) => (
@@ -37,7 +37,7 @@ const FolderContainer: React.FC<Props> = (props: Props) => {
 					<p>投稿はありません</p>
 				</div>
 			)}
-		</div>
+		</article>
 	);
 };
 

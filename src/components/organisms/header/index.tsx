@@ -1,72 +1,67 @@
 import { useRouter } from "next/router";
-import React, { useState, useEffect } from "react";
-import { Button, TextField, Avatar } from "@material-ui/core";
+import Link from "next/link";
+import React from "react";
+import {
+	Button,
+	TextField,
+	Avatar,
+	ClickAwayListener,
+	Grow,
+	Paper,
+	Popper,
+	MenuItem,
+	MenuList,
+} from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
-import { makeStyles } from "@material-ui/styles";
+import Material from "./material";
 import { Search } from "@material-ui/icons";
+import MediaQuery from "react-responsive";
 import { useToggleTheme } from "@/context/theme";
-import Image from "next/image";
+import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
-
-const useStyles = makeStyles(() => ({
-	button: {
-		textTransform: "capitalize",
-		width: "100%",
-		color: "#FFF",
-		backgroundColor: "var(--accent-color);",
-		"&:hover": {
-			backgroundColor: "var(--accent-color);",
-		},
-	},
-	searchButton: {
-		width: "30px",
-		height: "30px",
-		"&:hover": {
-			cursor: "pointer",
-			color: "var(--accent-color);",
-			transition:
-				"color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-		},
-	},
-	avatar: {
-		width: "35px",
-		height: "35px",
-		backgroundColor: "var(--avatar-background-color);",
-		"&:hover": {
-			cursor: "pointer",
-		},
-	},
-}));
-
-const useWindowDimensions = () => {
-	const getWindowDimensions = () => {
-		if (process.browser) {
-			const { innerWidth: width, innerHeight: height } = window;
-			return {
-				width,
-				height,
-			};
-		}
-	};
-
-	const [windowDimensions, setWindowDimensions] = useState(
-		getWindowDimensions()
-	);
-	useEffect(() => {
-		const onResize = () => {
-			setWindowDimensions(getWindowDimensions());
-		};
-		window.addEventListener("resize", onResize);
-		return () => window.removeEventListener("resize", onResize);
-	}, []);
-	return windowDimensions;
-};
 
 const Header: React.FC = () => {
 	const router = useRouter();
-	const classes = useStyles();
-	const window = useWindowDimensions();
+	const classes = Material();
 	const isLogin = true;
+
+	const [open, setOpen] = React.useState(false);
+	const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+	const handleToggle = () => {
+		setOpen((prevOpen) => !prevOpen);
+	};
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+
+	const handleClose = (event: React.MouseEvent<EventTarget>) => {
+		if (
+			anchorRef.current &&
+			anchorRef.current.contains(event.target as HTMLElement)
+		) {
+			return;
+		}
+
+		setOpen(false);
+	};
+
+	function handleListKeyDown(event: React.KeyboardEvent) {
+		if (event.key === "Tab") {
+			event.preventDefault();
+			setOpen(false);
+		}
+	}
+
+	const prevOpen = React.useRef(open);
+	React.useEffect(() => {
+		if (prevOpen.current === true && open === false) {
+			anchorRef.current!.focus();
+		}
+
+		prevOpen.current = open;
+	}, [open]);
 
 	// テストデータ
 	const options = [
@@ -93,12 +88,7 @@ const Header: React.FC = () => {
 					{/* ログイン画面＆新規登録画面でタイトル以外のコンポーネントを隠す */}
 					{pathname === "login" || pathname === "signUp" ? null : (
 						<div className={styles.contents}>
-							{/* 画面サイズ600px以下で検索欄を隠す */}
-							{window && window.width < 600 ? (
-								<div className={styles.searchButtonWrapper}>
-									<Search className={classes.searchButton} />
-								</div>
-							) : (
+							<MediaQuery query='(min-width: 601px)'>
 								<div className={styles.searchFieldWrapper}>
 									<Autocomplete
 										id={"search"}
@@ -117,18 +107,89 @@ const Header: React.FC = () => {
 										)}
 									/>
 								</div>
-							)}
+							</MediaQuery>
+							<MediaQuery query='(max-width: 600px)'>
+								<div className={styles.searchButtonWrapper}>
+									<Search className={classes.searchButton} />
+								</div>
+							</MediaQuery>
 							{isLogin ? (
 								<>
-									<div className={styles.writeButtonWrapper}>
-										<Button className={classes.button}>write memo</Button>
-									</div>
-									<div className={styles.avatarWrapper}>
-										<Avatar
-											className={classes.avatar}
-											src='https://avatars0.githubusercontent.com/u/41997570?s=460&u=d7609d3029ff5a356c7bb573c94a8f4664488e40&v=4'
-										/>
-									</div>
+									<Link
+										href={{
+											pathname: `${ROUTES.WRITE}`,
+										}}
+									>
+										<div className={styles.writeButtonWrapper}>
+											<Button className={classes.button}>write memo</Button>
+										</div>
+									</Link>
+									<button
+										className={classes.avatarButton}
+										ref={anchorRef}
+										aria-controls={open ? "menu-list-grow" : undefined}
+										aria-haspopup='true'
+										onClick={handleToggle}
+										onMouseEnter={handleOpen}
+									>
+										<div className={styles.avatarWrapper}>
+											<Avatar
+												className={classes.avatar}
+												src='https://avatars0.githubusercontent.com/u/41997570?s=460&u=d7609d3029ff5a356c7bb573c94a8f4664488e40&v=4'
+											/>
+										</div>
+									</button>
+									<Popper
+										className={classes.popper}
+										open={open}
+										anchorEl={anchorRef.current}
+										role={undefined}
+										transition
+										disablePortal
+									>
+										{({ TransitionProps, placement }) => (
+											<Grow
+												{...TransitionProps}
+												style={{
+													transformOrigin:
+														placement === "bottom"
+															? "center top"
+															: "center bottom",
+												}}
+											>
+												<Paper>
+													<ClickAwayListener onClickAway={handleClose}>
+														<MenuList
+															autoFocusItem={open}
+															id='menu-list-grow'
+															onKeyDown={handleListKeyDown}
+															onMouseEnter={handleOpen}
+															onMouseLeave={handleClose}
+														>
+															<MenuItem
+																className={classes.menuItem}
+																onClick={handleClose}
+															>
+																Profile
+															</MenuItem>
+															<MenuItem
+																className={classes.menuItem}
+																onClick={handleClose}
+															>
+																My account
+															</MenuItem>
+															<MenuItem
+																className={classes.menuItem}
+																onClick={handleClose}
+															>
+																Logout
+															</MenuItem>
+														</MenuList>
+													</ClickAwayListener>
+												</Paper>
+											</Grow>
+										)}
+									</Popper>
 								</>
 							) : (
 								<div className={styles.signUpButtonWrapper}>

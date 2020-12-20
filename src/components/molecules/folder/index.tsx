@@ -24,13 +24,13 @@ const Folder: React.FC<Props> = (props: Props) => {
 	const { folderName } = props;
 	const router = useRouter();
 	const classes = useStyles();
-	const { tab, user } = router.query;
+	const { user } = router.query;
 	return (
 		<div className={styles.folder}>
 			<Link
 				href={{
 					pathname: "/[user]",
-					query: { user: user, tab: tab, tag: folderName },
+					query: { user: user, tab: "tags", tag: folderName },
 				}}
 			>
 				<div className={styles.folderLink}>

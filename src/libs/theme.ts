@@ -28,13 +28,14 @@ export const setLightTheme = (): void => {
 	setProperty("--sub-button-color", "#373a40");
 	setProperty("--folder-color", "#f5eb8f");
 	setProperty("--memo-background-color", "#FFF");
-	setProperty("--border-color", "#FFF");
+	setProperty("--border-color", "#dfdfdf");
 	setProperty("--tag-font-color", "#FFF");
 	setProperty("--tag-boder-color", "#dfdfdf");
 	setProperty("--tag-background-color", "#19d3da");
 	setProperty("--header-boder-color", "#dfdfdf");
 	setProperty("--avatar-background-color", "#ececec");
-	setProperty("--box-shadow-color", "5px 5px 10px rgba(202, 202, 202, 0.212)");
+	setProperty("--box-shadow-color", "0");
+	setProperty("--caret-color", "#181818");
 };
 
 /*
@@ -60,4 +61,5 @@ export const setDarkTheme = (): void => {
 	setProperty("--header-boder-color", "#141414");
 	setProperty("--avatar-background-color", "#FFF");
 	setProperty("--box-shadow-color", "0");
+	setProperty("--caret-color", "#FFF");
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import TagList from "@/components/molecules/tag-list";
-import FollowProfile from "@/components/molecules/profile/follow-profile";
-import MainProfile from "@/components/molecules/profile/main-profile";
+import AffiliationProfile from "@/components/molecules/profile/affiliation-profile";
 import MiniProfile from "@/components/molecules/profile/mini-profile";
 import type { User } from "@/models/user/entity";
 import { Tag } from "@/models/tag/entity";
@@ -17,8 +16,9 @@ const Sidebar: React.FC<Props> = (props) => {
 	const { user, tags, noneHeader } = props;
 	return (
 		<aside className={styles.aside}>
-			<MiniProfile />
+			<AffiliationProfile />
 			<TagList tags={tags} />
+			<MiniProfile />
 		</aside>
 	);
 };

@@ -1,0 +1,19 @@
+.EasyMDEContainer {
+	max-width: 100% !important;
+}
+
+.CodeMirror {
+	border: 0px none !important;
+	background: var(--box-background-color) !important;
+	box-shadow: var(--box-shadow-color) !important;
+	border-radius: 5px !important;
+	color: var(--sub-font-color) !important;
+}
+
+.CodeMirror-placeholder {
+	color: var(--sub-font-color) !important;
+	opacity: 0.5 !important;
+	font-size: 18px !important;
+	font-weight: 600 !important;
+	font-family: "Inter", "Noto Sans JP", sans-serif !important;
+}

@@ -1,9 +1,9 @@
-.miniProfileContainer {
+.affiliationProfileContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	width: 100%;
-	padding: 20px 12px 20px 12px;
+	padding: 12px;
 
 	background: var(--box-background-color);
 	border: 1px var(--border-color) solid;
@@ -13,7 +13,7 @@
 }
 
 @media (max-width: 770px) {
-	.miniProfileContainer {
+	.affiliationProfileContainer {
 		margin-bottom: 0px;
 		grid-area: profile;
 	}
@@ -31,49 +31,26 @@
 	font-weight: 600;
 }
 
-.historyWrapper {
+.detailTextWrapper {
+	margin-top: 7px;
 	padding-left: 5px;
 }
 
-.historyWrapper span {
+.detailTextWrapper span {
 	font-size: 14px;
 	font-weight: 400;
 }
 
-.birth {
-	margin: 0 0 0 10px;
-	font-size: 15px;
-	font-weight: 400;
-}
-
-.birthBlock {
+.detailTextBlock {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+	margin-top: -5px;
 }
 
-.postCount {
-	margin: 0 0 0 10px;
+.detail {
+	margin: 0 0 0 5px;
 	font-size: 15px;
 	font-weight: 400;
-}
-
-.postCountBlock {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin-bottom: 15px;
-}
-
-.commentCount {
-	margin: 0 0 0 10px;
-	font-size: 15px;
-	font-weight: 400;
-}
-
-.commentCountBlock {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
 }

@@ -30,7 +30,7 @@
 			" id     id     id    "
 			" text   text   text  "
 			" other  other  other  ";
-		padding: 20px;
+		padding: 10px 10px 5px 10px;
 		min-height: 0px;
 	}
 }
@@ -154,6 +154,13 @@
 @media (max-width: 770px) {
 	.other {
 		justify-content: start;
+		align-items: center;
+	}
+}
+
+@media (max-width: 770px) {
+	.avatar {
+		text-align: left;
 	}
 }
 
@@ -163,7 +170,7 @@
 }
 
 .followCountWrapper {
-	margin: 0 10px 0 5px;
+	margin: 0 10px 0 0px;
 }
 
 .followCount {

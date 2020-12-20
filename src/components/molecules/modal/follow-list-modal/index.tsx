@@ -12,24 +12,8 @@ import { User } from "@/models/user/entity";
 
 import folloedata from "@/fixtures/follow.json";
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
 	createStyles({
-		avatar: {
-			"&:hover": {},
-		},
-		blueButton: {
-			borderColor: "var(--accent-color)",
-			color: "var(--accent-color)",
-			maxWidth: "500px",
-			width: "100%",
-			marginBottom: "5px",
-		},
-		brownButton: {
-			borderColor: "var(--sub-button-color)",
-			color: "var(--sub-button-color)",
-			maxWidth: "500px",
-			width: "100%",
-		},
 		modal: {
 			display: "flex",
 			alignItems: "center",
@@ -49,7 +33,7 @@ const useStyles = makeStyles((theme: Theme) =>
 			outline: "none",
 			borderRadius: "5px",
 			padding: "0 10px 10px 10px",
-			maxHeight: "600px",
+			maxHeight: "70%",
 			width: "450px",
 			overflow: "scroll",
 		},
@@ -57,9 +41,14 @@ const useStyles = makeStyles((theme: Theme) =>
 			backgroundColor: "var(--box-background-color)",
 			borderRadius: "5px",
 			padding: "5px 10px 5px 10px",
-			maxHeight: "600px",
 			width: "450px",
 			marginBottom: "-10px",
+		},
+		"@media (max-width: 470px)": {
+			paperHeader: {
+				width: "95%",
+			},
+			paper: { width: "95%", maxHeight: "70%" },
 		},
 	})
 );

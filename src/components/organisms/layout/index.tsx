@@ -5,10 +5,11 @@ import Header from "@/components/organisms/header";
 type Props = {
 	title?: string | string[];
 	children: React.ReactNode;
+	noneHeader?: boolean;
 };
 
 const Layout: React.FC<Props> = (props) => {
-	const { children, title } = props;
+	const { children, title, noneHeader } = props;
 
 	return (
 		<>
@@ -20,7 +21,7 @@ const Layout: React.FC<Props> = (props) => {
 					content='width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no'
 				/>
 			</Head>
-			<Header />
+			{!noneHeader && <Header />}
 			{children}
 		</>
 	);

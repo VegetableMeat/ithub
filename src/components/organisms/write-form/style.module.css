@@ -1,0 +1,51 @@
+.formWrapper {
+	grid-area: form;
+	width: 100%;
+	padding-top: 10px;
+}
+
+.titleForm {
+	display: flex;
+	align-items: center;
+	background: var(--box-background-color);
+	border: 1px var(--border-color) solid;
+	box-shadow: var(--box-shadow-color);
+	border-radius: 5px;
+	height: 50px;
+	margin-bottom: 10px;
+	padding: 0 10px 0 12px;
+}
+
+.titleInput {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--base-color);
+	background: var(--box-background-color);
+	border: none;
+	width: 100%;
+}
+
+.titleInput::placeholder {
+	font-family: "Inter", "Noto Sans JP", sans-serif;
+	color: var(--sub-font-color) !important;
+	font-weight: 600;
+	opacity: 0.5;
+}
+
+.titleInput:focus {
+	outline: none;
+}
+
+.editor {
+	grid-area: editor;
+	display: flex;
+	align-items: flex-start;
+	width: 100%;
+	background: var(--box-background-color);
+	border: 1px var(--border-color) solid;
+	box-shadow: var(--box-shadow-color);
+	border-radius: 5px;
+	color: #24292e;
+	font-size: 16px;
+	font-weight: 400;
+}

@@ -1,0 +1,49 @@
+.editorSidebar {
+	grid-area: sidebar;
+	flex-direction: column;
+	display: flex;
+	padding-left: 15px;
+	padding-top: 10px;
+	user-select: none;
+}
+
+.sidebarSticky {
+	position: sticky;
+	top: 100px;
+	z-index: 1;
+}
+
+.sidebarItem {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	min-width: 100%;
+	margin-bottom: 10px;
+}
+
+.sidebarItem:hover {
+	background-color: rgba(201, 237, 241, 0.637);
+	border-radius: 10px;
+}
+
+.sidebarItem p {
+	font-size: 16px;
+	font-weight: 400;
+	margin: 0;
+}
+
+.uploadingWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	min-width: 100%;
+	margin-bottom: 10px;
+}
+
+.uploadingWrapper p {
+	font-size: 16px;
+	font-weight: 400;
+	margin: 0 0 0 10px;
+}

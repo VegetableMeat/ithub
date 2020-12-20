@@ -1,11 +1,11 @@
 .content {
 	display: grid;
-	grid-auto-columns: minmax(1px, 600px) 250px;
+	grid-auto-columns: 270px minmax(1px, 670px);
 	grid-auto-rows: minmax(1px, auto) minmax(1px, auto);
 	grid-template-areas:
 		" header header  "
-		" main	 sidebar ";
-	gap: 13px;
+		" sidebar  main";
+	gap: 15px;
 	justify-content: center;
 	margin: 80px 20px 20px 20px;
 }
@@ -13,7 +13,7 @@
 @media (max-width: 770px) {
 	.content {
 		grid-auto-columns: minmax(1px, 100%);
-		grid-auto-rows: minmax(1px, auto) minmax(1px, auto);
+		grid-auto-rows: minmax(1px, auto) minmax(400px, auto);
 		grid-template-areas:
 			" header  "
 			" main	  ";
@@ -27,7 +27,6 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	max-width: 600px;
 	width: 100%;
 	margin-right: 20px;
 	border-radius: 5px;

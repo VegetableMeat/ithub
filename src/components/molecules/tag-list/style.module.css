@@ -5,6 +5,7 @@
 	border: 1px var(--border-color) solid;
 	box-shadow: var(--box-shadow-color);
 	border-radius: 5px;
+	margin-bottom: 13px;
 }
 
 @media (max-width: 770px) {
@@ -21,7 +22,7 @@
 	line-height: 26px;
 	margin: 0px;
 	margin-left: 2px;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 600;
 }
 

@@ -72,7 +72,6 @@ const UserIndex = (props: ServerSideProps) => {
 
 	return (
 		<Layout title={data.user_id}>
-			<button onClick={toggleTheme}>Toggle Theme</button>
 			<div className={styles.content}>
 				<ProfileHeader user={data} />
 				<main className={styles.mainContainer}>
@@ -130,7 +129,7 @@ const UserIndex = (props: ServerSideProps) => {
 							}}
 						/>
 					</div>
-					{tabQuery === "tags" && !tag ? (
+					{(tabQuery === "tags" && !tag) || (!tag && !tabQuery) ? (
 						<FolderList userID={data.user_id} />
 					) : (
 						<MemoList tab={tabQuery} userID={data.user_id} />

@@ -7,6 +7,8 @@ import NProgress from "nprogress";
 import "sanitize.css";
 import "@/styles/global.css";
 import "@/styles/nprogress.css";
+import "@/styles/easymde.css";
+import "@/styles/markdown.scss";
 
 NProgress.configure({ showSpinner: false });
 

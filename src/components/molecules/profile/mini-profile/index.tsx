@@ -11,22 +11,18 @@ type Props = {};
 const MiniProfile: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.miniProfileContainer}>
-			<div className={styles.titleWrapper}>
-				<h1 className={styles.title}>History</h1>
-			</div>
-
 			<div className={styles.historyWrapper}>
-				<div>
-					<FaBirthdayCake size={"15"} />
-					<span className={styles.birth}>{`2020年9月1日 に登録   `}</span>
+				<div className={styles.birthBlock}>
+					<FaBirthdayCake size={"20"} />
+					<p className={styles.birth}>2020年9月1日に登録</p>
 				</div>
-				<div>
-					<CgNotes size={"15"} />
-					<span className={styles.postCount}>{`16 件の投稿`}</span>
+				<div className={styles.postCountBlock}>
+					<CgNotes size={"20"} />
+					<p className={styles.postCount}>16 件の投稿</p>
 				</div>
-				<div>
-					<FaRegCommentDots size={"15"} />
-					<span className={styles.commentCount}>{`2件のコメント`}</span>
+				<div className={styles.commentCountBlock}>
+					<FaRegCommentDots size={"20"} />
+					<p className={styles.commentCount}>2件のコメント</p>
 				</div>
 			</div>
 		</div>

@@ -38,17 +38,18 @@ const AntTab = withStyles(() =>
 		root: {
 			textTransform: "none",
 			minWidth: 72,
-			fontSize: "17px",
+			fontSize: "15px",
 			position: "relative",
 			fontFamily: ["Inter", "sans-serif"].join(","),
 			top: "8px",
+			fontWeight: 400,
 			"&:hover": {
 				color: "var(--base-color)",
 				opacity: 1,
 			},
 			"&$selected": {
 				color: "var(--base-color)",
-				fontWeight: 700,
+				fontWeight: 600,
 			},
 			"&:focus": {
 				color: "var(--base-color)",
@@ -113,14 +114,14 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 	};
 
 	return (
-		<div className={styles.memoTabsContainer}>
+		<nav className={styles.memoTabsContainer}>
 			<StyledTabs value={selecetTab} onChange={handleChangeTabs}>
 				<AntTab label='Tag' />
 				<AntTab label='Latest' />
 				<AntTab label='Saved' />
 			</StyledTabs>
 			<Typography className={classes.padding} />
-		</div>
+		</nav>
 	);
 };
 
