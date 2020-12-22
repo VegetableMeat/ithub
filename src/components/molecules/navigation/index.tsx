@@ -5,7 +5,7 @@ import { Home, FeaturedPlayList, MenuBook } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 
 type Props = {
-  query: string;
+  query: string | string[];
 };
 
 const useStyles = makeStyles({
@@ -28,7 +28,7 @@ const Navigation: React.FC<Props> = (props) => {
   let { query } = props;
   if (query === void 0 || query === "") query = "home";
   const classes = useStyles();
-  const [naviQuery, setNaviQuery] = React.useState<string>(query);
+  const [naviQuery, setNaviQuery] = React.useState<string | string[]>(query);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
     setNaviQuery(newValue);

@@ -1,10 +1,8 @@
 import React from "react";
 import { GetServerSideProps } from "next";
-import useSWR from "swr";
 import Layout from "@/components/organisms/layout";
 import Navigation from "@/components/molecules/navigation";
 import Memo from "@/components/molecules/memo";
-import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import { Memo as Memo_entity } from "@/models/top/memo/entity";
 import styles from "@/styles/Top.module.css";
@@ -18,15 +16,18 @@ export interface ServerSideProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const naviQuery = query.navi === void 0 ? "" : query.navi;
-  const initialData = await fetcher(`${API_URL}/top/${naviQuery}`);
+  const initialData = await axios(`${API_URL}/top`, {
+    params: {
+      navi: query.navi,
+    },
+  }).then((r) => r.data);
   return { props: { initialData } };
 };
 
 const Top = (props: ServerSideProps) => {
   const { initialData } = props;
   const router = useRouter();
-  const naviQuery = router.query.navi || "";
+  const { navi } = router.query;
   const [loading, setLoading] = React.useState<boolean>(true);
   const [memos, setMemos] = React.useState<Memo_entity[]>(initialData);
   const [error, setError] = React.useState<boolean>(false);
@@ -35,7 +36,11 @@ const Top = (props: ServerSideProps) => {
     (async () => {
       setLoading(true);
       await axios
-        .get(`${API_URL}/top/${naviQuery}`)
+        .get(`${API_URL}/top`, {
+          params: {
+            navi: navi,
+          },
+        })
         .then((res) => {
           setMemos(res.data);
         })
@@ -45,7 +50,7 @@ const Top = (props: ServerSideProps) => {
 
       setLoading(false);
     })();
-  }, [naviQuery]);
+  }, [navi]);
 
   if (error) return <Error statusCode={500} />;
 
@@ -53,7 +58,7 @@ const Top = (props: ServerSideProps) => {
     <Layout title="top">
       <div className={styles.topContainer}>
         <main className={styles.mainContainer}>
-          <Navigation query={naviQuery} />
+          <Navigation query={navi} />
 
           {loading ? (
             <LoadingPage />
@@ -63,9 +68,7 @@ const Top = (props: ServerSideProps) => {
                 <Memo key={index} memos={data} />
               ))}
             </section>
-          ) : (
-            <div>ないです</div>
-          )}
+          ) : null}
         </main>
       </div>
     </Layout>
