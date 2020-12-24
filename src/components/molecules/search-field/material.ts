@@ -38,15 +38,15 @@ export const useStyles = () => {
       margin: "6px 0",
     },
     popper: {
-      paddingTop: "8px",
-      width: "auto",
+      width: "calc(100% - 60px)",
       transform: "none !important",
-      top: "35px !important",
-      left: "-120px !important",
+      top: "33px !important",
+      left: "30px !important",
     },
     menuPaper: {
       borderColor: "var(--header-paper-border-color);",
       backgroundColor: "var(--header-paper-background-color);",
+      borderRadius: "0px",
     },
     menuItem: {
       transition: "none",
@@ -63,6 +63,12 @@ export const useStyles = () => {
         color: "#FFF",
         backgroundColor: "var(--header-menu-hover-background-color);",
       },
+    },
+    menuIcon: {
+      width: "15px",
+      height: "15px",
+      color: "currentColor",
+      marginRight: "6px",
     },
   }));
 

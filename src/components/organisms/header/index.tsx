@@ -8,6 +8,7 @@ import UserMenu from "@/components/organisms/user-menu";
 import SearchField from "@/components/molecules/search-field";
 import { useStyles } from "./material";
 import styles from "./style.module.css";
+import tagData from "@/fixtures/tag.json";
 
 type Props = {
   noHeaderContents?: boolean;
@@ -37,7 +38,7 @@ const Header: React.FC<Props> = (props) => {
         <div className={styles.headerContents}>
           {visibleSearch ? (
             <>
-              <SearchField />
+              <SearchField tags={tagData} />
               <IconButton
                 className={classes.clearButton}
                 onClick={handleHiddenSearch}
@@ -61,7 +62,7 @@ const Header: React.FC<Props> = (props) => {
               ) : (
                 <>
                   <MediaQuery query="(min-width: 601px)">
-                    <SearchField />
+                    <SearchField tags={tagData} />
                   </MediaQuery>
                   <div className={styles.contents}>
                     {isLogin ? (

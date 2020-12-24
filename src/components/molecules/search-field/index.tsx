@@ -10,15 +10,22 @@ import {
   Popper,
 } from "@material-ui/core";
 import { Search } from "@material-ui/icons";
+import { FaHashtag } from "react-icons/fa";
 import { useStyles } from "./material";
 import styles from "./style.module.css";
 import { useRouter } from "next/router";
+import { Tag as TagEntity } from "@/models/tag/entity";
 
-const SearchField: React.FC = () => {
+type Props = {
+  tags?: TagEntity[];
+};
+
+const SearchField: React.FC<Props> = (props) => {
+  const { tags } = props;
   const router = useRouter();
   const classes = useStyles();
-  // const [open, setOpen] = React.useState<boolean>(false);
-  // const anchorRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState<boolean>(false);
+  const anchorRef = React.useRef<HTMLInputElement>(null);
   const [query, setQuery] = React.useState<string | string[]>(
     router.query.q || ""
   );
@@ -31,34 +38,30 @@ const SearchField: React.FC = () => {
     }
   };
 
-  // const handleOpen = () => {
-  //   setOpen(true);
-  // };
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
 
-  // const handleClose = (event: React.MouseEvent<EventTarget>) => {
-  //   if (
-  //     anchorRef.current &&
-  //     anchorRef.current.contains(event.target as HTMLElement)
-  //   ) {
-  //     return;
-  //   }
+  const handleClose = (event: React.MouseEvent<EventTarget>) => {
+    if (
+      anchorRef.current &&
+      anchorRef.current.contains(event.target as HTMLElement)
+    ) {
+      return;
+    }
 
-  //   setOpen(false);
-  // };
+    setOpen(false);
+  };
 
-  // const prevOpen = React.useRef(open);
-  // React.useEffect(() => {
-  //   if (prevOpen.current === true && open === false) {
-  //     anchorRef.current!.focus();
-  //   }
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current!.focus();
+    }
 
-  //   prevOpen.current = open;
-  // }, [open]);
+    prevOpen.current = open;
+  }, [open]);
 
-  const test = [
-    { title: "The Shawshank Redemption" },
-    { title: "The Shawshank Redemption2" },
-  ];
   return (
     <div className={styles.searchFieldWrapper}>
       <IconButton
@@ -68,11 +71,13 @@ const SearchField: React.FC = () => {
         children={<Search className={classes.searchIcon} />}
       />
       <InputBase
+        ref={anchorRef}
+        aria-controls={open ? "menu-list-grow" : undefined}
+        aria-haspopup="true"
         className={classes.input}
         placeholder="Search"
         inputProps={{ "aria-label": "search" }}
         value={query}
-        // onClick={handleOpen}
         onChange={(e) => {
           setQuery(e.target.value);
         }}
@@ -81,7 +86,18 @@ const SearchField: React.FC = () => {
         }}
         spellCheck={false}
       />
-      {/* <Popper
+      {tags ? (
+        <IconButton
+          className={classes.iconButton}
+          aria-label="menu"
+          onClick={handleToggle}
+          children={<FaHashtag className={classes.searchIcon} />}
+        />
+      ) : (
+        <></>
+      )}
+
+      <Popper
         className={classes.popper}
         open={open}
         anchorEl={anchorRef.current}
@@ -104,44 +120,34 @@ const SearchField: React.FC = () => {
                   id="menu-list-grow"
                   style={{
                     outline: "none",
+                    padding: "0",
+                    maxHeight: "165px",
+                    overflow: "auto",
                   }}
                 >
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>
-                    <div style={{ display: "block" }}>
-                      <div style={{ fontWeight: "bold" }}>
-                        {"VegetableMeat"}
-                      </div>
-                      <div style={{ fontSize: "12px" }}>
-                        @{"vegetable_meat"}
-                      </div>
-                    </div>
-                  </MenuItem>
-
-                  <div className={classes.menuBorder} />
-
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>
-                    Your memo
-                  </MenuItem>
-
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>
-                    Your saved memo
-                  </MenuItem>
-
-                  <div className={classes.menuBorder} />
-
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>
-                    Settings
-                  </MenuItem>
-
-                  <MenuItem className={classes.menuItem} onClick={handleClose}>
-                    Signout
-                  </MenuItem>
+                  {tags ? (
+                    tags.map((tag) => (
+                      <MenuItem
+                        key={tag.id}
+                        className={classes.menuItem}
+                        onClick={(e) => {
+                          handleClose(e);
+                          setQuery(tag.name);
+                        }}
+                      >
+                        <FaHashtag key={tag.id} className={classes.menuIcon} />
+                        {tag.name}
+                      </MenuItem>
+                    ))
+                  ) : (
+                    <></>
+                  )}
                 </MenuList>
               </ClickAwayListener>
             </Paper>
           </Grow>
         )}
-      </Popper> */}
+      </Popper>
     </div>
   );
 };
