@@ -1,6 +1,5 @@
 .memoItemContainer {
-  max-width: calc(50% - 6px);
-  min-width: calc(50% - 6px);
+  width: calc(50% - 6px);
   display: flex;
   padding: 15px 15px 15px 7.5px;
   border: solid 1px var(--border-color);
@@ -98,7 +97,6 @@
 
 @media screen and (max-width: 768px) {
   .memoItemContainer {
-    max-width: calc(100% - 6px);
     width: calc(100% - 6px);
   }
   .memoItemContent {

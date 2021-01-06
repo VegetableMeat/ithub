@@ -31,6 +31,9 @@ export const useStyles = () => {
       flex: 1,
       fontSize: "11px",
       color: "var(--placeholder-color);",
+      "& .MuiInputBase-input": {
+        padding: "7px 0",
+      },
     },
     menuBorder: {
       height: "0",

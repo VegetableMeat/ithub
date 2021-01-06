@@ -1,0 +1,80 @@
+.settingsContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.mainContainer {
+  max-width: 764px;
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  border: solid 1px var(--border-color);
+  box-shadow: var(--box-shadow-color);
+  margin: 0 3px 6px 3px;
+  font-size: 14px;
+  background: var(--box-background-color);
+  border-radius: 5px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.profileSettings {
+  width: calc(100% - 130px);
+}
+
+.inputField {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  margin: auto 0;
+  border-radius: 5px;
+  border: 1px solid var(--header-paper-border-color);
+  background-color: var(--header-paper-background-color);
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.linkContainer {
+  margin-top: 20px;
+  width: 47%;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.tags {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.noneTagText {
+  font-weight: bolder;
+}
+
+.addTags {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.tagsButton {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  margin: auto 0;
+  border-radius: 5px;
+  border: 1px solid var(--header-paper-border-color);
+  background-color: var(--header-paper-background-color);
+}
