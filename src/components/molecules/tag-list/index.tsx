@@ -1,7 +1,7 @@
 import React from "react";
-import { AiOutlinePaperClip } from "react-icons/ai";
-import Tag from "@/components/atoms/tag";
 import { Tag as TagEntity } from "@/models/tag/entity";
+
+import Tag from "@/components/atoms/tag";
 import styles from "./style.module.css";
 
 type Props = {

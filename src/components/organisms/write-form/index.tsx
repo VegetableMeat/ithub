@@ -1,6 +1,7 @@
 import React from "react";
 import SimpleMDE from "react-simplemde-editor";
 import { makeStyles } from "@material-ui/styles";
+
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Alert } from "@material-ui/lab";
 import TextField from "@material-ui/core/TextField";
@@ -87,21 +88,20 @@ const WriteForm: React.FC<Props> = (props) => {
 
 	const classes = useStyles();
 
-	const [alertMessage, setAlertMessage] = React.useState([]);
+	const [alertMessage, setAlertMessage] = React.useState<string[]>([]);
 	const alertMessages = alertMessage
 		? alertMessage.map((alert) => <p>{alert}</p>)
 		: [];
 
-	const [alertOpen, setAlertOpen] = React.useState(false);
+	const [alertOpen, setAlertOpen] = React.useState<boolean>(false);
 
-	function pushData(array: Array<string>, value: string) {
+	const pushData = (array: Array<string>, value: string): void => {
 		if (array.indexOf(value) == -1) {
 			array.push(value);
 		}
-		return true;
-	}
+	};
 
-	const onChange = (value: string[]) => {
+	const onChange = (value: string[]): void => {
 		console.log(value);
 		if (value.length >= 6) {
 			pushData(alertMessage, "タグは5つまで入力できます");

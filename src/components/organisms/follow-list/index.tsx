@@ -1,4 +1,5 @@
 import React from "react";
+
 import Follow from "@/components/molecules/follow";
 import { User } from "@/models/user/entity";
 import styles from "./style.module.css";

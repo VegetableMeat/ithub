@@ -1,5 +1,6 @@
 import React from "react";
 import { NextPage, NextPageContext } from "next";
+
 import Layout from "@/components/organisms/layout";
 import styles from "../styles/_error.module.css";
 

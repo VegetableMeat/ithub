@@ -1,19 +1,8 @@
 .profileHeaderContainer {
 	grid-area: header;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-auto-rows: 40px 45px minmax(1px, 25px) minmax(35px, auto)
-		minmax(30px, auto);
-	grid-template-areas:
-		" ...    avatar button"
-		" name   name   name  "
-		" id     id     id    "
-		" text   text   text  "
-		" other  other  other  ";
-	min-height: 200px;
 	width: 100%;
 	height: 100%;
-	padding: 20px;
+	padding: 20px 20px 15px 20px;
 	background: var(--box-background-color);
 	border: 1px var(--border-color) solid;
 	box-shadow: var(--box-shadow-color);
@@ -22,21 +11,13 @@
 
 @media (max-width: 770px) {
 	.profileHeaderContainer {
-		grid-template-columns: repeat(3, 1fr);
-		grid-auto-rows: 40px minmax(1px, auto) minmax(1px, auto) minmax(1px, auto);
-		grid-template-areas:
-			" avatar button button"
-			" name   name   name  "
-			" id     id     id    "
-			" text   text   text  "
-			" other  other  other  ";
 		padding: 10px 10px 5px 10px;
 		min-height: 0px;
 	}
 }
 
 .avatar {
-	grid-area: avatar;
+	height: 0;
 	text-align: center;
 }
 
@@ -45,21 +26,12 @@
 		text-align: left;
 	}
 }
-.avatar div {
-	height: 100% !important;
-	width: 100% !important;
-	width: 125px !important;
-	height: 125px !important;
-}
 
 .avatar img {
-	width: 125px !important;
-	height: 125px !important;
-}
-
-.settingIcon {
-	grid-area: button;
-	justify-self: end;
+	object-fit: cover;
+	border-radius: 50%;
+	width: 120px;
+	height: 120px;
 }
 
 @media (max-width: 770px) {
@@ -76,10 +48,7 @@
 }
 
 .followButton {
-	grid-area: button;
-	display: flex;
-	justify-self: end;
-	align-self: start;
+	text-align: end;
 }
 
 @media (max-width: 770px) {
@@ -89,9 +58,8 @@
 }
 
 .userName {
-	grid-area: name;
 	text-align: center;
-	height: 100%;
+	align-self: center;
 	font-size: 30px;
 	margin: 0px;
 }
@@ -112,7 +80,6 @@
 	top: -5px;
 	color: var(--sub-font-color);
 	font-weight: 400;
-	height: 100%;
 	margin: 0px;
 }
 
@@ -124,11 +91,10 @@
 }
 
 .userText {
-	grid-area: text;
 	text-align: center;
 	align-self: center;
 	font-weight: 400;
-	margin: 0px;
+	margin: 0 0 5px 0;
 }
 
 @media (max-width: 770px) {
@@ -144,11 +110,10 @@
 }
 
 .other {
-	grid-area: other;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 }
 
 @media (max-width: 770px) {

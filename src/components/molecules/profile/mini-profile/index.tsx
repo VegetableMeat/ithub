@@ -1,9 +1,8 @@
 import React from "react";
+
 import { CgNotes } from "react-icons/cg";
 import { FaRegCommentDots } from "react-icons/fa";
-import { AiOutlineHistory } from "react-icons/ai";
 import { FaBirthdayCake } from "react-icons/fa";
-
 import styles from "./style.module.css";
 
 type Props = {};

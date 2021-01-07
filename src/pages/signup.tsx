@@ -1,5 +1,12 @@
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import React from "react";
+import { useRecoilState } from "recoil";
+import { useCookies } from "react-cookie";
+import { userState } from "@/libs/atom";
+import type { User } from "@/models/user/entity";
+import axios from "axios";
+
+import ImageUploading, { ImageListType } from "react-images-uploading";
 import { TextField, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import Layout from "@/components/organisms/layout";
@@ -42,34 +49,111 @@ const useStyles = makeStyles(() => ({
 const SignUp: React.FC = () => {
 	const router = useRouter();
 	const classes = useStyles();
+	const [cookies, setCookie] = useCookies();
+	const [user, setUser] = useRecoilState(userState);
+	const [name, setName] = React.useState<string>(null);
+	const [userID, setUserID] = React.useState<string>(null);
+	const [image, setImage] = React.useState<ImageListType>(null);
+	const [imageUrl, setImageUrl] = React.useState<string>(null);
+
+	const handleImageUpload = (image: ImageListType) => {
+		setImage(image);
+		const params = new FormData();
+		params.append("image", image[0].file);
+
+		(async () => {
+			try {
+				const res = await axios.post(
+					`https://ithub-backend.herokuapp.com/static/images/upload`,
+					params,
+					{
+						headers: {
+							"content-type": "multipart/form-data",
+						},
+					}
+				);
+				console.log(res.data);
+				setImageUrl(res.data.link);
+				console.log(imageUrl);
+			} catch (error) {
+				console.log(error);
+			}
+		})();
+	};
+
+	const handleSubmit = async () => {
+		if (!name || !userID || !imageUrl) return;
+
+		try {
+			const res = await axios.put(
+				"http://localhost:8000/v1/users/",
+				{
+					user_id: userID,
+					name: name,
+					icon_link: imageUrl ? imageUrl : user ? user.icon_link : null,
+					twitter_link: null,
+					github_link: null,
+					user_text: null,
+				},
+				{ withCredentials: true }
+			);
+
+			setUser(res.data as User);
+			router.push({ pathname: `/` });
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
-		<Layout title='signUp'>
+		<Layout title='signup' noneHeader>
 			<div className={styles.signUpContainer}>
 				<main className={styles.main}>
 					<div className={styles.title}>ユーザー設定</div>
 					<div className={styles.form}>
+						<ImageUploading
+							value={image}
+							onChange={handleImageUpload}
+							acceptType={["png", "jpg"]}
+						>
+							{({ onImageUpload }) => (
+								<div className={styles.avatar}>
+									<img
+										onClick={onImageUpload}
+										src={imageUrl ? imageUrl : user ? user.icon_link : null}
+									/>
+								</div>
+							)}
+						</ImageUploading>
+
 						<div className={styles.inputWrapper}>
 							<TextField
 								className={classes.textField}
 								required
-								id='user_name'
+								id='userName'
 								label='ユーザー名'
 								InputLabelProps={{
 									shrink: true,
 								}}
 								variant='filled'
+								onChange={(e) => {
+									setName(e.target.value);
+								}}
 							/>
 						</div>
 						<div className={styles.inputWrapper}>
 							<TextField
 								className={classes.textField}
 								required
-								id='user_id'
+								id='userId'
 								label='ユーザーID'
 								InputLabelProps={{
 									shrink: true,
 								}}
 								variant='filled'
+								onChange={(e) => {
+									setUserID(e.target.value);
+								}}
 							/>
 						</div>
 						<div className={styles.inputWrapper_}>
@@ -118,7 +202,7 @@ const SignUp: React.FC = () => {
 							<Button
 								className={classes.submitButton}
 								variant='contained'
-								href='/'
+								onClick={handleSubmit}
 							>
 								登録
 							</Button>

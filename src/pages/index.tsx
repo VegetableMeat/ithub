@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GetServerSideProps } from "next";
 import useSWR from "swr";
 import Layout from "@/components/organisms/layout";
@@ -8,6 +8,7 @@ import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import { Memo as Memo_entity } from "@/models/top/memo/entity";
 import styles from "@/styles/Top.module.css";
+
 export interface ServerSideProps {
 	initialData: Memo_entity[];
 }
@@ -23,6 +24,8 @@ const Top = (props: ServerSideProps) => {
 	const { data } = useSWR<Memo_entity[], Error>(`${API_URL}/top`, fetcher, {
 		initialData,
 	});
+
+	useEffect(() => {}, []);
 
 	const memo = data.map((data, index) => <Memo key={index} memos={data} />);
 

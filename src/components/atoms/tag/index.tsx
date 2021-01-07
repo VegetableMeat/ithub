@@ -1,8 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/styles";
+import { Tag } from "@/models/tag/entity";
+
 import Button from "@material-ui/core/Button";
 import { FaHashtag } from "react-icons/fa";
-import { Tag } from "@/models/tag/entity";
 
 type Props = {
 	tag: Tag;
@@ -33,6 +34,7 @@ const useStyles = makeStyles(() => ({
 const TagComponent: React.FC<Props> = (props: Props) => {
 	const { tag } = props;
 	const classes = useStyles();
+
 	return (
 		<Button key={tag.id} disableRipple className={classes.tag} href={tag.link}>
 			<FaHashtag color={"var(--tag-font-color)"} size={"0.9em"} />

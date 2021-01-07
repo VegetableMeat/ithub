@@ -1,6 +1,7 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+
+import ReactMarkdown from "react-markdown";
 import Highlighter from "@/components/molecules/highlighter";
 import styles from "./style.module.css";
 
@@ -10,7 +11,7 @@ type Props = {
 
 const Preview: React.FC<Props> = (props) => {
 	const { markdown } = props;
-	console.log(markdown);
+
 	return (
 		<div className={styles.PreviewWrapper}>
 			<ReactMarkdown

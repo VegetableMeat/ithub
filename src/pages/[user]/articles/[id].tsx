@@ -2,10 +2,11 @@ import React from "react";
 import { GetServerSideProps } from "next";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
-import Layout from "@/components/organisms/layout";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { MemoMarkdown } from "@/models/memo-markdown/entity";
+
+import Layout from "@/components/organisms/layout";
 import styles from "@/styles/Articles.module.css";
 
 export interface ServerSideProps {
@@ -13,7 +14,9 @@ export interface ServerSideProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-	const initialMemoData = await fetcher(`${API_URL}/articles/${params.id}`);
+	const initialMemoData = await fetcher(
+		`http://localhost:8000/v1/notes/${params.id}`
+	);
 	return { props: { initialMemoData } };
 };
 

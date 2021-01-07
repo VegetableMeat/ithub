@@ -1,14 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { responseInterface } from "swr";
-import type { User } from "@/models/user/entity";
 import { makeStyles } from "@material-ui/styles";
+import * as ROUTES from "@/constants/routes";
+import type { User } from "@/models/user/entity";
+
 import Avatar from "react-avatar";
 import { GrUserSettings } from "react-icons/gr";
 import { FaTwitterSquare, FaGithubSquare } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
-import Loading from "@/components/molecules/loading";
-import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
 
 const useStyles = makeStyles(() => ({

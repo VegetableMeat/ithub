@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { GetServerSideProps } from "next";
+import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/styles";
+import { Memo, getMemo, saveMemo } from "@/libs/local-save";
+import { fetcher } from "@/libs/fetcher";
+import { API_URL } from "@/libs/api";
+import type { Tag } from "@/models/tag/entity";
+import { useRecoilState } from "recoil";
+import { userState } from "@/libs/atom";
+import axios from "axios";
+
 import Layout from "@/components/organisms/layout";
 import WriteHeader from "@/components/organisms/header/write-header";
 import WriteSidebar from "@/components/organisms/sidebar/write-sidebar";
@@ -8,10 +17,6 @@ import WriteForm from "@/components/organisms/write-form";
 import SaveMemoModal from "@/components/molecules/modal/save-memo-modal";
 import Preview from "@/components/organisms/preview";
 import Snackbar from "@material-ui/core/Snackbar";
-import { Memo, getMemo, saveMemo } from "@/libs/local-save";
-import { fetcher } from "@/libs/fetcher";
-import { API_URL } from "@/libs/api";
-import type { Tag } from "@/models/tag/entity";
 import styles from "@/styles/Write.module.css";
 import "easymde/dist/easymde.min.css";
 
@@ -30,27 +35,26 @@ export interface ServerSideProps {
 	initialTagData: Tag[];
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
 	const initialTagData = await fetcher(`${API_URL}/tags`);
 	return { props: { initialTagData } };
 };
 
 const Write = (props: ServerSideProps) => {
 	const initialTagData = props.initialTagData;
-	const [inputTitle, setInputTitle] = useState("");
+
+	const [inputTitle, setInputTitle] = useState<string>("");
 	const [inputTag, setInputTag] = useState<string[]>([]);
-	const [inputMarkdown, setInputMarkdown] = useState("");
-	const [isPreview, setIsPreview] = useState(true);
-	const [open, setOpen] = React.useState(false);
-	const [snackbarMessage, setSnackbarMessage] = useState("");
+	const [inputMarkdown, setInputMarkdown] = useState<string>("");
+	const [isPreview, setIsPreview] = useState<boolean>(true);
+	const [snackbarOpen, setSnackbarOpen] = React.useState<boolean>(false);
+	const [modalOpen, setModalOpen] = React.useState<boolean>(false);
+	const [snackbarMessage, setSnackbarMessage] = useState<string>("");
+	const [user, setUser] = useRecoilState(userState);
+
+	const router = useRouter();
 	const classes = useStyles();
 	const tagOption = initialTagData ? initialTagData.map((tag) => tag.name) : [];
-
-	useEffect(() => {
-		if (getMemo()) {
-			handleModalOpen();
-		}
-	}, []);
 
 	const restoreMemo = () => {
 		const localSaveMemo = getMemo();
@@ -60,7 +64,11 @@ const Write = (props: ServerSideProps) => {
 		handleModalClose();
 	};
 
-	const [modalOpen, setModalOpen] = React.useState(false);
+	useEffect(() => {
+		if (getMemo()) {
+			handleModalOpen();
+		}
+	}, []);
 
 	const handleModalOpen = () => {
 		setModalOpen(true);
@@ -70,11 +78,11 @@ const Write = (props: ServerSideProps) => {
 		setModalOpen(false);
 	};
 
-	const handleClose = (e?: React.SyntheticEvent, reason?: string) => {
+	const handleClose = (e?: React.SyntheticEvent, reason?: string): void => {
 		if (reason === "clickaway") {
 			return;
 		}
-		setOpen(false);
+		setSnackbarOpen(false);
 	};
 
 	const handleLocalSave = () => {
@@ -85,12 +93,34 @@ const Write = (props: ServerSideProps) => {
 		};
 		saveMemo(newMemo);
 		setSnackbarMessage("ローカルに保存しました");
-		setOpen(true);
+		setSnackbarOpen(true);
+	};
+
+	const handleSubmit = async () => {
+		if (!inputTitle || !inputMarkdown) return;
+
+		try {
+			const res = await axios.post(
+				"http://localhost:8000/v1/notes/",
+				{
+					memo_title: inputTitle,
+					tags: null,
+					markdown: inputMarkdown,
+				},
+				{ withCredentials: true }
+			);
+			router.push({
+				pathname: `/${user.user_id}/articles/${res.data.id}`,
+			});
+			console.log(res.data);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
-		<Layout title={""} noneHeader>
-			<WriteHeader />
+		<Layout title={"write"} noneHeader>
+			<WriteHeader handleSubmit={handleSubmit} />
 			<main className={styles.content}>
 				{isPreview ? (
 					<WriteForm
@@ -111,7 +141,7 @@ const Write = (props: ServerSideProps) => {
 					isPreview={isPreview}
 					setIsPreview={setIsPreview}
 					setSnackbarMessage={setSnackbarMessage}
-					setOpen={setOpen}
+					setOpen={setSnackbarOpen}
 					handleLocalSave={handleLocalSave}
 				/>
 			</main>
@@ -125,7 +155,7 @@ const Write = (props: ServerSideProps) => {
 					vertical: "top",
 					horizontal: "center",
 				}}
-				open={open}
+				open={snackbarOpen}
 				onClose={handleClose}
 				autoHideDuration={3000}
 				message={snackbarMessage}

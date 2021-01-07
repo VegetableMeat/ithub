@@ -1,10 +1,11 @@
-import React, { memo } from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import React from "react";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { Memo } from "@/libs/local-save";
+
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { Alert } from "@material-ui/lab";
-import { Memo } from "@/libs/local-save";
 import styles from "./style.module.css";
 
 const useStyles = makeStyles(() =>

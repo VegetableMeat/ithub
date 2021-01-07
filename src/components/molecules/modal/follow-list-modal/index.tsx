@@ -1,5 +1,8 @@
 import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { User } from "@/models/user/entity";
+import folloedata from "@/fixtures/follow.json";
+
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -7,10 +10,6 @@ import Follow from "@/components/molecules/follow";
 import { GoChevronDown } from "react-icons/go";
 import { RiCloseLine } from "react-icons/ri";
 import styles from "./style.module.css";
-
-import { User } from "@/models/user/entity";
-
-import folloedata from "@/fixtures/follow.json";
 
 const useStyles = makeStyles(() =>
 	createStyles({
@@ -57,7 +56,7 @@ type Props = {
 	userID: string;
 	displayText: string;
 	modalOpen: boolean;
-	handleClose;
+	handleClose: () => void;
 };
 
 const FollowListModal: React.FC<Props> = (props: Props) => {

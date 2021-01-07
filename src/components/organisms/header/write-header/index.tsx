@@ -1,12 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
+
 import { CgClose } from "react-icons/cg";
 import styles from "./style.module.css";
 
-type Props = {};
+type Props = {
+	handleSubmit;
+};
 
 const WriteHeader: React.FC<Props> = (props) => {
-	const {} = props;
+	const { handleSubmit } = props;
 	const router = useRouter();
 
 	return (
@@ -27,7 +30,9 @@ const WriteHeader: React.FC<Props> = (props) => {
 						}}
 					/>
 				</div>
-				<div className={styles.headerRight}>投稿する</div>
+				<div className={styles.headerRight} onClick={handleSubmit}>
+					投稿する
+				</div>
 			</div>
 		</header>
 	);

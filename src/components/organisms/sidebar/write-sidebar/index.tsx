@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import ImageUploading from "react-images-uploading";
+
+import ImageUploading, { ImageListType } from "react-images-uploading";
 import ReactLoading from "react-loading";
 import { BsImage } from "react-icons/bs";
 import { RiEye2Line } from "react-icons/ri";
@@ -29,30 +30,31 @@ const WriteSidebar: React.FC<Props> = (props) => {
 		handleLocalSave,
 	} = props;
 
-	const [uploading, setUploading] = React.useState(false);
-	const [image, setImage] = React.useState(null);
+	const [uploading, setUploading] = React.useState<boolean>(false);
+	const [image, setImage] = React.useState<ImageListType>(null);
 
-	const onChange = (image: object): void => {
+	const onChange = (image: ImageListType): void => {
 		setImage(image);
-		console.log(typeof image);
 
 		const params = new FormData();
-		params.append("file", image[0].file);
+		params.append("image", image[0].file);
 
 		(async () => {
 			setUploading(true);
 			await axios
-				.post(`http://localhost:8000/static/images/upload`, params, {
-					headers: {
-						"content-type": "multipart/form-data",
-					},
-				})
+				.post(
+					`https://ithub-backend.herokuapp.com/static/images/upload`,
+					params,
+					{
+						headers: {
+							"content-type": "multipart/form-data",
+						},
+					}
+				)
 				.then((res) => {
 					setSnackbarMessage("画像アップロードが完了しました");
 					setOpen(true);
-					setInputMarkdown(
-						inputMarkdown.concat(`![](http://${res.data.link})`)
-					);
+					setInputMarkdown(inputMarkdown.concat(`![](${res.data.link})`));
 				})
 				.catch(() => {
 					setSnackbarMessage("画像アップロードに失敗しました");

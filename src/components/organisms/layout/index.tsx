@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+
 import Header from "@/components/organisms/header";
 
 type Props = {

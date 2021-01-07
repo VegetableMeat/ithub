@@ -3,13 +3,13 @@ import Link from "next/link";
 import Error from "@/pages/_error";
 import axios from "axios";
 import { makeStyles } from "@material-ui/styles";
+import { API_URL } from "@/libs/api";
+import * as ROUTES from "@/constants/routes";
+
 import Avatar from "react-avatar";
-import { FaHashtag } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa";
 import Loading from "@/components/molecules/loading";
-import { API_URL } from "@/libs/api";
-import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
 
 const useStyles = makeStyles(() => ({
@@ -38,15 +38,15 @@ const MemoList: React.FC<Props> = (props: Props) => {
 	const classes = useStyles();
 
 	const [memos, setMemos] = useState([]);
-	const [error, setError] = useState(null);
-	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<Error>(null);
+	const [loading, setLoading] = useState<boolean>(false);
 
 	useEffect(() => {
 		(async () => {
 			setLoading(true);
 
 			await axios
-				.get(`${API_URL}/users/${userID}${ROUTES.MEMOS}`, {
+				.get(`http://localhost:8000/v1/users/${userID}/notes`, {
 					params: {
 						limit: 12,
 					},

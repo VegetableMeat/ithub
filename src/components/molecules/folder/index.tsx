@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/styles";
+
 import FolderIcon from "@material-ui/icons/Folder";
 import styles from "./style.module.css";
 
@@ -25,6 +26,7 @@ const Folder: React.FC<Props> = (props: Props) => {
 	const router = useRouter();
 	const classes = useStyles();
 	const { user } = router.query;
+
 	return (
 		<div className={styles.folder}>
 			<Link

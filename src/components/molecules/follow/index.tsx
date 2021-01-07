@@ -1,9 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import { makeStyles } from "@material-ui/styles";
+import { User } from "@/models/user/entity";
+
 import Avatar from "react-avatar";
 import Button from "@material-ui/core/Button";
-import { User } from "@/models/user/entity";
 import styles from "./style.module.css";
 
 type Props = {
@@ -23,6 +24,7 @@ const useStyles = makeStyles(() => ({
 const Follow: React.FC<Props> = (props: Props) => {
 	const { followData } = props;
 	const classes = useStyles();
+
 	return (
 		<>
 			<div className={styles.follow}>

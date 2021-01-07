@@ -1,10 +1,11 @@
 import React from "react";
 import Error from "@/pages/_error";
 import useSWR from "swr";
-import Folder from "@/components/molecules/folder";
-import Loading from "@/components/molecules/loading";
 import { Folder as FolderEntity } from "@/models/folder/entity";
 import { API_URL } from "@/libs/api";
+
+import Folder from "@/components/molecules/folder";
+import Loading from "@/components/molecules/loading";
 import styles from "./style.module.css";
 
 type Props = {

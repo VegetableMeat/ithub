@@ -2,19 +2,20 @@ import React from "react";
 import Link from "next/link";
 import MediaQuery from "react-responsive";
 import { makeStyles } from "@material-ui/styles";
+import type { User } from "@/models/user/entity";
+import * as ROUTES from "@/constants/routes";
+
 import Avatar from "react-avatar";
 import { GrTwitter, GrGithub } from "react-icons/gr";
 import { GrUserSettings } from "react-icons/gr";
 import Button from "@material-ui/core/Button";
 import FollowListModal from "@/components/molecules/modal/follow-list-modal";
-import type { User } from "@/models/user/entity";
-import * as ROUTES from "@/constants/routes";
 import styles from "./style.module.css";
 
 const useStyles = makeStyles(() => ({
 	avatar: {
 		position: "relative",
-		top: "-42px",
+		top: "-85px",
 		["@media (max-width: 770px)"]: {
 			top: "-18px",
 		},
@@ -40,15 +41,15 @@ const ProfileHeader: React.FC<Props> = (props: Props) => {
 	const { user } = props;
 	const classes = useStyles();
 
-	const [modalOpen, setModalOpen] = React.useState(false);
-	const [displayText, setDisplayText] = React.useState("false");
+	const [modalOpen, setModalOpen] = React.useState<boolean>(false);
+	const [displayText, setDisplayText] = React.useState<string>("");
 
-	const handleOpen = (newDisplayText: string) => {
+	const handleOpen = (newDisplayText: string): void => {
 		setDisplayText(newDisplayText);
 		setModalOpen(true);
 	};
 
-	const handleClose = () => {
+	const handleClose = (): void => {
 		setModalOpen(false);
 	};
 
@@ -56,11 +57,10 @@ const ProfileHeader: React.FC<Props> = (props: Props) => {
 		<header className={styles.profileHeaderContainer}>
 			<Link href={`/${user.user_id}`}>
 				<div className={styles.avatar}>
-					<Avatar
+					<img
 						className={classes.avatar}
 						alt={user.name}
 						src={user.icon_link}
-						round={true}
 					/>
 				</div>
 			</Link>

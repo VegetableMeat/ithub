@@ -16,17 +16,29 @@ import { Autocomplete } from "@material-ui/lab";
 import Material from "./material";
 import { Search } from "@material-ui/icons";
 import MediaQuery from "react-responsive";
+import { useCookies } from "react-cookie";
 import { useToggleTheme } from "@/context/theme";
 import * as ROUTES from "@/constants/routes";
+import { useRecoilState } from "recoil";
+import { userState } from "@/libs/atom";
 import styles from "./style.module.css";
 
 const Header: React.FC = () => {
 	const router = useRouter();
 	const classes = Material();
-	const isLogin = true;
+	const [user, setUser] = useRecoilState(userState);
+	const [cookies, setCookie, removeCookie] = useCookies(["_session"]);
 
 	const [open, setOpen] = React.useState(false);
 	const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+	const handleLogout = () => {
+		removeCookie("_session");
+		setUser(null);
+		router.push({
+			pathname: `/`,
+		});
+	};
 
 	const handleToggle = () => {
 		setOpen((prevOpen) => !prevOpen);
@@ -86,7 +98,7 @@ const Header: React.FC = () => {
 						/>
 					</div>
 					{/* ログイン画面＆新規登録画面でタイトル以外のコンポーネントを隠す */}
-					{pathname === "login" || pathname === "signUp" ? null : (
+					{pathname === "login" || pathname === "signup" ? null : (
 						<div className={styles.contents}>
 							<MediaQuery query='(min-width: 601px)'>
 								<div className={styles.searchFieldWrapper}>
@@ -113,7 +125,7 @@ const Header: React.FC = () => {
 									<Search className={classes.searchButton} />
 								</div>
 							</MediaQuery>
-							{isLogin ? (
+							{user ? (
 								<>
 									<Link
 										href={{
@@ -133,10 +145,7 @@ const Header: React.FC = () => {
 										onMouseEnter={handleOpen}
 									>
 										<div className={styles.avatarWrapper}>
-											<Avatar
-												className={classes.avatar}
-												src='https://avatars0.githubusercontent.com/u/41997570?s=460&u=d7609d3029ff5a356c7bb573c94a8f4664488e40&v=4'
-											/>
+											<Avatar className={classes.avatar} src={user.icon_link} />
 										</div>
 									</button>
 									<Popper
@@ -168,7 +177,11 @@ const Header: React.FC = () => {
 														>
 															<MenuItem
 																className={classes.menuItem}
-																onClick={handleClose}
+																onClick={() =>
+																	router.push({
+																		pathname: `/${user.user_id}`,
+																	})
+																}
 															>
 																Profile
 															</MenuItem>
@@ -180,7 +193,7 @@ const Header: React.FC = () => {
 															</MenuItem>
 															<MenuItem
 																className={classes.menuItem}
-																onClick={handleClose}
+																onClick={handleLogout}
 															>
 																Logout
 															</MenuItem>

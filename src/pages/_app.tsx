@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import type { AppProps } from "next/app";
 import Router from "next/router";
-import { ThemeProvider } from "@/provider/ThemeProvider";
-import LoadingPage from "@/components/molecules/loading-page";
+import Provider from "@/provider";
 import NProgress from "nprogress";
+
+import LoadingPage from "@/components/molecules/loading-page";
 import "sanitize.css";
 import "@/styles/global.css";
 import "@/styles/nprogress.css";
@@ -37,10 +38,11 @@ const App = ({ Component, pageProps }: AppProps) => {
 			jssStyles.parentElement.removeChild(jssStyles);
 		}
 	}, []);
+
 	return (
-		<ThemeProvider>
+		<Provider>
 			{loading ? <LoadingPage /> : <Component {...pageProps} />}
-		</ThemeProvider>
+		</Provider>
 	);
 };
 
