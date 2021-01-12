@@ -1,9 +1,11 @@
 .EasyMDEContainer {
-	max-width: 100% !important;
+	width: 100% !important;
+	height: 100% !important;
 }
 
 .CodeMirror {
 	border: 0px none !important;
+	height: 100% !important;
 	background: var(--box-background-color) !important;
 	box-shadow: var(--box-shadow-color) !important;
 	border-radius: 5px !important;

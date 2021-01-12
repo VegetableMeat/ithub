@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import { useCookies } from "react-cookie";
 import { userState } from "@/libs/atom";
 import type { User } from "@/models/user/entity";
 import axios from "axios";
@@ -49,12 +48,17 @@ const useStyles = makeStyles(() => ({
 const SignUp: React.FC = () => {
 	const router = useRouter();
 	const classes = useStyles();
-	const [cookies, setCookie] = useCookies();
 	const [user, setUser] = useRecoilState(userState);
 	const [name, setName] = React.useState<string>(null);
 	const [userID, setUserID] = React.useState<string>(null);
 	const [image, setImage] = React.useState<ImageListType>(null);
 	const [imageUrl, setImageUrl] = React.useState<string>(null);
+
+	useEffect(() => {
+		if (!user) return;
+
+		setImageUrl(user.icon_link);
+	}, []);
 
 	const handleImageUpload = (image: ImageListType) => {
 		setImage(image);
@@ -64,7 +68,7 @@ const SignUp: React.FC = () => {
 		(async () => {
 			try {
 				const res = await axios.post(
-					`https://ithub-backend.herokuapp.com/static/images/upload`,
+					`http://localhost:8000/static/images/upload`,
 					params,
 					{
 						headers: {
@@ -97,6 +101,10 @@ const SignUp: React.FC = () => {
 				},
 				{ withCredentials: true }
 			);
+
+			await axios.get("http://localhost:8000/v1/auth/reflesh", {
+				withCredentials: true,
+			});
 
 			setUser(res.data as User);
 			router.push({ pathname: `/` });

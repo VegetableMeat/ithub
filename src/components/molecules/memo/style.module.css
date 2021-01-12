@@ -1,56 +1,79 @@
-.memoCard {
-  max-width: 100%;
+.memoItemContainer {
+  width: calc(50% - 6px);
   display: flex;
   padding: 15px 15px 15px 7.5px;
-  border: solid 1px rgba(8, 9, 10, 0.1);
-  margin-bottom: 6px;
-  font-size: 17px;
-  background-color: #fff;
+  border: solid 1px var(--border-color);
+  box-shadow: var(--box-shadow-color);
+  margin: 0 3px 6px 3px;
+  font-size: 14px;
+  background: var(--box-background-color);
   border-radius: 5px;
 }
-.langImageWrapper {
-  min-width: 100px;
-  min-height: 80px;
+.langImage {
+  min-width: 70px;
   display: grid;
   place-items: center;
-  margin-bottom: auto;
+  margin: auto 0;
   border-radius: 5px;
+  cursor: pointer;
 }
-/* Main - langImageWrapper_width - Main_padding */
-.memo {
-  width: calc(768px - 100px - 20px * 2);
+
+.memoItemContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   min-height: 70px;
   padding-left: 7.5px;
 }
 .title {
-  display: block;
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   width: 100%;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.title:hover {
+  color: var(--title-hover-color);
 }
 .writer {
   display: grid;
-  /* place-items: center; */
   grid-template-rows: 20px 20px;
   grid-template-columns: auto auto auto 1fr;
+  margin-top: auto;
 }
 .writer span {
-  /* font-size: 1rem; */
   margin-left: 5px;
 }
 .writerIcon {
   grid-row: 1 / 3;
   grid-column: 1 / 2;
+  width: 30px !important;
+  height: 30px !important;
+  cursor: pointer;
 }
 .writerName {
-  display: flex;
-  font-size: 15px;
+  position: relative;
+  display: block;
+  font-size: 12px;
+  cursor: pointer;
 }
 .writerId {
   margin-left: 5px;
-  font-size: 14px;
+  font-size: 11px;
+}
+.writerName::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  bottom: 3px;
+  border-bottom: 1px solid var(--base-color);
+  display: block;
+}
+.writerName:hover::after {
+  width: 100%;
+  border-bottom: 1px solid var(--base-color);
 }
 .date {
-  font-size: 14px;
+  font-size: 11px;
   opacity: 0.8;
   grid-row: 2 / 3;
   grid-column: 2 / 3;
@@ -59,26 +82,30 @@
   grid-row: 2 / 3;
   grid-column: 4 / 4;
   display: grid;
-  grid-template-rows: 24px;
+  grid-template-rows: 18px;
   grid-template-columns: 1fr auto;
   justify-items: right;
   align-items: end;
   font-weight: bold;
   font-size: 0.6rem;
-  color: #ff7e7e;
+  color: var(--base-color);
+}
+.favoriteNum {
+  width: 1rem;
+  font-size: 10px;
 }
 
-@media screen and (max-width: 798px) {
-  .memoCard {
-    width: 100%;
+@media screen and (max-width: 768px) {
+  .memoItemContainer {
+    width: calc(100% - 6px);
   }
-  .memo {
-    width: calc(768px - 70px - 15px * 2);
+  .memoItemContent {
+    width: calc(738px - 70px - 15px * 2);
   }
 }
 
 @media screen and (max-width: 600px) {
-  .langImageWrapper {
+  .langImage {
     min-width: 70px;
   }
   .title {

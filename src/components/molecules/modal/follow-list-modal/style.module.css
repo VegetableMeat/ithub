@@ -17,3 +17,9 @@
 	font-weight: 600;
 	margin: 0;
 }
+
+.noneFollowText p {
+	font-weight: 500;
+	display: flex;
+	justify-content: center;
+}

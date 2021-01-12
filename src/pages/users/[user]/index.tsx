@@ -39,6 +39,7 @@ const UserIndex = (props: ServerSideProps) => {
 	const router = useRouter();
 	const { user, tab, tag } = router.query;
 	const [tabQuery, setTabQuery] = React.useState<string>(tab as string);
+	const { toggleTheme } = useToggleTheme();
 
 	useEffect(() => {
 		setTabQuery(tab as string);
@@ -48,10 +49,10 @@ const UserIndex = (props: ServerSideProps) => {
 		if (!tabQuery) return;
 		switch (tabQuery) {
 			case "saved":
-				router.push({ pathname: `/${user}`, query: { tab: "saved" } });
+				router.push({ pathname: `/users/${user}`, query: { tab: "saved" } });
 				return;
 			case "new":
-				router.push({ pathname: `/${user}`, query: { tab: "new" } });
+				router.push({ pathname: `/users/${user}`, query: { tab: "new" } });
 				return;
 			case "tags":
 				if (tag) {
@@ -61,7 +62,7 @@ const UserIndex = (props: ServerSideProps) => {
 					});
 					return;
 				}
-				router.push({ pathname: `/${user}`, query: { tab: tabQuery } });
+				router.push({ pathname: `/users/${user}`, query: { tab: tabQuery } });
 		}
 	}, [tabQuery]);
 
@@ -97,7 +98,7 @@ const UserIndex = (props: ServerSideProps) => {
 											{tag}
 											<Link
 												href={{
-													pathname: "/[user]",
+													pathname: "/users/[user]",
 													query: { user: user, tab: "tags" },
 												}}
 											>
@@ -124,14 +125,14 @@ const UserIndex = (props: ServerSideProps) => {
 							}}
 						/>
 					</div>
-					{(tabQuery === "tags" && !tag) || (!tag && !tabQuery) ? (
+					{tabQuery === "tags" && !tag ? (
 						<FolderList userID={data.user_id} />
 					) : (
 						<MemoList tab={tabQuery} userID={data.user_id} />
 					)}
 				</main>
 				<MediaQuery query='(min-width: 771px)'>
-					<Sidebar tags={data.follow_tags} />
+					<Sidebar tags={data.follow_tags} user={data} />
 				</MediaQuery>
 			</div>
 		</Layout>

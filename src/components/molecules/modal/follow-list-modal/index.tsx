@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { User } from "@/models/user/entity";
+import { useRecoilState } from "recoil";
+import { followingState } from "@/libs/atom";
 import folloedata from "@/fixtures/follow.json";
 
 import Modal from "@material-ui/core/Modal";
@@ -56,13 +58,18 @@ type Props = {
 	userID: string;
 	displayText: string;
 	modalOpen: boolean;
+	follows: User[];
+	loading: boolean;
+	error: boolean;
 	handleClose: () => void;
 };
 
 const FollowListModal: React.FC<Props> = (props: Props) => {
-	const { userID, displayText, modalOpen, handleClose } = props;
+	const { userID, displayText, modalOpen, handleClose, follows } = props;
 	const classes = useStyles();
-	const [follows, setFollows] = React.useState<User[]>(folloedata as User[]);
+	const [myfollows, setMyFollows] = useRecoilState(followingState);
+
+	if (!follows) return null;
 
 	return (
 		<div>

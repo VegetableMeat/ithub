@@ -1,5 +1,6 @@
 import React from "react";
-import { Tag } from "@/models/tag/entity";
+import type { Tag } from "@/models/tag/entity";
+import type { User } from "@/models/user/entity";
 
 import TagList from "@/components/molecules/tag-list";
 import AffiliationProfile from "@/components/molecules/profile/affiliation-profile";
@@ -8,15 +9,16 @@ import styles from "./style.module.css";
 
 type Props = {
 	tags: Tag[];
+	user: User;
 };
 
 const Sidebar: React.FC<Props> = (props) => {
-	const { tags } = props;
+	const { tags, user } = props;
 	return (
 		<aside className={styles.aside}>
 			<AffiliationProfile />
 			{tags && <TagList tags={tags} />}
-			<MiniProfile />
+			<MiniProfile user={user} />
 		</aside>
 	);
 };

@@ -47,8 +47,37 @@
 	}
 }
 
+.followButtonWrap {
+	display: flex;
+	justify-content: flex-end;
+	text-align: center;
+}
+
 .followButton {
-	text-align: end;
+	color: var(--base-color);
+	border: 1px var(--base-color) solid;
+	border-radius: 5px;
+	width: 100px;
+	font-weight: 400;
+	padding: 6px 0;
+}
+
+.followButton:hover {
+	background-color: var(--background-color);
+}
+
+.followingButton {
+	color: white;
+	border: 1px var(--accent-color) solid;
+	background-color: var(--accent-color);
+	border-radius: 5px;
+	width: 100px;
+	font-weight: 400;
+	padding: 6px 0;
+}
+
+.followingButton:hover {
+	background-color: var(--button-hover-color);
 }
 
 @media (max-width: 770px) {
@@ -136,6 +165,7 @@
 
 .followCountWrapper {
 	margin: 0 10px 0 0px;
+	padding: 2px;
 }
 
 .followCount {
@@ -155,6 +185,7 @@
 
 .followerCountWrapper {
 	margin: 0;
+	padding: 2px;
 }
 
 .followerCount {

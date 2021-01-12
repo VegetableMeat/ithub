@@ -41,25 +41,24 @@ const WriteSidebar: React.FC<Props> = (props) => {
 
 		(async () => {
 			setUploading(true);
-			await axios
-				.post(
-					`https://ithub-backend.herokuapp.com/static/images/upload`,
+
+			try {
+				const res = await axios.post(
+					`http://localhost:8000/static/images/upload`,
 					params,
 					{
 						headers: {
 							"content-type": "multipart/form-data",
 						},
 					}
-				)
-				.then((res) => {
-					setSnackbarMessage("画像アップロードが完了しました");
-					setOpen(true);
-					setInputMarkdown(inputMarkdown.concat(`![](${res.data.link})`));
-				})
-				.catch(() => {
-					setSnackbarMessage("画像アップロードに失敗しました");
-					setOpen(true);
-				});
+				);
+				setSnackbarMessage("画像アップロードが完了しました");
+				setOpen(true);
+				setInputMarkdown(inputMarkdown.concat(`![](${res.data.link})`));
+			} catch (err) {
+				setSnackbarMessage("画像アップロードに失敗しました");
+				setOpen(true);
+			}
 
 			setUploading(false);
 		})();

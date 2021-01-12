@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { GetServerSideProps } from "next";
 import { useRouter } from "next/router";
 import { makeStyles } from "@material-ui/styles";
-import { Memo, getMemo, saveMemo } from "@/libs/local-save";
+import { Memo, getMemo, saveMemo, deleteMemo } from "@/libs/local-save";
 import { fetcher } from "@/libs/fetcher";
 import { API_URL } from "@/libs/api";
 import type { Tag } from "@/models/tag/entity";
@@ -40,6 +40,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
 	return { props: { initialTagData } };
 };
 
+type TagRequest = {
+	name: string;
+};
+
 const Write = (props: ServerSideProps) => {
 	const initialTagData = props.initialTagData;
 
@@ -56,6 +60,22 @@ const Write = (props: ServerSideProps) => {
 	const classes = useStyles();
 	const tagOption = initialTagData ? initialTagData.map((tag) => tag.name) : [];
 
+	useEffect(() => {
+		if (getMemo()) {
+			handleModalOpen();
+		}
+	}, []);
+
+	const generateTagReqauest = (inputTag: string[]): TagRequest[] => {
+		console.log(inputTag);
+		let res: TagRequest[] = [];
+		for (var t in inputTag) {
+			res.push({ name: inputTag[t] });
+		}
+		console.log(res);
+		return res;
+	};
+
 	const restoreMemo = () => {
 		const localSaveMemo = getMemo();
 		setInputTitle(localSaveMemo.title);
@@ -63,12 +83,6 @@ const Write = (props: ServerSideProps) => {
 		setInputMarkdown(localSaveMemo.markdown);
 		handleModalClose();
 	};
-
-	useEffect(() => {
-		if (getMemo()) {
-			handleModalOpen();
-		}
-	}, []);
 
 	const handleModalOpen = () => {
 		setModalOpen(true);
@@ -97,22 +111,22 @@ const Write = (props: ServerSideProps) => {
 	};
 
 	const handleSubmit = async () => {
-		if (!inputTitle || !inputMarkdown) return;
-
 		try {
 			const res = await axios.post(
-				"http://localhost:8000/v1/notes/",
+				"http://localhost:8000/v1/notes",
 				{
 					memo_title: inputTitle,
-					tags: null,
+					tags: generateTagReqauest(inputTag),
 					markdown: inputMarkdown,
 				},
 				{ withCredentials: true }
 			);
+
+			deleteMemo();
+
 			router.push({
-				pathname: `/${user.user_id}/articles/${res.data.id}`,
+				pathname: `/users/${user.user_id}/articles/${res.data.id}`,
 			});
-			console.log(res.data);
 		} catch (error) {
 			console.log(error);
 		}

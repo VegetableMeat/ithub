@@ -1,93 +1,72 @@
 /* Header */
 .header {
-  height: 58px;
+	height: 58px;
 }
 .headerContainer {
-  z-index: 1;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  max-height: 58px;
-  height: auto;
-  background: var(--header-background-color);
-  border-bottom: 1px var(--header-boder-color) solid;
-  padding: 0 10px;
+	z-index: 1;
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	max-height: 58px;
+	height: 100%;
+	background: var(--header-background-color);
+	border-bottom: 1px var(--header-boder-color) solid;
+	padding: 0 10px;
 }
-.searchFieldWrapper,
 .searchButtonWrapper,
 .signUpButtonWrapper,
 .writeButtonWrapper {
-  margin: 0 5px;
+	margin: 0 5px;
+}
+.titleWrapper {
+	padding: 0 5px;
+	margin-right: 70px;
 }
 .writeButtonWrapper {
-  width: 100px;
+	width: 120px;
 }
 .headerContents {
-  display: flex;
-  justify-content: space-between;
-  width: 1250px;
-  max-height: 58px;
+	display: flex;
+	justify-content: space-between;
+	width: 960px;
+	height: inherit;
 }
 .title {
-  min-width: 100px;
-  cursor: pointer;
+	cursor: pointer;
+}
+.titleWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 58px;
 }
 .titleWrapper img {
-  padding: 8px;
-  max-height: 100%;
-  max-width: 100%;
-  border-radius: 12px;
+	max-height: 40px;
+	border-radius: 12px;
 }
 .contents {
-  display: flex;
-  margin: auto 0;
+	display: flex;
+	margin: auto 0 auto 10px;
 }
 
 .searchButtonWrapper {
-  height: 30px;
-  margin-top: auto;
-  margin-bottom: auto;
+	height: 30px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 .searchButtonWrapper img {
-  min-width: 22px;
-  min-height: 22px;
+	min-width: 22px;
+	min-height: 22px;
 }
 
-.searchField input {
-  min-height: 16px;
-  width: 48px !important;
-  padding: 7.5px 14px;
-  font-size: 10px;
-}
-
-.searchField div {
-  min-height: 30px;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  background-color: #fff;
-}
-.searchField div > div {
-  height: 10px;
-  margin: 0;
-}
-.searchField div > span {
-  font-size: 10px;
-  padding-left: 6.5px;
-  padding-right: 8px;
-}
-.searchField div > svg {
-  height: 18px;
-  width: 18px;
-}
-.searchField label {
-  font-size: 10px;
-  transform: translate(1.4em, 1.25em) scale(1);
-}
-
-.avatarWrapper {
-  width: 35px;
-  height: 35px;
+@media screen and (max-width: 600px) {
+	.titleWrapper {
+		margin-right: 0;
+	}
+	.contents {
+		margin: auto 0;
+	}
 }

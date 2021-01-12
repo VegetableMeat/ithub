@@ -11,3 +11,5 @@ export const getMemo = (): Memo =>
 
 export const saveMemo = (memo: Memo): void =>
 	localStorage.setItem(MEMO_STORAGE_KEY, JSON.stringify(memo));
+
+export const deleteMemo = (): void => localStorage.removeItem(MEMO_STORAGE_KEY);

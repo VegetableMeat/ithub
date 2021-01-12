@@ -86,15 +86,14 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 	const [selecetTab, setSelecetTab] = React.useState<number>(0);
 
 	useEffect(() => {
-		initialTab === "tags" ? setSelecetTab(1) : setSelecetTab(0);
 		switch (initialTab) {
-			case "tags":
+			case "new":
 				setSelecetTab(0);
 				break;
-			case "new":
+			case "saved":
 				setSelecetTab(1);
 				break;
-			case "saved":
+			case "tags":
 				setSelecetTab(2);
 				break;
 		}
@@ -104,22 +103,22 @@ const MemoTabs: React.FC<Props> = (props: Props) => {
 		setSelecetTab(newTab);
 		switch (newTab) {
 			case 0:
-				handleChange("tags");
-				break;
-			case 1:
 				handleChange("new");
 				break;
-			case 2:
+			case 1:
 				handleChange("saved");
+				break;
+			case 2:
+				handleChange("tags");
 		}
 	};
 
 	return (
 		<nav className={styles.memoTabsContainer}>
 			<StyledTabs value={selecetTab} onChange={handleChangeTabs}>
-				<AntTab label='Tag' />
 				<AntTab label='Latest' />
 				<AntTab label='Saved' />
+				<AntTab label='Tag' />
 			</StyledTabs>
 			<Typography className={classes.padding} />
 		</nav>

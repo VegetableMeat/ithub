@@ -9,18 +9,7 @@ const AffiliationProfile: React.FC<Props> = (props: Props) => {
 	return (
 		<article className={styles.affiliationProfileContainer}>
 			<div className={styles.titleWrapper}>
-				<h1 className={styles.title}>Job</h1>
-			</div>
-
-			<div className={styles.detailTextWrapper}>
-				<div className={styles.detailTextBlock}>
-					<GoChevronRight size={"20"} />
-					<p className={styles.detail}>学生</p>
-				</div>
-			</div>
-
-			<div className={styles.titleWrapper}>
-				<h1 className={styles.title}>School</h1>
+				<h1 className={styles.title}>所属</h1>
 			</div>
 
 			<div className={styles.detailTextWrapper}>

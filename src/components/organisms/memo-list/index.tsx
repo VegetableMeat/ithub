@@ -5,6 +5,8 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/styles";
 import { API_URL } from "@/libs/api";
 import * as ROUTES from "@/constants/routes";
+import moment from "moment";
+import "moment/locale/ja";
 
 import Avatar from "react-avatar";
 import { MdFavoriteBorder } from "react-icons/md";
@@ -60,7 +62,12 @@ const MemoList: React.FC<Props> = (props: Props) => {
 
 			setLoading(false);
 		})();
-	}, [tab]);
+	}, [tab, userID]);
+
+	const convertDate = (datestr: string): string => {
+		const date = moment(datestr);
+		return date.format("YYYY年MM月DD日HH時MM分");
+	};
 
 	if (error) return <Error statusCode={500} />;
 	if (loading || !memos) return <Loading />;
@@ -71,7 +78,7 @@ const MemoList: React.FC<Props> = (props: Props) => {
 				<>
 					{memos.map((memo) => (
 						<>
-							<Link href={`/${userID}/articles/${memo.id}`}>
+							<Link href={`/users/${userID}/articles/${memo.id}`}>
 								<section className={styles.memoWrapper}>
 									<div className={styles.profile}>
 										<Link href={`/${memo.user.user_id}`}>
@@ -86,7 +93,9 @@ const MemoList: React.FC<Props> = (props: Props) => {
 										</Link>
 										<div className={styles.profileRight}>
 											<p className={styles.userName}>{memo.user.name}</p>
-											<p className={styles.createdDate}>{memo.created_at}</p>
+											<p className={styles.createdDate}>
+												{moment(memo.created_at).fromNow()}
+											</p>
 										</div>
 									</div>
 
@@ -95,20 +104,34 @@ const MemoList: React.FC<Props> = (props: Props) => {
 
 										<div className={styles.memoInfoWrapper}>
 											<div className={styles.tagsWrapper}>
-												{memo.tags.map((tag) => (
-													<div className={styles.tag}>
-														<span
-															style={{
-																color: "#818181",
-																fontWeight: 500,
-																fontSize: "15px",
-															}}
-														>
-															#
-														</span>
-														<div className={styles.tagName}>{tag.name}</div>
-													</div>
-												))}
+												{memo.tags.length ? (
+													<>
+														{memo.tags.map((tag) => (
+															<div className={styles.tag}>
+																<span
+																	style={{
+																		color: "#818181",
+																		fontWeight: 500,
+																		fontSize: "15px",
+																	}}
+																>
+																	#
+																</span>
+																<div className={styles.tagName}>{tag.name}</div>
+															</div>
+														))}
+													</>
+												) : (
+													<span
+														style={{
+															color: "#818181",
+															fontWeight: 500,
+															fontSize: "12px",
+														}}
+													>
+														タグ未設定
+													</span>
+												)}
 											</div>
 											<div className={styles.memoInfo}>
 												<div className={styles.memoFavo}>

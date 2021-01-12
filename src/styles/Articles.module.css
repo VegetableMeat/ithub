@@ -1,14 +1,15 @@
 .content {
-	display: grid;
-	grid-auto-columns: minmax(300px, 800px);
-	grid-auto-rows: minmax(1px, auto);
-	grid-template-areas: " main ";
+	display: flex;
 	justify-content: center;
 	margin: 10px 20px 20px 20px;
 }
 
 .mainContainer {
-	grid-area: main;
+	display: flex;
+	flex-direction: column;
+	max-width: 700px;
+	width: 100%;
+	height: 100%;
 	background: var(--box-background-color);
 	border: 1px var(--border-color) solid;
 	box-shadow: var(--box-shadow-color);
@@ -18,4 +19,188 @@
 	color: #24292e;
 	font-size: 16px;
 	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.mainContainer > h1 {
+	margin: 0;
+	font-size: 35px;
+}
+
+.mainLayout {
+	max-width: 700px;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.tagWrapper {
+	text-align: left;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.articleSidebar {
+	margin-right: 40px;
+}
+
+.sidebarSticky {
+	position: sticky;
+	top: 120px;
+	z-index: 1;
+}
+
+.sidebarItemWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.buttonWrap {
+	border-radius: 50%;
+	padding: 5px;
+	margin-bottom: 30px;
+	border: 2px var(--background-color) solid;
+}
+
+.buttonWrap:hover {
+	background: var(--tag-boder-color);
+}
+
+.heartButtonWrap {
+	border-radius: 50%;
+	padding: 5px;
+	margin-bottom: 30px;
+	border: 2px #ff5192 solid;
+}
+
+.saveButtonWrap {
+	border-radius: 50%;
+	padding: 5px;
+	margin-bottom: 30px;
+	border: 2px #6495ed solid;
+}
+
+.avatar {
+	margin-right: 10px;
+}
+
+.avatar img {
+	object-fit: cover;
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+}
+
+.noteUser {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.name {
+	font-weight: 600;
+	font-size: 18px;
+	margin: 0;
+	margin-right: 10px;
+}
+
+.created {
+	color: var(--sub-font-color);
+	font-weight: 400;
+	font-size: 14px;
+	margin: 0;
+}
+
+.commentList {
+	display: flex;
+	flex-direction: column;
+	max-width: 700px;
+	width: 100%;
+	height: 100%;
+	background: var(--box-background-color);
+	border: 1px var(--border-color) solid;
+	box-shadow: var(--box-shadow-color);
+	border-radius: 5px;
+	padding: 20px 50px;
+	border-radius: 5px;
+	color: #24292e;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.commentList h1 {
+	font-size: 24px;
+	margin: 0;
+}
+
+.FlexTextarea {
+	position: relative;
+	font-size: 1rem;
+	line-height: 1.8;
+	margin-bottom: 10px;
+}
+
+.FlexTextarea__dummy {
+	overflow: hidden;
+	visibility: hidden;
+	box-sizing: border-box;
+	padding: 5px 15px;
+	min-height: 120px;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	border: 1px solid;
+}
+
+.FlexTextarea__textarea {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: 5px 15px;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	border: 1px solid #b6c3c6;
+	border-radius: 4px;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	resize: none;
+}
+
+.FlexTextarea__textarea:focus {
+	box-shadow: 0 0 0 4px rgba(35, 167, 195, 0.3);
+	outline: 0;
+}
+
+.commentAvatar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 7px;
+}
+
+.commentSendButtonWrap {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.commentSendButton {
+	height: 35px;
+	width: 100px;
+	background: var(--accent-color);
+	border: 1px var(--accent-color) solid;
+	box-shadow: var(--box-shadow-color);
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: 16px;
+	color: white;
 }

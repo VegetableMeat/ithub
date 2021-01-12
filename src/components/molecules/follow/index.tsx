@@ -28,7 +28,7 @@ const Follow: React.FC<Props> = (props: Props) => {
 	return (
 		<>
 			<div className={styles.follow}>
-				<Link href={`/${followData.user_id}`}>
+				<Link href={`/users/${followData.user_id}`}>
 					<Avatar
 						className={classes.avatar}
 						alt={followData.name}
@@ -38,12 +38,12 @@ const Follow: React.FC<Props> = (props: Props) => {
 					/>
 				</Link>
 
-				<Link href={`/${followData.user_id}`}>
+				<Link href={`/users/${followData.user_id}`}>
 					<div className={styles.userNameWrapper}>
 						<p className={styles.userName}>{followData.name}</p>
 					</div>
 				</Link>
-				<Link href={`/${followData.user_id}`}>
+				<Link href={`/users/${followData.user_id}`}>
 					<p className={styles.userID}>@{followData.user_id}</p>
 				</Link>
 				<p className={styles.userText}>{followData.user_text}</p>

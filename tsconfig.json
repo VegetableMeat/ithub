@@ -18,6 +18,6 @@
 			"@/*": ["src/*"]
 		}
 	},
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/libs/fetcher.js"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/libs/fetcher.js", "src/components/atoms/svg/index", "src/components/atoms/svg/index"],
 	"exclude": ["node_modules"]
 }

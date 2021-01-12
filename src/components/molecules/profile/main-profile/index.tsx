@@ -42,7 +42,7 @@ const MainProfile: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={styles.profile}>
 			<div className={styles.avatarContainer}>
-				<Link href={`/${user.user_id}`}>
+				<Link href={`/users/${user.user_id}`}>
 					<div className={styles.avatar}>
 						<Avatar
 							className={classes.avatar}
@@ -53,13 +53,6 @@ const MainProfile: React.FC<Props> = (props: Props) => {
 						/>
 					</div>
 				</Link>
-				{true && (
-					<Link href={"ROUTES.SETTING"}>
-						<div className={styles.settingIcon}>
-							<GrUserSettings size={"1.5em"} style={{ color: "#3E2924" }} />
-						</div>
-					</Link>
-				)}
 			</div>
 
 			<p className={styles.userName}>{user.name}</p>
@@ -79,31 +72,6 @@ const MainProfile: React.FC<Props> = (props: Props) => {
 			</div>
 
 			<p className={styles.userText}>{user.user_text}</p>
-
-			<Button
-				className={classes.blueButton}
-				variant='outlined'
-				href={`/${user.user_id}${ROUTES.FOLLOW}`}
-			>
-				{user.follow_count}フォロー
-			</Button>
-			<Button
-				className={classes.blueButton}
-				variant='outlined'
-				href={`/${user.user_id}${ROUTES.FOLLOWER}`}
-			>
-				{user.follower_count}フォロワー
-			</Button>
-
-			<p className={styles.line} />
-
-			<Button
-				className={classes.brownButton}
-				variant='outlined'
-				href={`/${user.user_id}${ROUTES.FAVORITES}`}
-			>
-				いいねした備忘録
-			</Button>
 		</div>
 	);
 };

@@ -1,0 +1,16 @@
+.userMenu {
+	position: relative;
+	width: 35px;
+	height: 35px;
+}
+.avatarWrapper {
+	width: 35px;
+	height: 35px;
+}
+
+.avatar img {
+	object-fit: cover;
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+}

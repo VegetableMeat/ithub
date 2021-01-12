@@ -28,6 +28,7 @@
 		"fetcher": "^0.2.0",
 		"isomorphic-unfetch": "^3.1.0",
 		"marked": "^1.2.5",
+		"moment": "^2.29.1",
 		"next": "10.0.1",
 		"next-nprogress": "^1.4.0",
 		"nprogress": "^0.2.0",

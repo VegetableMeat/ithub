@@ -1,6 +1,6 @@
 .content {
 	display: grid;
-	grid-auto-columns: minmax(300px, 750px) minmax(200px, 400px);
+	grid-auto-columns: minmax(300px, 750px) minmax(100px, 400px);
 	grid-auto-rows: auto 1fr;
 	grid-template-areas:
 		" form   sidebar"

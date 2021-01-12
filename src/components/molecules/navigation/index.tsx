@@ -1,38 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import { BottomNavigation, BottomNavigationAction } from "@material-ui/core";
-import {
-  Home,
-  FeaturedPlayList,
-  LocalOffer,
-  MenuBook,
-} from "@material-ui/icons";
-import styles from "./style.module.css";
+import { Home, FeaturedPlayList, MenuBook } from "@material-ui/icons";
+import { makeStyles } from "@material-ui/styles";
 
-const Navigation: React.FC = () => {
-  const [value, setValue] = React.useState("home");
+type Props = {
+  query: string | string[];
+};
+
+const useStyles = makeStyles({
+  bottomNavigation: {
+    backgroundColor: "transparent",
+    marginBottom: "20px",
+    height: "60px",
+  },
+  bottomNavigationAction: {
+    fontWeight: "bold",
+    color: "var(--navigation-unfocus);",
+    "&.Mui-selected": {
+      color: "var(--navigation-focus);",
+    },
+  },
+});
+
+const Navigation: React.FC<Props> = (props) => {
+  const router = useRouter();
+  let { query } = props;
+  if (query === void 0 || query === "") query = "home";
+  const classes = useStyles();
+  const [naviQuery, setNaviQuery] = React.useState<string | string[]>(query);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: string) => {
-    setValue(newValue);
+    setNaviQuery(newValue);
+    if (newValue === "home") {
+      router.push({ pathname: "/", query: { navi: "" } }, { pathname: "/" });
+    } else {
+      router.push({ pathname: "/", query: { navi: newValue } });
+    }
   };
-
   return (
     <BottomNavigation
-      value={value}
+      className={classes.bottomNavigation}
+      value={naviQuery}
       onChange={handleChange}
-      className={styles.navigation}
     >
-      <BottomNavigationAction label="Home" value="home" icon={<Home />} />
       <BottomNavigationAction
+        className={classes.bottomNavigationAction}
+        label="Home"
+        value="home"
+        icon={<Home />}
+      />
+      <BottomNavigationAction
+        className={classes.bottomNavigationAction}
         label="Recommend"
         value="recommend"
         icon={<FeaturedPlayList />}
       />
-      {/* <BottomNavigationAction
-        label="人気タグ"
-        value="tag"
-        icon={<LocalOffer />}
-      /> */}
       <BottomNavigationAction
+        className={classes.bottomNavigationAction}
         label="Popular"
         value="popular"
         icon={<MenuBook />}
