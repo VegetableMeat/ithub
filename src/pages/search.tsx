@@ -77,7 +77,7 @@ const Search = (props: ServerSideProps) => {
           ) : memos.length ? (
             <section className={styles.memoList}>
               {memos.map((data, index) => (
-                <Memo key={index} memos={data} />
+                <Memo key={index} memos={data.user} />
               ))}
             </section>
           ) : null}

@@ -23,6 +23,7 @@ import {
 import { Add } from "@material-ui/icons";
 import { GrTwitter, GrGithub } from "react-icons/gr";
 import { FaHashtag } from "react-icons/fa";
+import { IoIosCloseCircle } from "react-icons/io";
 import { Tag as TagEntity } from "@/models/tag/entity";
 import { Autocomplete } from "@material-ui/lab";
 import tagData from "@/fixtures/tag.json";
@@ -71,6 +72,7 @@ const useStyles = makeStyles(() => ({
     border: "1px var(--accent-color) solid",
     height: "22px",
     textTransform: "none",
+    cursor: "default",
     "&:hover": {
       backgroundColor: "var(--tag-background-color)",
     },
@@ -110,6 +112,22 @@ const useStyles = makeStyles(() => ({
     backgroundColor: "var(--header-paper-background-color)",
     borderRadius: "0px",
   },
+  closeCircle: {
+    marginRight: "4px",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+  button: {
+    textTransform: "none",
+    width: "200px",
+    height: "35px",
+    color: "var(--header-button-text-color);",
+    backgroundColor: "var(--accent-color);",
+    "&:hover": {
+      backgroundColor: "var(--button-hover-color);",
+    },
+  },
 }));
 
 export interface ServerSideProps {
@@ -129,14 +147,67 @@ const Settings = (props: ServerSideProps) => {
     initialData,
   });
 
-  const [tags, setTags] = React.useState<TagEntity[]>(data.follow_tags);
+  const [postData, setPostData] = React.useState<User>(data);
+  // const [tags, setTags] = React.useState<TagEntity[]>(data.follow_tags);
+  const [tag, setTag] = React.useState<string>("");
+  const [options, setOptions] = React.useState<TagEntity[]>(tagData);
   const [openPopper, setOpen] = React.useState<boolean>(false);
+
+  const handleSetTag = (value: string) => {
+    let result = "";
+    tagData.forEach((e) => {
+      if (e.name === value) {
+        return (result = value);
+      }
+    });
+
+    if (result !== "") {
+      setTag(result);
+    }
+  };
+
+  const handleAddTag = (value: string) => {
+    const result = postData.follow_tags.filter((e) => {
+      return e.name === value;
+    });
+    if (value !== "" && result.length === 0) {
+      setPostData({
+        ...postData,
+        follow_tags: [
+          ...postData.follow_tags,
+          ...tagData.filter((e) => {
+            if (e.name === value) {
+              return e;
+            }
+          }),
+        ],
+      });
+    }
+  };
+
+  const handleRemoveTag = (value: string) => {
+    const result = postData.follow_tags.filter((e) => {
+      return e.name !== value;
+    });
+
+    setPostData({
+      ...postData,
+      follow_tags: result,
+    });
+  };
+
+  const handleAdd = (value: string, key: string) => {
+    setPostData({
+      ...postData,
+      [key]: value,
+    });
+  };
 
   if (error) return <Error statusCode={500} />;
   if (!data) return <Loading />;
 
   return (
-    <Layout title={data.user_id}>
+    <Layout title="settings">
       <div className={styles.settingsContainer}>
         <main className={styles.mainContainer}>
           <div className={styles.userIcon}>
@@ -154,10 +225,10 @@ const Settings = (props: ServerSideProps) => {
                 aria-haspopup="true"
                 placeholder="Name"
                 inputProps={{ "aria-label": "name" }}
-                value={data.name}
-                // onChange={(e) => {
-                //   setQuery(e.target.value);
-                // }}
+                value={postData.name}
+                onChange={(e) => {
+                  handleAdd(e.target.value, "name");
+                }}
                 spellCheck={false}
               />
             </div>
@@ -173,12 +244,12 @@ const Settings = (props: ServerSideProps) => {
                 aria-haspopup="true"
                 placeholder="Profile"
                 inputProps={{ "aria-label": "profile" }}
-                value={data.user_text}
+                value={postData.user_text}
                 multiline
                 rows={5}
-                // onChange={(e) => {
-                //   setQuery(e.target.value);
-                // }}
+                onChange={(e) => {
+                  handleAdd(e.target.value, "user_text");
+                }}
                 spellCheck={false}
               />
             </div>
@@ -195,10 +266,10 @@ const Settings = (props: ServerSideProps) => {
                     aria-haspopup="true"
                     placeholder="user id"
                     inputProps={{ "aria-label": "id" }}
-                    value={data.github_link}
-                    // onChange={(e) => {
-                    //   setQuery(e.target.value);
-                    // }}
+                    value={postData.github_link}
+                    onChange={(e) => {
+                      handleAdd(e.target.value, "github_link");
+                    }}
                     spellCheck={false}
                   />
                 </div>
@@ -215,23 +286,48 @@ const Settings = (props: ServerSideProps) => {
                     aria-haspopup="true"
                     placeholder="user id"
                     inputProps={{ "aria-label": "id" }}
-                    value={data.twitter_link}
-                    // onChange={(e) => {
-                    //   setQuery(e.target.value);
-                    // }}
+                    value={postData.twitter_link}
+                    onChange={(e) => {
+                      handleAdd(e.target.value, "twitter_link");
+                    }}
                     spellCheck={false}
                   />
                 </div>
               </div>
             </div>
+            <div className={styles.label} style={{ marginTop: "20px" }}>
+              所属
+            </div>
+            <div className={styles.inputField}>
+              <InputBase
+                className={classes.input}
+                aria-controls={open ? "menu-list-grow" : undefined}
+                aria-haspopup="true"
+                placeholder="所属を入力"
+                inputProps={{ "aria-label": "belongs" }}
+                // value={postData.name}
+                // onChange={(e) => {
+                //   handleAdd(e.target.value, "name");
+                // }}
+                spellCheck={false}
+              />
+            </div>
           </div>
           <div className={styles.tags}>
-            <div className={styles.label}>Tags</div>
-            {tags.length ? (
+            <div className={styles.label}>タグ</div>
+            {postData.follow_tags.length ? (
               <div className={styles.tagsContainer}>
-                {tags.map((tag) => (
+                {postData.follow_tags.map((tag) => (
                   <Button key={tag.id} disableRipple className={classes.tag}>
-                    <FaHashtag color={"var(--tag-font-color)"} size={"0.9em"} />
+                    <IoIosCloseCircle
+                      className={classes.closeCircle}
+                      color={"var(--tag-font-color)"}
+                      size={"14px"}
+                      onClick={() => {
+                        handleRemoveTag(tag.name);
+                      }}
+                    />
+                    <FaHashtag color={"var(--tag-font-color)"} size={"10px"} />
                     <span className={classes.tagName}>{tag.name}</span>
                   </Button>
                 ))}
@@ -251,7 +347,7 @@ const Settings = (props: ServerSideProps) => {
                 paper: classes.autoPaper,
               }}
               id="combo-box"
-              options={tags}
+              options={options}
               getOptionLabel={(option) => option.name}
               style={{ marginRight: "5px" }}
               renderInput={(params) => (
@@ -263,9 +359,9 @@ const Settings = (props: ServerSideProps) => {
                     aria-haspopup="true"
                     placeholder="Select tags"
                     inputProps={{ "aria-label": "tags" }}
-                    // onChange={(e) => {
-                    //   setQuery(e.target.value);
-                    // }}
+                    onSelect={(e) => {
+                      handleSetTag(e.target.value);
+                    }}
                     spellCheck={false}
                     onFocus={() => {
                       setOpen(true);
@@ -280,9 +376,21 @@ const Settings = (props: ServerSideProps) => {
             <IconButton
               className={classes.iconButton}
               aria-label="menu"
-              // onClick={handleToggle}
+              onClick={() => {
+                handleAddTag(tag);
+              }}
               children={<Add className={classes.addIcon} />}
             />
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              marginTop: "20px",
+              justifyContent: "center",
+            }}
+          >
+            <Button className={classes.button}>登録</Button>
           </div>
         </main>
       </div>

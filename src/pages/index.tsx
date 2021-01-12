@@ -16,7 +16,7 @@ export interface ServerSideProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const initialData = await axios(`${API_URL}/top`, {
+  const initialData = await axios(`${API_URL}/users/test/memos`, {
     params: {
       navi: query.navi,
     },
@@ -36,7 +36,7 @@ const Top = (props: ServerSideProps) => {
     (async () => {
       setLoading(true);
       await axios
-        .get(`${API_URL}/top`, {
+        .get(`${API_URL}/users/test/memos`, {
           params: {
             navi: navi,
           },
