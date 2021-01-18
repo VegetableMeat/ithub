@@ -4,7 +4,7 @@ import Layout from "@/components/organisms/layout";
 import Navigation from "@/components/molecules/navigation";
 import Memo from "@/components/molecules/memo";
 import { API_URL } from "@/libs/api";
-import { Memo as Memo_entity } from "@/models/top/memo/entity";
+import { Memo as Memo_entity } from "@/models/memo/entity";
 import styles from "@/styles/Top.module.css";
 import { useRouter } from "next/router";
 import Error from "next/error";
@@ -16,7 +16,7 @@ export interface ServerSideProps {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-	const initialData = await axios(`${API_URL}/top`, {
+	const initialData = await axios(`${API_URL}/users/test/memos`, {
 		params: {
 			navi: query.navi,
 		},
@@ -36,7 +36,7 @@ const Top = (props: ServerSideProps) => {
 		(async () => {
 			setLoading(true);
 			await axios
-				.get(`${API_URL}/top`, {
+				.get(`${API_URL}/users/test/memos`, {
 					params: {
 						navi: navi,
 					},

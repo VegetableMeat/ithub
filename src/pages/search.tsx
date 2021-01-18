@@ -3,7 +3,7 @@ import { GetServerSideProps } from "next";
 import Layout from "@/components/organisms/layout";
 import Memo from "@/components/molecules/memo";
 import { API_URL } from "@/libs/api";
-import { Memo as Memo_entity } from "@/models/top/memo/entity";
+import { Memo as Memo_entity } from "@/models/memo/entity";
 import styles from "@/styles/Search.module.css";
 import { useRouter } from "next/router";
 import Error from "next/error";

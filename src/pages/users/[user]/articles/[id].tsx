@@ -57,6 +57,7 @@ const Articles = (props: ServerSideProps) => {
 	const { initialMemoData } = props;
 	let { initialCommentData } = props;
 
+	const [modalOpen, setModalOpen] = React.useState<boolean>(false);
 	const [isFavorite, setIsFavorite] = React.useState<boolean>(false);
 	const [isSave, setIsSave] = React.useState<boolean>(false);
 	const [inputComment, setInputComment] = React.useState<string>(null);
@@ -150,7 +151,10 @@ const Articles = (props: ServerSideProps) => {
 								</div>
 							)}
 
-							<div className={styles.buttonWrap}>
+							<div
+								className={styles.buttonWrap}
+								onClick={() => setModalOpen(!modalOpen)}
+							>
 								<BsList
 									style={{
 										fontSize: "25px",

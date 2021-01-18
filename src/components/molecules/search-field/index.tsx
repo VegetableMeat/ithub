@@ -25,7 +25,7 @@ const SearchField: React.FC<Props> = (props) => {
 	const router = useRouter();
 	const classes = useStyles();
 	const [open, setOpen] = React.useState<boolean>(false);
-	const anchorRef = React.useRef<HTMLInputElement>(null);
+	const anchorRef = React.useRef<HTMLDivElement>(null);
 	const [query, setQuery] = React.useState<string | string[]>(
 		router.query.q || ""
 	);
@@ -63,7 +63,7 @@ const SearchField: React.FC<Props> = (props) => {
 	}, [open]);
 
 	return (
-		<div className={styles.searchFieldWrapper}>
+		<div className={styles.searchFieldWrapper} ref={anchorRef}>
 			<IconButton
 				className={classes.iconButton}
 				aria-label='menu'
@@ -71,7 +71,6 @@ const SearchField: React.FC<Props> = (props) => {
 				children={<Search className={classes.searchIcon} />}
 			/>
 			<InputBase
-				ref={anchorRef}
 				aria-controls={open ? "menu-list-grow" : undefined}
 				aria-haspopup='true'
 				className={classes.input}
